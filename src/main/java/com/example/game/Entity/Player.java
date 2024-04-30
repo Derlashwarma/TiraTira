@@ -19,7 +19,7 @@ public class Player extends Entity implements Runnable{
 
         while(getHealth() > 0) {
             Platform.runLater(() -> {
-                Bullet bullet = new Bullet(2,1 ,10,10,getCurrentX(),getCurrentY()-20,Color.RED, -1);
+                Bullet bullet = new Bullet(20,1 ,10,10,getCurrentX(),getCurrentY()-30,Color.RED, -1);
                 bullet.setAnchorPane(anchorPane);
                 anchorPane.getChildren().add(bullet);
                 Thread thread = new Thread(bullet);

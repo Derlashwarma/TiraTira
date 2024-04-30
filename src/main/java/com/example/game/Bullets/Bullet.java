@@ -40,29 +40,32 @@ public class Bullet extends javafx.scene.shape.Rectangle implements Runnable{
         currentY += direction;
     }
 
-    private void checkCollision() {
-        for (Node node : new ArrayList<>(pane.getChildren())) {
-            if (node instanceof Enemy && getBoundsInParent().intersects(node.getBoundsInParent())) {
-                Enemy enemy = (Enemy) node;
-                if (enemy.isAlive()) {
-                    enemy.changeHealth(-damage);
-                    if(enemy.getHealth() <= 0) {
-                        Platform.runLater(() -> pane.getChildren().remove(enemy));
-                        System.out.println("SCORE PLUS 1");
+    private boolean checkCollision() {
+        synchronized (pane) {
+            for (Node node : new ArrayList<>(pane.getChildren())) {
+                if (node instanceof Enemy && getBoundsInParent().intersects(node.getBoundsInParent())) {
+                    Enemy enemy = (Enemy) node;
+                    if (enemy.isAlive()) {
+                        enemy.changeHealth(-damage);
+                        System.out.println("HIT... Remaining Health: " + enemy.getHealth());
+                        if(enemy.getHealth() <= 0) {
+                            Platform.runLater(() -> pane.getChildren().remove(enemy));
+                            System.out.println("SCORE PLUS 1");
+                        }
                     }
+                    Platform.runLater(() -> pane.getChildren().remove(this));
+                    return true;
                 }
-                Platform.runLater(() -> pane.getChildren().remove(this));
-                break;
             }
         }
+        return false;
     }
 
 
     @Override
     public void run() {
-        while(currentY < BOTTOM_LIMIT && currentY > TOP_LIMIT) {
+        while(currentY < BOTTOM_LIMIT && currentY > TOP_LIMIT && !checkCollision()) {
             move();
-            checkCollision();
             try {
                 Thread.sleep((long)speed);
             } catch (InterruptedException e) {

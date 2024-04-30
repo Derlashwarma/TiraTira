@@ -42,7 +42,7 @@ public class Entity extends javafx.scene.shape.Rectangle{
         return health;
     }
 
-    public void setHealth(double health) {
+    public synchronized void setHealth(double health) {
         this.health = health;
     }
 
