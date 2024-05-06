@@ -1,11 +1,12 @@
 package com.example.game.Entity;
 
+import com.example.game.Bullets.PlayerBullet;
 import javafx.application.Platform;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 public class Enemy extends Entity implements Runnable{
     private final double BOTTOM_LIMIT = 760;
+    private String name;
     private long speed;
     public Enemy(long speed,double size,double currentX, double currentY, Color color, String name) {
         super(size, color, name);
@@ -13,6 +14,7 @@ public class Enemy extends Entity implements Runnable{
         setCurrentY(currentY);
         setDirection(1);
         this.speed = speed;
+        this.name = name;
     }
 
     @Override

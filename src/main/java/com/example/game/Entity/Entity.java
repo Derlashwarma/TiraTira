@@ -4,6 +4,8 @@ import javafx.application.Platform;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
+import java.util.Random;
+
 public class Entity extends javafx.scene.shape.Rectangle{
     private double health;
     private double currentX;
@@ -66,6 +68,7 @@ public class Entity extends javafx.scene.shape.Rectangle{
         this.direction = direction;
     }
 
+    private static int Xdirection;
     public void move() {
         Platform.runLater(() -> {
             setLayoutX(currentX);
