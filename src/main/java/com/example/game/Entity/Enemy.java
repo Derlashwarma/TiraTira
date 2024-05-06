@@ -1,6 +1,7 @@
 package com.example.game.Entity;
 
 import com.example.game.Bullets.PlayerBullet;
+import com.example.game.Game;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 
@@ -19,6 +20,7 @@ public class Enemy extends Entity implements Runnable{
 
     @Override
     public void run() {
+        Game.enemies.add(this);
         while(getLayoutY() < BOTTOM_LIMIT  && isAlive()) {
             move();
             try {
@@ -31,5 +33,6 @@ public class Enemy extends Entity implements Runnable{
             anchorPane.getChildren().remove(this);
             Thread.currentThread().interrupt();
         });
+        Game.enemies.remove(this);
     }
 }

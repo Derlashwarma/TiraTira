@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Game implements Runnable{
@@ -17,10 +18,12 @@ public class Game implements Runnable{
     private final int maxRange = 495;
     private final int range = maxRange - minRange + 1;
     private int interval = 2000;
+    public static ArrayList<Runnable> enemies;
 
     public Game(AnchorPane pane) {
         this.main_container = pane;
         game_running = true;
+        enemies = new ArrayList<>();
     }
     @Override
     public void run() {
@@ -53,20 +56,24 @@ public class Game implements Runnable{
                 } while (tempValue == previousValue || tempValue == previousValue + 50 || tempValue == previousValue - 50);
             }
             previousValue = randomX;
-            long speed = (long)(random.nextDouble() * (50 - minimumSpeed) + minimumSpeed);
-            double health = random.nextInt((int)minimumHealth);
-            Enemy enemy = new Enemy(speed, 50, randomX, 0, Color.BLUE,"Enemy");
-            enemy.setAnchorPane(main_container);
-            enemy.setHealth(health);
-            Thread enemyThread = new Thread(enemy);
-            Platform.runLater(()->{
-                main_container.getChildren().add(enemy);
-            });
-            enemyThread.start();
+            if(enemies.size() < 10) {
+                long speed = (long)(random.nextDouble() * (50 - minimumSpeed) + minimumSpeed);
+                double health = random.nextInt((int)minimumHealth);
+                Enemy enemy = new Enemy(speed, 50, randomX, 0, Color.BLUE,"Enemy");
+                enemy.setAnchorPane(main_container);
+                enemy.setHealth(health);
+                Thread enemyThread = new Thread(enemy);
+                Platform.runLater(()->{
+                    main_container.getChildren().add(enemy);
+                });
+                enemyThread.start();
+            }
 
             try {
                 Thread.sleep(interval);
-                interval-=10;
+                if(interval > 50) {
+                    interval-=10;
+                }
                 minimumHealth += 10;
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

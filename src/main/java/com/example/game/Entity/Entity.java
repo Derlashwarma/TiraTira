@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 
 import java.util.Random;
 
-public class Entity extends javafx.scene.shape.Rectangle{
+public class Entity extends javafx.scene.shape.Circle{
     private double health;
     private double currentX;
     private double currentY;
@@ -16,7 +16,7 @@ public class Entity extends javafx.scene.shape.Rectangle{
     private boolean isAlive;
 
     public Entity(double size, Color color, String name){
-        super(size,size,color);
+        super(size);
         health = 200;
         this.name = name;
         isAlive = true;
@@ -67,8 +67,6 @@ public class Entity extends javafx.scene.shape.Rectangle{
     public void setDirection(int direction) {
         this.direction = direction;
     }
-
-    private static int Xdirection;
     public void move() {
         Platform.runLater(() -> {
             setLayoutX(currentX);
