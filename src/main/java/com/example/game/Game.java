@@ -24,11 +24,13 @@ public class Game implements Runnable{
     private double minimumSpeed = 50;
     private int interval = 2000;
     public static ArrayList<Runnable> enemies;
+    private ImageView character;
 
-    public Game(AnchorPane pane) {
+    public Game(AnchorPane pane, ImageView character) {
         this.main_container = pane;
         game_running = true;
         enemies = new ArrayList<>();
+        this.character = character;
     }
 
     @Override
@@ -38,19 +40,17 @@ public class Game implements Runnable{
             player.setAnchorPane(main_container);
             player.setAnchorPane(main_container);
             Thread playerThread = new Thread(player);
-            main_container.getChildren().addAll(player);
             playerThread.start();
 
             main_container.setOnMouseMoved(event -> {
+                character.setLayoutX(event.getX()-50);
+                character.setLayoutY(event.getY()-40);
                 player.setLayoutX(event.getX());
                 player.setLayoutY(event.getY());
                 player.setCurrentX(event.getX());
                 player.setCurrentY(event.getY());
-                player.move();
             });
             Random random = new Random();
-            double game_screen = main_container.getWidth();
-
             while(game_running) {
                 int minRange = 5;
                 int maxRange = 495;
@@ -64,7 +64,6 @@ public class Game implements Runnable{
                         randomX = tempValue;
                     } while (tempValue == previousValue || tempValue == previousValue + 50 || tempValue == previousValue - 50);
                 }
-                previousValue = randomX;
                 if(enemies.size() < 10) {
                     long speed = (long)(random.nextDouble() * (50 - minimumSpeed) + minimumSpeed);
                     double health = random.nextInt((int)minimumHealth);
@@ -89,7 +88,9 @@ public class Game implements Runnable{
                 }
             }
             System.out.println("GAME OVER");
-            main_container.getChildren().removeAll();
+            Platform.runLater(()->{
+                main_container.getChildren().removeAll();
+            });
         }
     }
 }

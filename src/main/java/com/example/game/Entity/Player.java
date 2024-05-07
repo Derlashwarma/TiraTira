@@ -48,6 +48,7 @@ public class Player extends Entity implements Runnable{
     public void run() {
         while(getHealth() > 0 && Game.game_running) {
             Platform.runLater(() -> {
+                move();
                 PlayerBullet playerBullet = new PlayerBullet(20,1 ,10,10,getCurrentX(),getCurrentY()-30,Color.RED, -1, name);
                 playerBullet.setAnchorPane(anchorPane);
                 anchorPane.getChildren().add(playerBullet);
