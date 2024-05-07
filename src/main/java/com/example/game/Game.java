@@ -22,9 +22,6 @@ public class Game implements Runnable{
     public static boolean game_running;
     private double minimumHealth = 100;
     private double minimumSpeed = 50;
-    private final int minRange = 5;
-    private final int maxRange = 495;
-    private final int range = maxRange - minRange + 1;
     private int interval = 2000;
     public static ArrayList<Runnable> enemies;
 
@@ -84,7 +81,7 @@ public class Game implements Runnable{
                 try {
                     Thread.sleep(interval);
                     if(interval > 50) {
-                        interval-=10;
+                        interval -= 10;
                     }
                     minimumHealth += 10;
                 } catch (InterruptedException e) {
