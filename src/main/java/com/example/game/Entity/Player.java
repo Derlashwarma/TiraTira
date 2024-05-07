@@ -40,23 +40,23 @@ public class Player extends Entity implements Runnable{
                     Game.game_running = false;
                 }
             }
-            return;
         }
     }
 
     @Override
     public void run() {
         while(getHealth() > 0 && Game.game_running) {
+            move();
+            PlayerBullet playerBullet = new PlayerBullet(getLayoutX(),getLayoutY()-30, name);
+            playerBullet.setAnchorPane(anchorPane);
             Platform.runLater(() -> {
-                move();
-                PlayerBullet playerBullet = new PlayerBullet(20,1 ,10,10,getCurrentX(),getCurrentY()-30,Color.RED, -1, name);
-                playerBullet.setAnchorPane(anchorPane);
                 anchorPane.getChildren().add(playerBullet);
-                Thread thread = new Thread(playerBullet);
-                thread.start();
             });
+
+            Thread thread = new Thread(playerBullet);
+            thread.start();
             try {
-                Thread.sleep(500);
+                Thread.sleep(300);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

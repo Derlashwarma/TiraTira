@@ -25,6 +25,8 @@ public class Game implements Runnable{
     private int interval = 2000;
     public static ArrayList<Runnable> enemies;
     private ImageView character;
+    public static int score;
+    public static Player player;
 
     public Game(AnchorPane pane, ImageView character) {
         this.main_container = pane;
@@ -32,11 +34,17 @@ public class Game implements Runnable{
         enemies = new ArrayList<>();
         this.character = character;
     }
+    public static void addScore(int sc){
+        score += sc;
+    }
+    public static void endGame(){
+        game_running = false;
+    }
 
     @Override
     public void run() {
         while(game_running){
-            Player player = new Player(20, Color.GREEN,"Ardel");
+            player = new Player(20, Color.GREEN,"Ardel");
             player.setAnchorPane(main_container);
             player.setAnchorPane(main_container);
             Thread playerThread = new Thread(player);
@@ -88,6 +96,7 @@ public class Game implements Runnable{
                 }
             }
             System.out.println("GAME OVER");
+            System.out.println("TOTAL SCORE: " + score);
             Platform.runLater(()->{
                 main_container.getChildren().removeAll();
             });
