@@ -48,7 +48,7 @@ public abstract class Bullet extends javafx.scene.shape.Rectangle implements Run
                         Enemy enemy = (Enemy) node;
                         if (enemy.isAlive()) {
                             enemy.changeHealth(-damage);
-                            System.out.println("HIT... Remaining Health: " + enemy.getHealth());
+                            //System.out.println("HIT... Remaining Health: " + enemy.getHealth());
                             if(enemy.getHealth() <= 0) {
                                 Platform.runLater(() -> pane.getChildren().remove(enemy));
                                 System.out.println("SCORE PLUS 1");

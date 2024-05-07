@@ -21,7 +21,7 @@ public class Enemy extends Entity implements Runnable{
     @Override
     public void run() {
         Game.enemies.add(this);
-        while(getLayoutY() < BOTTOM_LIMIT  && isAlive()) {
+        while(getLayoutY() < BOTTOM_LIMIT  && isAlive() && Game.game_running) {
             move();
             try {
                 Thread.sleep(speed);

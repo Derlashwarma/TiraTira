@@ -21,6 +21,7 @@ public class Entity extends javafx.scene.shape.Circle{
         this.name = name;
         isAlive = true;
     }
+    public String getName(){return name;}
 
     public boolean isAlive() {
         return isAlive;
