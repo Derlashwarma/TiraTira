@@ -9,10 +9,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.security.spec.RSAOtherPrimeInfo;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class Game implements Runnable{

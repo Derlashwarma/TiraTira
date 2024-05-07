@@ -33,12 +33,14 @@ public class Player extends Entity implements Runnable{
     @Override
     public void move(){
         if(checkCollision()){
-            setHealth(-(getHealth()*.5));
+            setHealth(-(getHealth() * 0.05));
+            System.out.println(getHealth());
             if(getHealth() <= 0){
                 synchronized ((Object)Game.game_running){
                     Game.game_running = false;
                 }
             }
+            return;
         }
     }
 
@@ -53,7 +55,7 @@ public class Player extends Entity implements Runnable{
                 thread.start();
             });
             try {
-                Thread.sleep(300);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
