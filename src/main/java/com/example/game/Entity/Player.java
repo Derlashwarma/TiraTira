@@ -61,6 +61,9 @@ public class Player extends Entity implements Runnable{
                 throw new RuntimeException(e);
             }
         }
+        Platform.runLater(()->{
+            anchorPane.getChildren().remove(this);
+        });
         Thread.currentThread().interrupt();
     }
 }
