@@ -4,7 +4,6 @@ import com.example.game.Bullets.PlayerBullet;
 import com.example.game.Game;
 import javafx.application.Platform;
 import javafx.scene.Node;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
