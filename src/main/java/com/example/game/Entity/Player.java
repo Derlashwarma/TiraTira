@@ -36,9 +36,7 @@ public class Player extends Entity implements Runnable{
             setHealth(-(getHealth() * 0.05));
             System.out.println(getHealth());
             if(getHealth() <= 0){
-                synchronized ((Object)Game.game_running){
-                    Game.game_running = false;
-                }
+                Game.endGame();
             }
         }
     }
