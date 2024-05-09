@@ -13,6 +13,7 @@ public class Enemy extends Entity implements Runnable{
         super(size, color, name);
         setCurrentX(currentX);
         setCurrentY(currentY);
+        setDirectionX(1);
         setDirection(1);
         this.speed = speed;
     }
