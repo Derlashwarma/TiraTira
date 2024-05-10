@@ -11,6 +11,7 @@ module com.example.game {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.desktop;
+    requires java.sql;
 
     opens com.example.game to javafx.fxml;
     exports com.example.game;
