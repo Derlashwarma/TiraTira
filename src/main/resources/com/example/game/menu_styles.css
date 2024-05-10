@@ -52,3 +52,21 @@
     -fx-background-image: url('../images/mainmenu_background.png');
     -fx-background-size: cover;
 }
+
+.total-score-label {
+    -fx-text-fill: #00ffff;
+    -fx-font-family: "Britannic Bold";
+    -fx-alignment: center;
+    -fx-font-size: 14px;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 50px;
+}
+
+.total-score-text {
+    -fx-text-fill: white;
+    -fx-font-family: "Britannic Bold";
+    -fx-alignment: center;
+    -fx-font-size: 48px;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 50px;
+}

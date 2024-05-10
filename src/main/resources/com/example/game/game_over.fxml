@@ -7,20 +7,21 @@
 <?import javafx.scene.image.Image?>
 <AnchorPane fx:id="main_container" prefHeight="800.0" prefWidth="500.0" styleClass="game_over_background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.GameOver">
     <children>
-        <ImageView fx:id="game_text" fitHeight="300.0" fitWidth="300" layoutX="100" layoutY="380.0" pickOnBounds="true" preserveRatio="true" styleClass="gameOverText">
+        <ImageView fx:id="game_text" fitHeight="300.0" fitWidth="300" layoutX="100" layoutY="340.0" pickOnBounds="true" preserveRatio="true" styleClass="gameOverText">
             <image>
                 <Image url="@../images/game_text1.png" />
             </image>
         </ImageView>
 
-        <ImageView fx:id="over_text" fitHeight="300.0" fitWidth="300" layoutX="100" layoutY="450.0" pickOnBounds="true" preserveRatio="true" styleClass="gameOverText">
+        <ImageView fx:id="over_text" fitHeight="300.0" fitWidth="300" layoutX="100" layoutY="420.0" pickOnBounds="true" preserveRatio="true" styleClass="gameOverText">
             <image>
                 <Image url="@../images/over-text1.png" />
             </image>
         </ImageView>
-
-        <Button onAction="#tryAgain" layoutX="150" layoutY="600" styleClass="button-color" text="TRY AGAIN" />
-        <Button onAction="#exit" layoutX="150" layoutY="660" styleClass="button-color" text="EXIT" />
+        <Label fx:id="totalScoreLabel" layoutX="150" layoutY="515" styleClass="total-score-label" text="TOTAL SCORE:"  alignment="CENTER" />
+        <Label fx:id="totalScoreText" layoutX="150" layoutY="555" styleClass="total-score-text" text="SCORE"  alignment="CENTER" />
+        <Button onAction="#tryAgain" layoutX="150" layoutY="630" styleClass="button-color" text="TRY AGAIN" />
+        <Button onAction="#exit" layoutX="150" layoutY="690" styleClass="button-color" text="EXIT" />
 
     </children>
 
