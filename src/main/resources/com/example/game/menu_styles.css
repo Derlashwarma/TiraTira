@@ -26,6 +26,7 @@
     -fx-font-size: 18px;
     -fx-pref-width: 200px;
     -fx-pref-height: 50px;
+    /*-fx-prompt-text-fill:#3b9dd6;*/
 }
 
 .messageLabel{
@@ -33,7 +34,7 @@
     -fx-font-family: "Britannic Bold";
     -fx-alignment: center;
     -fx-font-size: 14px;
-    -fx-pref-width: 200px;
+    -fx-pref-width: 400px;
     -fx-pref-height: 50px;
 }
 

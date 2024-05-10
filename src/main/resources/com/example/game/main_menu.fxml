@@ -5,14 +5,14 @@
 
 <AnchorPane fx:id="main_container" prefHeight="800.0" prefWidth="500.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.Main_Menu">
     <children>
-        <Button layoutX="150" layoutY="470" onAction="#startGame" styleClass="button-color" text="START GAME" />
-        <Button layoutX="150" layoutY="540" onAction="#showGuide" styleClass="button-color" text="GUIDE" />
-        <Button layoutX="150" layoutY="610" onAction="#showHighScores" styleClass="button-color" text="SCORES" />
+        <Button layoutX="150" layoutY="530" onAction="#startGame" styleClass="button-color" text="START GAME" />
+        <Button layoutX="150" layoutY="590" onAction="#showGuide" styleClass="button-color" text="GUIDE" />
+        <Button layoutX="150" layoutY="650" onAction="#showHighScores" styleClass="button-color" text="SCORES" />
 
-        <TextField fx:id="playerNameInput" layoutX="150" layoutY="380" promptText="Username" styleClass="text-field" />
-
+        <TextField fx:id="playerNameInput" layoutX="150" layoutY="380" promptText="Player name" styleClass="text-field" />
+        <TextField fx:id="newPlayerNameInput" layoutX="150" layoutY="440" promptText="New Player Name" styleClass="text-field" />
         <!-- Added userMessageLabel -->
-        <Label fx:id="userMessageLabel" layoutX="150" layoutY="340" styleClass="messageLabel" text="" />
+        <Label fx:id="userMessageLabel" layoutX="50" layoutY="340" styleClass="messageLabel" text="" prefWidth="400" alignment="CENTER" />
 <!--        <MenuButton fx:id="userMenuButton" layoutX="150" layoutY="430" text="Select User" styleClass="menu-button">-->
 <!--            &lt;!&ndash; The items will be dynamically populated &ndash;&gt;-->
 <!--        </MenuButton>-->
