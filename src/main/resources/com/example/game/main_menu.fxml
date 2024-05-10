@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane fx:id="main_container" prefHeight="800.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.Main_Menu" styleClass="background">
+    <children>
+        <Button text="START GAME" layoutX="150" layoutY="470" onAction="#startGame" styleClass="button-color"/>
+        <Button text="GUIDE" layoutX="150" layoutY="540" onAction="#showGuide" styleClass="button-color"/>
+        <Button text="SCORES" layoutX="150" layoutY="610" onAction="#showHighScores" styleClass="button-color"/>
+
+        <TextField fx:id="playerNameInput" layoutX="150" layoutY="380" promptText="Username" styleClass="text-field"/>
+
+        <!-- Added userMessageLabel -->
+        <Label fx:id="userMessageLabel" layoutX="150" layoutY="340" text="" styleClass="messageLabel"/>
+    </children>
+
+
+</AnchorPane>
