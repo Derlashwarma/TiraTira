@@ -49,6 +49,8 @@ public class Game implements Runnable{
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Game.class.getResource("game_over.fxml"));
                 Parent root = fxmlLoader.load();
+                GameOver gameOverController = fxmlLoader.getController();
+                gameOverController.setTotalScore(score);
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.getScene().getStylesheets().add(Game.class.getResource("menu_styles.css").toExternalForm());
@@ -119,5 +121,7 @@ public class Game implements Runnable{
                 main_container.getChildren().removeAll();
             });
         }
+
+
     }
 }

@@ -15,6 +15,7 @@ public class GameOver extends Application {
     public Label totalScoreLabel;
     public Label totalScoreText;
     private String playerName;
+    private int totalScore;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -29,6 +30,12 @@ public class GameOver extends Application {
     public void setPlayerName(String playerName) {
         totalScoreText.setText(playerName); // Set the player's name in the label
     }
+
+    public void setTotalScore(int score) {
+        totalScore = score;
+        totalScoreText.setText(String.valueOf(totalScore)); // Set the player's score in the label
+    }
+
 
     public static void main(String[] args) {
         launch(args);
