@@ -9,7 +9,7 @@
         <Button layoutX="150" layoutY="590" onAction="#showGuide" styleClass="button-color" text="GUIDE" />
         <Button layoutX="150" layoutY="650" onAction="#showHighScores" styleClass="button-color" text="SCORES" />
 
-        <TextField fx:id="playerNameInput" layoutX="150" layoutY="380" promptText="Player name" styleClass="text-field" />
+        <TextField fx:id="playerNameInput" layoutX="150" layoutY="380" promptText="Player Name" styleClass="text-field" />
         <TextField fx:id="newPlayerNameInput" layoutX="150" layoutY="440" promptText="New Player Name" styleClass="text-field" />
         <!-- Added userMessageLabel -->
         <Label fx:id="userMessageLabel" layoutX="50" layoutY="340" styleClass="messageLabel" text="" prefWidth="400" alignment="CENTER" />
