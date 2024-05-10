@@ -105,7 +105,7 @@ public class Main_Menu extends Application {
                     currentStage.close();
 
                     try {
-                        GameStart gameStart = new GameStart(newPlayerName);
+                        GameStart gameStart = new GameStart(playerName);
                         gameStart.start(new Stage());
                         System.out.println("Starting the game...");
                     } catch (Exception e) {
@@ -149,5 +149,9 @@ public class Main_Menu extends Application {
 
     public void setPlayerName(String playerName) {
         playerNameInput.setText(playerName);
+    }
+
+    public TextField getPlayerNameInput() {
+        return playerNameInput;
     }
 }
