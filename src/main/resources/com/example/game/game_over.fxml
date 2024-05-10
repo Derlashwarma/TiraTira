@@ -18,7 +18,7 @@
                 <Image url="@../images/over-text1.png" />
             </image>
         </ImageView>
-        <Label fx:id="totalScoreLabel" layoutX="150" layoutY="515" styleClass="total-score-label" text="TOTAL SCORE:"  alignment="CENTER" />
+        <Label fx:id="playerNameLabel" layoutX="150" layoutY="515" styleClass="total-score-label" text="PLAYER NAME"  alignment="CENTER" />
         <Label fx:id="totalScoreText" layoutX="150" layoutY="555" styleClass="total-score-text" text="SCORE"  alignment="CENTER" />
         <Button onAction="#tryAgain" layoutX="150" layoutY="630" styleClass="button-color" text="TRY AGAIN" />
         <Button onAction="#exit" layoutX="150" layoutY="690" styleClass="button-color" text="EXIT" />

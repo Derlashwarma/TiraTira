@@ -54,7 +54,7 @@ public class Main_Menu extends Application {
         String newPlayerName = newPlayerNameInput.getText();
 
         if (!playerName.isEmpty() && !newPlayerName.isEmpty()) {
-            userMessageLabel.setText("Enter player name or create new one");
+            userMessageLabel.setText("Enter player name or create a new one");
             return;
         }
 
@@ -77,7 +77,7 @@ public class Main_Menu extends Application {
                             System.out.println("Player " + newPlayerName + " added to the database.");
 
                             try {
-                                GameStart gameStart = new GameStart();
+                                GameStart gameStart = new GameStart(newPlayerName);
                                 gameStart.start(new Stage());
                                 System.out.println("Starting the game...");
                             } catch (Exception e) {
@@ -105,7 +105,7 @@ public class Main_Menu extends Application {
                     currentStage.close();
 
                     try {
-                        GameStart gameStart = new GameStart();
+                        GameStart gameStart = new GameStart(newPlayerName);
                         gameStart.start(new Stage());
                         System.out.println("Starting the game...");
                     } catch (Exception e) {
@@ -118,13 +118,13 @@ public class Main_Menu extends Application {
                 e.printStackTrace();
             }
         } else {
-            userMessageLabel.setText("Please enter a username.");
+            userMessageLabel.setText("Please enter player name.");
         }
     }
 
     public void startNewGame() {
         try {
-            GameStart gameStart = new GameStart();
+            GameStart gameStart = new GameStart(playerNameInput.getText());
             gameStart.start(new Stage());
             System.out.println("Starting a new game...");
         } catch (Exception e) {

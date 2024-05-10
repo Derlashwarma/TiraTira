@@ -12,10 +12,9 @@ import java.util.Objects;
 
 public class GameOver extends Application {
 
-    public Label totalScoreLabel;
     public Label totalScoreText;
+    public Label playerNameLabel;
     private String playerName;
-    private int totalScore;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -28,12 +27,11 @@ public class GameOver extends Application {
     }
 
     public void setPlayerName(String playerName) {
-        totalScoreText.setText(playerName); // Set the player's name in the label
+        playerNameLabel.setText(playerName); // Set the player's name in the label
     }
 
     public void setTotalScore(int score) {
-        totalScore = score;
-        totalScoreText.setText(String.valueOf(totalScore)); // Set the player's score in the label
+        totalScoreText.setText(String.valueOf(score)); // Set the player's score in the label
     }
 
 
