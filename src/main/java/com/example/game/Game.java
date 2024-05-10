@@ -3,11 +3,15 @@ package com.example.game;
 import com.example.game.Entity.Enemy;
 import com.example.game.Entity.Player;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -18,7 +22,7 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Game implements Runnable{
-    public AnchorPane main_container;
+    public static AnchorPane main_container;
     public static boolean game_running;
     private double minimumHealth = 100;
     private double minimumSpeed = 50;
@@ -39,6 +43,20 @@ public class Game implements Runnable{
     }
     public static void endGame(){
         game_running = false;
+        Platform.runLater(() -> {
+            Stage currentStage = (Stage) main_container.getScene().getWindow(); // Get the current stage
+            currentStage.close(); // Close current stage
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(Game.class.getResource("game_over.fxml"));
+                Parent root = fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.getScene().getStylesheets().add(Game.class.getResource("menu_styles.css").toExternalForm());
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @Override

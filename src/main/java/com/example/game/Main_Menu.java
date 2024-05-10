@@ -25,7 +25,7 @@ public class Main_Menu extends Application {
 
         playerNameInput.setOnMouseClicked(event -> {
             userMessageLabel.setText("");
-            newPlayerNameInput.setText(""); // Reset newPlayerNameInput
+            newPlayerNameInput.setText("");
         });
 
         newPlayerNameInput.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -34,7 +34,7 @@ public class Main_Menu extends Application {
 
         newPlayerNameInput.setOnMouseClicked(event -> {
             userMessageLabel.setText("");
-            playerNameInput.setText(""); // Reset playerNameInput
+            playerNameInput.setText("");
         });
     }
     @Override
@@ -47,20 +47,17 @@ public class Main_Menu extends Application {
         stage.show();
 
         MySQLConnection.createPlayerTable();
-//        populateUserMenu();
     }
 
     public void startGame() {
         String playerName = playerNameInput.getText();
         String newPlayerName = newPlayerNameInput.getText();
 
-        // If both fields are not empty, show an error message and return
         if (!playerName.isEmpty() && !newPlayerName.isEmpty()) {
             userMessageLabel.setText("Enter player name or create new one");
             return;
         }
 
-        // If newPlayerName is not empty, the user wants to register a new username
         if (!newPlayerName.isEmpty()) {
             try (Connection connection = MySQLConnection.getConnection();
                  PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ?")) {
@@ -79,7 +76,6 @@ public class Main_Menu extends Application {
                         if (rowsInserted > 0) {
                             System.out.println("Player " + newPlayerName + " added to the database.");
 
-                            // Start the game
                             try {
                                 GameStart gameStart = new GameStart();
                                 gameStart.start(new Stage());
@@ -96,17 +92,18 @@ public class Main_Menu extends Application {
                 e.printStackTrace();
             }
         } else if (!playerName.isEmpty()) {
-            // If playerName is not empty, check if it exists in the database
             try (Connection connection = MySQLConnection.getConnection();
                  PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ?")) {
 
                 checkStatement.setString(1, playerName);
                 ResultSet resultSet = checkStatement.executeQuery();
-                resultSet.next(); // Move cursor to the first row
+                resultSet.next();
                 int count = resultSet.getInt(1);
 
                 if (count > 0) {
-                    // If the username exists, start the game
+                    Stage currentStage = (Stage) playerNameInput.getScene().getWindow();
+                    currentStage.close();
+
                     try {
                         GameStart gameStart = new GameStart();
                         gameStart.start(new Stage());
@@ -115,19 +112,25 @@ public class Main_Menu extends Application {
                         e.printStackTrace();
                     }
                 } else {
-                    // If the username doesn't exist, show an error message
                     userMessageLabel.setText("Player name does not exist. Enter a new player name.");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         } else {
-            // If both fields are empty, show an error message
             userMessageLabel.setText("Please enter a username.");
         }
     }
 
-
+    public void startNewGame() {
+        try {
+            GameStart gameStart = new GameStart();
+            gameStart.start(new Stage());
+            System.out.println("Starting a new game...");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public void showGuide() {
@@ -142,5 +145,9 @@ public class Main_Menu extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public void setPlayerName(String playerName) {
+        playerNameInput.setText(playerName);
     }
 }
