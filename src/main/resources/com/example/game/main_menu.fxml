@@ -13,9 +13,6 @@
         <TextField fx:id="newPlayerNameInput" layoutX="150" layoutY="440" promptText="New Player Name" styleClass="text-field" />
         <!-- Added userMessageLabel -->
         <Label fx:id="userMessageLabel" layoutX="50" layoutY="340" styleClass="messageLabel" text="" prefWidth="400" alignment="CENTER" />
-<!--        <MenuButton fx:id="userMenuButton" layoutX="150" layoutY="430" text="Select User" styleClass="menu-button">-->
-<!--            &lt;!&ndash; The items will be dynamically populated &ndash;&gt;-->
-<!--        </MenuButton>-->
     </children>
 
 

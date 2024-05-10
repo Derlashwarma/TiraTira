@@ -17,7 +17,6 @@ public class Main_Menu extends Application {
     public TextField playerNameInput;
     public TextField newPlayerNameInput;
     public Label userMessageLabel;
-    public MenuButton userMenuButton;
 
     public void initialize() {
         playerNameInput.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -49,22 +48,6 @@ public class Main_Menu extends Application {
 
         MySQLConnection.createPlayerTable();
 //        populateUserMenu();
-    }
-
-    private void populateUserMenu() {
-        try (Connection connection = MySQLConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT username FROM player")) {
-
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                String username = resultSet.getString("username");
-                MenuItem menuItem = new MenuItem(username);
-                menuItem.setOnAction(event -> playerNameInput.setText(username));
-                userMenuButton.getItems().add(menuItem);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     public void startGame() {
