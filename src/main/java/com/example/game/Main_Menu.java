@@ -1,7 +1,6 @@
 package com.example.game;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,11 +14,8 @@ import java.util.Objects;
 
 public class Main_Menu extends Application {
 
-    @FXML
     public TextField playerNameInput;
-    @FXML
     public Label userMessageLabel;
-    @FXML
     public MenuButton userMenuButton;
 
     public void initialize() {
@@ -39,9 +35,7 @@ public class Main_Menu extends Application {
         stage.show();
 
         MySQLConnection.createPlayerTable();
-
 //        populateUserMenu();
-
     }
 
     private void populateUserMenu() {
@@ -68,8 +62,7 @@ public class Main_Menu extends Application {
         }
 
         try (Connection connection = MySQLConnection.getConnection();
-             PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ?");
-             PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO player (username) VALUES (?)")) {
+             PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ?")) {
 
             checkStatement.setString(1, playerName);
             ResultSet resultSet = checkStatement.executeQuery();
@@ -79,29 +72,29 @@ public class Main_Menu extends Application {
             if (count > 0) {
                 userMessageLabel.setText("Username is already taken");
             } else {
-                insertStatement.setString(1, playerName);
-                int rowsInserted = insertStatement.executeUpdate();
-                if (rowsInserted > 0) {
-                    System.out.println("Player " + playerName + " added to the database.");
-                } else {
-                    System.out.println("Registration failed!");
+                try (PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO player (username) VALUES (?)")) {
+                    insertStatement.setString(1, playerName);
+                    int rowsInserted = insertStatement.executeUpdate();
+                    if (rowsInserted > 0) {
+                        System.out.println("Player " + playerName + " added to the database.");
+
+                        // Start the game
+                        try {
+                            GameStart gameStart = new GameStart();
+                            gameStart.start(new Stage());
+                            System.out.println("Starting the game...");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        System.out.println("Registration failed!");
+                    }
                 }
             }
-
-            // Start the game
-            try {
-                GameStart gameStart = new GameStart();
-                gameStart.start(new Stage());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            System.out.println("Starting the game...");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
-
 
 
 
