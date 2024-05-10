@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -27,6 +28,7 @@ public class Game implements Runnable{
     private ImageView character;
     public static int score;
     public static Player player;
+    private static String name;
 
     public Game(AnchorPane pane, ImageView character) {
         this.main_container = pane;
@@ -49,10 +51,14 @@ public class Game implements Runnable{
         return imageView;
     }
 
+    public static void setPlayer(String player) {
+        name = player;
+    }
+
     @Override
     public void run() {
         while(game_running){
-            player = new Player(20, Color.GREEN,"Ardel");
+            player = new Player(20, Color.GREEN,name);
             player.setAnchorPane(main_container);
             player.setAnchorPane(main_container);
             Thread playerThread = new Thread(player);
@@ -105,8 +111,11 @@ public class Game implements Runnable{
             }
             System.out.println("GAME OVER");
             System.out.println("TOTAL SCORE: " + score);
+            MySQLConnection.updatePlayerScore(name,score);
             Platform.runLater(()->{
                 main_container.getChildren().removeAll();
+                Stage stage = (Stage) character.getScene().getWindow();
+                stage.close();
             });
         }
     }

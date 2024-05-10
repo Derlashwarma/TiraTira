@@ -1,6 +1,7 @@
 package com.example.game;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -66,12 +67,15 @@ public class Main_Menu extends Application {
                     System.out.println("Player " + playerName + " added to the database.");
                     // Start the game
                     try {
+                        Game.setPlayer(playerName);
                         GameStart gameStart = new GameStart();
                         gameStart.start(new Stage());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     System.out.println("Starting the game...");
+                    Stage stage = (Stage) playerNameInput.getScene().getWindow();
+                    stage.close();
                 } else {
                     System.out.println("Registration failed!");
                 }

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7b88dc14-aec0-4170-98f7-ac1c862d32ad" name="Changes" comment="added clone function for image cloning">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/MySQLConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/MySQLConnection.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="may-9-branch" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="may-9-branch" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2gEBLtxDANY0V7bI0EOGRsS6T1m" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GameStart.executor": "Run",
+    "Application.Main_Menu.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/retro/OneDrive/Documents/JAVA/Game/TiraTira",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.3689655",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b88dc14-aec0-4170-98f7-ac1c862d32ad" name="Changes" comment="" />
+      <created>1715252804686</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715252804686</updated>
+      <workItem from="1715252805956" duration="816000" />
+      <workItem from="1715259604256" duration="500000" />
+      <workItem from="1715339004102" duration="794000" />
+      <workItem from="1715346672344" duration="319000" />
+      <workItem from="1715347333402" duration="1070000" />
+    </task>
+    <task id="LOCAL-00001" summary="added new stuffs">
+      <option name="closed" value="true" />
+      <created>1715253030743</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715253030743</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added new stuffs">
+      <option name="closed" value="true" />
+      <created>1715253408121</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715253408121</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added new stuffs">
+      <option name="closed" value="true" />
+      <created>1715253440849</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715253440849</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added new stuffs">
+      <option name="closed" value="true" />
+      <created>1715253470480</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715253470480</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added clone function for image cloning">
+      <option name="closed" value="true" />
+      <created>1715339184587</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715339184587</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added new stuffs" />
+    <MESSAGE value="added clone function for image cloning" />
+    <option name="LAST_COMMIT_MESSAGE" value="added clone function for image cloning" />
+  </component>
+</project>
