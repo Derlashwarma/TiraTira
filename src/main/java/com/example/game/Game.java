@@ -41,6 +41,14 @@ public class Game implements Runnable{
         game_running = false;
     }
 
+    public ImageView clone(ImageView to_clone) {
+        ImageView imageView = new ImageView(to_clone.getImage());
+        imageView.setFitHeight(to_clone.getFitHeight());
+        imageView.setFitWidth(to_clone.getFitWidth());
+        imageView.setRotate(to_clone.getRotate());
+        return imageView;
+    }
+
     @Override
     public void run() {
         while(game_running){

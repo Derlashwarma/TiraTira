@@ -15,7 +15,6 @@ public class GameStart extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
-        System.out.println("connected");
     }
 
     public static void main(String[] args) {

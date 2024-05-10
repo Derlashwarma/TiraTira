@@ -23,8 +23,5 @@ public class EnemyT1Bomber extends Enemy{
         if (this.getCurrentY()-x < 0) {
             setDirectionX(1);
         }
-
-//        currentX += directionX;
-//        currentY += direction;
     }
 }
