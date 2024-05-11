@@ -4,8 +4,8 @@ import java.sql.*;
 
 public class MySQLConnection {
     public static final String URL = "jdbc:mysql://localhost:3306/dbshooter";
-    public static final String USERNAME = "johnmark";
-    public static final String PASSWORD = "123";
+    public static final String USERNAME = "root";
+    public static final String PASSWORD = "";
 
     public static Connection getConnection() {
         Connection connection = null;
