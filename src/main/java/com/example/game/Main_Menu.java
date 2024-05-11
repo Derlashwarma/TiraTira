@@ -1,6 +1,7 @@
 package com.example.game;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -131,8 +132,7 @@ public class Main_Menu extends Application {
             e.printStackTrace();
         }
     }
-
-
+  
     public void showGuide() {
         // Add logic to show the guide
         System.out.println("Showing the guide...");

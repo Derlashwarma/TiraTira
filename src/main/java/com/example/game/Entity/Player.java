@@ -4,8 +4,11 @@ import com.example.game.Bullets.PlayerBullet;
 import com.example.game.Game;
 import javafx.application.Platform;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Player extends Entity implements Runnable{
