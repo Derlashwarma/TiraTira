@@ -4,38 +4,77 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b88dc14-aec0-4170-98f7-ac1c862d32ad" name="Changes" comment="added clone function for image cloning">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" afterDir="false" />
+    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="player and new player input box (database) implemented">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/MySQLConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/MySQLConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="may-9-branch" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="may-9-branch" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 0
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;jeecoo&quot;
+  }
 }</component>
-  <component name="ProjectId" id="2gEBLtxDANY0V7bI0EOGRsS6T1m" />
+  <component name="GitHubPullRequestState"><![CDATA[{
+  "prStates": [
+    {
+      "id": {
+        "id": "PR_kwDOL5QNZM5vGgIn",
+        "number": 3
+      },
+      "lastSeen": 1715349274105
+    }
+  ]
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Derlashwarma/TiraTira.git",
+    "accountId": "f7c8a755-91d1-4a56-91d7-6c43920a837f"
+  },
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
+    },
+    "owner": "Derlashwarma",
+    "repository": "TiraTira"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2gGXLKlB96r1wHhBw06pvfxNu0T" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.GameOver.executor": "Run",
     "Application.GameStart.executor": "Run",
     "Application.Main_Menu.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
@@ -43,19 +82,69 @@
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "#3 on jeecoo",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/retro/OneDrive/Documents/JAVA/Game/TiraTira",
+    "last_directory_selection": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/java/com/example/game",
+    "last_opened_file_path": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/resources/com/example/images",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
+    "prot.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.3689655",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jeecoo\IdeaProjects\TiraTira\src\main\resources\com\example\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jeecoo\IdeaProjects\TiraTira\src\main\resources\com\example\game" />
+      <recent name="C:\Users\Jeecoo\IdeaProjects\TiraTira\src\main\resources\com\example\main_menu" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.game" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main_Menu">
+    <configuration name="GameOver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.game.GameOver" />
+      <module name="Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main_Menu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.game.Main_Menu" />
+      <module name="Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main_Menu" />
+        <item itemvalue="Application.GameOver" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -67,66 +156,123 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7b88dc14-aec0-4170-98f7-ac1c862d32ad" name="Changes" comment="" />
-      <created>1715252804686</created>
+      <changelist id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="" />
+      <created>1715324830513</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1715252804686</updated>
-      <workItem from="1715252805956" duration="816000" />
-      <workItem from="1715259604256" duration="500000" />
-      <workItem from="1715339004102" duration="794000" />
-      <workItem from="1715346672344" duration="319000" />
-      <workItem from="1715347333402" duration="1070000" />
+      <updated>1715324830513</updated>
+      <workItem from="1715324831508" duration="1859000" />
+      <workItem from="1715327123781" duration="8172000" />
+      <workItem from="1715339163153" duration="7959000" />
+      <workItem from="1715347169690" duration="18249000" />
     </task>
-    <task id="LOCAL-00001" summary="added new stuffs">
+    <task id="LOCAL-00001" summary="main menu and game over">
       <option name="closed" value="true" />
-      <created>1715253030743</created>
+      <created>1715346556008</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1715253030743</updated>
+      <updated>1715346556008</updated>
     </task>
-    <task id="LOCAL-00002" summary="added new stuffs">
+    <task id="LOCAL-00002" summary="main menu and game over">
       <option name="closed" value="true" />
-      <created>1715253408121</created>
+      <created>1715349180294</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1715253408121</updated>
+      <updated>1715349180294</updated>
     </task>
-    <task id="LOCAL-00003" summary="added new stuffs">
+    <task id="LOCAL-00003" summary="main menu and game over">
       <option name="closed" value="true" />
-      <created>1715253440849</created>
+      <created>1715350129960</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1715253440849</updated>
+      <updated>1715350129960</updated>
     </task>
-    <task id="LOCAL-00004" summary="added new stuffs">
+    <task id="LOCAL-00004" summary="player and new player input box (database) implemented">
       <option name="closed" value="true" />
-      <created>1715253470480</created>
+      <created>1715351833841</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1715253470480</updated>
+      <updated>1715351833841</updated>
     </task>
-    <task id="LOCAL-00005" summary="added clone function for image cloning">
+    <task id="LOCAL-00005" summary="player and new player input box (database) implemented">
       <option name="closed" value="true" />
-      <created>1715339184587</created>
+      <created>1715351940805</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1715339184587</updated>
+      <updated>1715351940805</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="player and new player input box (database) implemented">
+      <option name="closed" value="true" />
+      <created>1715352118351</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715352118351</updated>
+    </task>
+    <task id="LOCAL-00007" summary="player and new player input box (database) implemented">
+      <option name="closed" value="true" />
+      <created>1715358144822</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715358144822</updated>
+    </task>
+    <task id="LOCAL-00008" summary="player and new player input box (database) implemented">
+      <option name="closed" value="true" />
+      <created>1715359662524</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715359662524</updated>
+    </task>
+    <task id="LOCAL-00009" summary="player and new player input box (database) implemented">
+      <option name="closed" value="true" />
+      <created>1715360696317</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715360696317</updated>
+    </task>
+    <task id="LOCAL-00010" summary="player and new player input box (database) implemented">
+      <option name="closed" value="true" />
+      <created>1715361249205</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715361249205</updated>
+    </task>
+    <task id="LOCAL-00011" summary="player and new player input box (database) implemented">
+      <option name="closed" value="true" />
+      <created>1715364349686</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1715364349686</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added new stuffs" />
-    <MESSAGE value="added clone function for image cloning" />
-    <option name="LAST_COMMIT_MESSAGE" value="added clone function for image cloning" />
+    <MESSAGE value="main menu and game over" />
+    <MESSAGE value="player and new player input box (database) implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="player and new player input box (database) implemented" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.RuntimeException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

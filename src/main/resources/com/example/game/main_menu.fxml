@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="main_container" prefHeight="800.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.Main_Menu" styleClass="background">
+<AnchorPane fx:id="main_container" prefHeight="800.0" prefWidth="500.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.Main_Menu">
     <children>
-        <Button text="START GAME" layoutX="150" layoutY="470" onAction="#startGame" styleClass="button-color"/>
-        <Button text="GUIDE" layoutX="150" layoutY="540" onAction="#showGuide" styleClass="button-color"/>
-        <Button text="SCORES" layoutX="150" layoutY="610" onAction="#showHighScores" styleClass="button-color"/>
+        <Button layoutX="150" layoutY="530" onAction="#startGame" styleClass="button-color" text="START GAME" />
+        <Button layoutX="150" layoutY="590" onAction="#showGuide" styleClass="button-color" text="GUIDE" />
+        <Button layoutX="150" layoutY="650" onAction="#showHighScores" styleClass="button-color" text="RANKING" />
 
-        <TextField fx:id="playerNameInput" layoutX="150" layoutY="380" promptText="Username" styleClass="text-field"/>
-
+        <TextField fx:id="playerNameInput" layoutX="150" layoutY="380" promptText="Player Name" styleClass="text-field" />
+        <TextField fx:id="newPlayerNameInput" layoutX="150" layoutY="440" promptText="New Player Name" styleClass="text-field" />
         <!-- Added userMessageLabel -->
-        <Label fx:id="userMessageLabel" layoutX="150" layoutY="340" text="" styleClass="messageLabel"/>
+        <Label fx:id="userMessageLabel" layoutX="50" layoutY="340" styleClass="messageLabel" text="" prefWidth="400" alignment="CENTER" />
     </children>
 
 
