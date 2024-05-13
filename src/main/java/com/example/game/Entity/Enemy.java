@@ -10,8 +10,8 @@ import javafx.scene.paint.Color;
 public class Enemy extends Entity implements Runnable {
     private final double BOTTOM_LIMIT = 760;
     private long speed;
-    public Enemy(long speed,double size,double currentX, double currentY, Color color, String name) {
-        super(size, Color.WHITE, name);
+    public Enemy(long speed,double size,double health,double currentX, double currentY, Color color, String name) {
+        super(size,speed, health ,Color.WHITE, name);
         setCurrentX(currentX);
         setCurrentY(currentY);
         setDirectionX(1);

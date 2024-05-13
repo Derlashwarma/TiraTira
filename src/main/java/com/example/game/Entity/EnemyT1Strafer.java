@@ -40,6 +40,10 @@ public class EnemyT1Strafer extends Enemy{
     }
 
 
+    private static void changeDirection(boolean change){
+
+    }
+
     @Override
     public void move() {
         int width = (int) anchorPane.widthProperty().get();

@@ -28,7 +28,6 @@ public class Entity extends javafx.scene.shape.Circle{
     private int directionY;
 
     private int direction;
-    private boolean isAlive;
     protected ImageView enemy;
     protected ImageView second_form;
 
