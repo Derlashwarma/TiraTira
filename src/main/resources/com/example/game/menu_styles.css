@@ -70,3 +70,23 @@
     -fx-pref-width: 200px;
     -fx-pref-height: 50px;
 }
+.text-area {
+    -fx-background-radius: 18px;
+    -fx-font-family: "Britannic Bold";
+    -fx-alignment: center;
+    -fx-font-size: 18px;
+    -fx-text-fill: #EDEADE;
+    -fx-border-color: #EDEADE;
+    -fx-border-width: 1px;
+    -fx-padding: 18px;
+    -fx-text-alignment: justify;
+    -fx-letter-spacing: 2px;
+    -fx-word-spacing: 10px;
+    -fx-background-color: rgba(255, 255, 255, 0.14);
+    -fx-border-radius: 12px;
+}
+
+
+.font{
+    -fx-fill: #FFD700;
+}

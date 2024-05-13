@@ -144,7 +144,7 @@ public class Main_Menu extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+//        launch(args);
     }
 
     public void setPlayerName(String playerName) {

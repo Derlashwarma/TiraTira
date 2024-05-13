@@ -1,0 +1,240 @@
+Index: src/main/java/com/example/game/Main_Menu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.game;\r\n\r\nimport javafx.application.Application;\r\nimport javafx.application.Platform;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.*;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.util.Objects;\r\n\r\npublic class Main_Menu extends Application {\r\n\r\n    public TextField playerNameInput;\r\n    public TextField newPlayerNameInput;\r\n    public Label userMessageLabel;\r\n\r\n    public void initialize() {\r\n        playerNameInput.textProperty().addListener((observable, oldValue, newValue) -> {\r\n            playerNameInput.setText(newValue.toUpperCase());\r\n        });\r\n\r\n        playerNameInput.setOnMouseClicked(event -> {\r\n            userMessageLabel.setText(\"\");\r\n            newPlayerNameInput.setText(\"\");\r\n        });\r\n\r\n        newPlayerNameInput.textProperty().addListener((observable, oldValue, newValue) -> {\r\n            newPlayerNameInput.setText(newValue.toUpperCase());\r\n        });\r\n\r\n        newPlayerNameInput.setOnMouseClicked(event -> {\r\n            userMessageLabel.setText(\"\");\r\n            playerNameInput.setText(\"\");\r\n        });\r\n    }\r\n    @Override\r\n    public void start(Stage stage) throws Exception {\r\n        FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource(\"main_menu.fxml\"));\r\n        Scene scene = new Scene(fxmlLoader.load());\r\n        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(\"menu_styles.css\")).toExternalForm());\r\n        stage.setTitle(\"Space Horizon\");\r\n        stage.setScene(scene);\r\n        stage.show();\r\n\r\n        MySQLConnection.createPlayerTable();\r\n    }\r\n\r\n    public void startGame() {\r\n        String playerName = playerNameInput.getText();\r\n        String newPlayerName = newPlayerNameInput.getText();\r\n\r\n        if (!playerName.isEmpty() && !newPlayerName.isEmpty()) {\r\n            userMessageLabel.setText(\"Enter player name or create a new one\");\r\n            return;\r\n        }\r\n\r\n        if (!newPlayerName.isEmpty()) {\r\n            try (Connection connection = MySQLConnection.getConnection();\r\n                 PreparedStatement checkStatement = connection.prepareStatement(\"SELECT COUNT(*) FROM player WHERE username = ?\")) {\r\n\r\n                checkStatement.setString(1, newPlayerName);\r\n                ResultSet resultSet = checkStatement.executeQuery();\r\n                resultSet.next(); // Move cursor to the first row\r\n                int count = resultSet.getInt(1);\r\n\r\n                if (count > 0) {\r\n                    userMessageLabel.setText(\"Player name is already taken\");\r\n                } else {\r\n                    try (PreparedStatement insertStatement = connection.prepareStatement(\"INSERT INTO player (username) VALUES (?)\")) {\r\n                        insertStatement.setString(1, newPlayerName);\r\n                        int rowsInserted = insertStatement.executeUpdate();\r\n                        if (rowsInserted > 0) {\r\n                            System.out.println(\"Player \" + newPlayerName + \" added to the database.\");\r\n\r\n                            try {\r\n                                GameStart gameStart = new GameStart(newPlayerName);\r\n                                gameStart.start(new Stage());\r\n                                System.out.println(\"Starting the game...\");\r\n                            } catch (Exception e) {\r\n                                e.printStackTrace();\r\n                            }\r\n                        } else {\r\n                            System.out.println(\"Registration failed!\");\r\n                        }\r\n                    }\r\n                }\r\n            } catch (SQLException e) {\r\n                e.printStackTrace();\r\n            }\r\n        } else if (!playerName.isEmpty()) {\r\n            try (Connection connection = MySQLConnection.getConnection();\r\n                 PreparedStatement checkStatement = connection.prepareStatement(\"SELECT COUNT(*) FROM player WHERE username = ?\")) {\r\n\r\n                checkStatement.setString(1, playerName);\r\n                ResultSet resultSet = checkStatement.executeQuery();\r\n                resultSet.next();\r\n                int count = resultSet.getInt(1);\r\n\r\n                if (count > 0) {\r\n                    Stage currentStage = (Stage) playerNameInput.getScene().getWindow();\r\n                    currentStage.close();\r\n\r\n                    try {\r\n                        GameStart gameStart = new GameStart(playerName);\r\n                        gameStart.start(new Stage());\r\n                        System.out.println(\"Starting the game...\");\\\r\n                        Stage currentStage = (Stage) playerNameInput.getScene().getWindow();\r\n                        currentStage.close();\r\n                    } catch (Exception e) {\r\n                        e.printStackTrace();\r\n                    }\r\n                } else {\r\n                    userMessageLabel.setText(\"Player name does not exist. Enter a new player name.\");\r\n                }\r\n            } catch (SQLException e) {\r\n                e.printStackTrace();\r\n            }\r\n        } else {\r\n            userMessageLabel.setText(\"Please enter player name.\");\r\n        }\r\n    }\r\n\r\n    public void startNewGame() {\r\n        try {\r\n            GameStart gameStart = new GameStart(playerNameInput.getText());\r\n            gameStart.start(new Stage());\r\n            System.out.println(\"Starting a new game...\");\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n  \r\n    public void showGuide() {\r\n        // Add logic to show the guide\r\n        System.out.println(\"Showing the guide...\");\r\n    }\r\n\r\n    public void showHighScores() {\r\n        // Add logic to show high scores\r\n        System.out.println(\"Showing high scores...\");\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        launch(args);\r\n    }\r\n\r\n    public void setPlayerName(String playerName) {\r\n        playerNameInput.setText(playerName);\r\n    }\r\n\r\n    public TextField getPlayerNameInput() {\r\n        return playerNameInput;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/game/Main_Menu.java b/src/main/java/com/example/game/Main_Menu.java
+--- a/src/main/java/com/example/game/Main_Menu.java	
++++ b/src/main/java/com/example/game/Main_Menu.java	
+@@ -2,6 +2,7 @@
+ 
+ import javafx.application.Application;
+ import javafx.application.Platform;
++import javafx.event.ActionEvent;
+ import javafx.fxml.FXMLLoader;
+ import javafx.scene.Scene;
+ import javafx.scene.control.*;
+@@ -65,7 +66,7 @@
+ 
+                 checkStatement.setString(1, newPlayerName);
+                 ResultSet resultSet = checkStatement.executeQuery();
+-                resultSet.next(); // Move cursor to the first row
++                resultSet.next();
+                 int count = resultSet.getInt(1);
+ 
+                 if (count > 0) {
+@@ -108,8 +109,8 @@
+                     try {
+                         GameStart gameStart = new GameStart(playerName);
+                         gameStart.start(new Stage());
+-                        System.out.println("Starting the game...");\
+-                        Stage currentStage = (Stage) playerNameInput.getScene().getWindow();
++                        System.out.println("Starting the game...");
++                        currentStage = (Stage) playerNameInput.getScene().getWindow();
+                         currentStage.close();
+                     } catch (Exception e) {
+                         e.printStackTrace();
+@@ -135,16 +136,19 @@
+         }
+     }
+   
+-    public void showGuide() {
++    public void showInstructions() {
+         // Add logic to show the guide
+         System.out.println("Showing the guide...");
+     }
+ 
+-    public void showHighScores() {
++    public void showLeaderBoard() {
+         // Add logic to show high scores
+         System.out.println("Showing high scores...");
+     }
+ 
++    public void showPlayers(ActionEvent actionEvent) {
++    }
++
+     public static void main(String[] args) {
+         launch(args);
+     }
+@@ -156,4 +160,6 @@
+     public TextField getPlayerNameInput() {
+         return playerNameInput;
+     }
++
++
+ }
+Index: src/main/resources/com/example/game/main_menu.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.*?>\r\n<?import javafx.scene.layout.*?>\r\n\r\n<AnchorPane fx:id=\"main_container\" prefHeight=\"800.0\" prefWidth=\"500.0\" styleClass=\"background\" xmlns=\"http://javafx.com/javafx/17.0.2-ea\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.game.Main_Menu\">\r\n    <children>\r\n        <Button layoutX=\"150\" layoutY=\"530\" onAction=\"#startGame\" styleClass=\"button-color\" text=\"START GAME\" />\r\n        <Button layoutX=\"150\" layoutY=\"590\" onAction=\"#showGuide\" styleClass=\"button-color\" text=\"GUIDE\" />\r\n        <Button layoutX=\"150\" layoutY=\"650\" onAction=\"#showHighScores\" styleClass=\"button-color\" text=\"RANKING\" />\r\n\r\n        <TextField fx:id=\"playerNameInput\" layoutX=\"150\" layoutY=\"380\" promptText=\"Player Name\" styleClass=\"text-field\" />\r\n        <TextField fx:id=\"newPlayerNameInput\" layoutX=\"150\" layoutY=\"440\" promptText=\"New Player Name\" styleClass=\"text-field\" />\r\n        <!-- Added userMessageLabel -->\r\n        <Label fx:id=\"userMessageLabel\" layoutX=\"50\" layoutY=\"340\" styleClass=\"messageLabel\" text=\"\" prefWidth=\"400\" alignment=\"CENTER\" />\r\n    </children>\r\n\r\n\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/com/example/game/main_menu.fxml b/src/main/resources/com/example/game/main_menu.fxml
+--- a/src/main/resources/com/example/game/main_menu.fxml	
++++ b/src/main/resources/com/example/game/main_menu.fxml	
+@@ -5,14 +5,15 @@
+ 
+ <AnchorPane fx:id="main_container" prefHeight="800.0" prefWidth="500.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.Main_Menu">
+     <children>
+-        <Button layoutX="150" layoutY="530" onAction="#startGame" styleClass="button-color" text="START GAME" />
+-        <Button layoutX="150" layoutY="590" onAction="#showGuide" styleClass="button-color" text="GUIDE" />
+-        <Button layoutX="150" layoutY="650" onAction="#showHighScores" styleClass="button-color" text="RANKING" />
++        <Button layoutX="150" layoutY="510" onAction="#startGame" styleClass="button-color" text="START GAME" />
++        <Button layoutX="150" layoutY="570" onAction="#showInstructions" styleClass="button-color" text="INSTRUCTIONS" />
++        <Button layoutX="150" layoutY="630" onAction="#showPlayers" styleClass="button-color" text="PLAYERS" />
++        <Button layoutX="150" layoutY="690" onAction="#showLeaderBoard" styleClass="button-color" text="LEADERBOARDS" />
+ 
+-        <TextField fx:id="playerNameInput" layoutX="150" layoutY="380" promptText="Player Name" styleClass="text-field" />
+-        <TextField fx:id="newPlayerNameInput" layoutX="150" layoutY="440" promptText="New Player Name" styleClass="text-field" />
++        <TextField fx:id="playerNameInput" layoutX="150" layoutY="370" promptText="Player Name" styleClass="text-field" />
++        <TextField fx:id="newPlayerNameInput" layoutX="150" layoutY="430" promptText="New Player Name" styleClass="text-field" />
+         <!-- Added userMessageLabel -->
+-        <Label fx:id="userMessageLabel" layoutX="50" layoutY="340" styleClass="messageLabel" text="" prefWidth="400" alignment="CENTER" />
++        <Label fx:id="userMessageLabel" layoutX="50" layoutY="330" styleClass="messageLabel" text="" prefWidth="400" alignment="CENTER" />
+     </children>
+ 
+ 
+Index: src/main/java/com/example/game/Bullets/PlayerBullet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.game.Bullets;\r\n\r\nimport com.example.game.Entity.Enemy;\r\nimport com.example.game.Game;\r\nimport javafx.application.Platform;\r\nimport javafx.scene.Node;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.scene.paint.Color;\r\nimport javafx.scene.paint.Paint;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class PlayerBullet extends Bullet{\r\n    public PlayerBullet(double currentX, double currentY,String name) {\r\n        super(20,1,10,10,currentX,currentY, Color.GREEN,-1,name);\r\n    }\r\n    public void setAnchorPane(AnchorPane pane){\r\n        super.pane = pane;\r\n    }\r\n\r\n    @Override\r\n    protected boolean checkCollision() {\r\n        synchronized (pane) {\r\n            try{\r\n                for (Node node : new ArrayList<>(pane.getChildren())) {\r\n                    if (node instanceof Enemy && getBoundsInParent().intersects(node.getBoundsInParent())) {\r\n                        Enemy enemy = (Enemy) node;\r\n                        if (enemy.isAlive()) {\r\n                            enemy.changeHealth(-damage);\r\n                            if(enemy.getHealth() <= 0) {\r\n                                Platform.runLater(() -> pane.getChildren().remove(enemy));\r\n                                if(node instanceof Enemy) {\r\n                                    Game.addScore(1);\r\n                                    System.out.println(\"SCOORE\" + 1);\r\n                                }\r\n                            }\r\n                        }\r\n                        Platform.runLater(() -> pane.getChildren().remove(this));\r\n                        return true;\r\n                    }\r\n                }\r\n            }\r\n            catch (Exception e){\r\n                Platform.runLater(() ->{\r\n                    pane.getChildren().remove(this);\r\n                    Thread.currentThread().interrupt();\r\n                });\r\n            }\r\n        }\r\n        return false;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/game/Bullets/PlayerBullet.java b/src/main/java/com/example/game/Bullets/PlayerBullet.java
+--- a/src/main/java/com/example/game/Bullets/PlayerBullet.java	
++++ b/src/main/java/com/example/game/Bullets/PlayerBullet.java	
+@@ -12,7 +12,7 @@
+ 
+ public class PlayerBullet extends Bullet{
+     public PlayerBullet(double currentX, double currentY,String name) {
+-        super(20,1,10,10,currentX,currentY, Color.GREEN,-1,name);
++        super(20,1,10,10,currentX,currentY, Color.YELLOW,-1,name);
+     }
+     public void setAnchorPane(AnchorPane pane){
+         super.pane = pane;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"0003b694-3dfc-4e23-b036-188fa65adb58\" name=\"Changes\" comment=\"player and new player input box (database) implemented\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"CSS File\" />\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;jeecoo&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GitHubPullRequestState\"><![CDATA[{\r\n  \"prStates\": [\r\n    {\r\n      \"id\": {\r\n        \"id\": \"PR_kwDOL5QNZM5vGgIn\",\r\n        \"number\": 3\r\n      },\r\n      \"lastSeen\": 1715349274105\r\n    }\r\n  ]\r\n}]]></component>\r\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\r\n  \"selectedUrlAndAccountId\": {\r\n    \"url\": \"https://github.com/Derlashwarma/TiraTira.git\",\r\n    \"accountId\": \"f7c8a755-91d1-4a56-91d7-6c43920a837f\"\r\n  },\r\n  \"recentNewPullRequestHead\": {\r\n    \"server\": {\r\n      \"useHttp\": false,\r\n      \"host\": \"github.com\",\r\n      \"port\": null,\r\n      \"suffix\": null\r\n    },\r\n    \"owner\": \"Derlashwarma\",\r\n    \"repository\": \"TiraTira\"\r\n  }\r\n}]]></component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2gGXLKlB96r1wHhBw06pvfxNu0T\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.GameOver.executor\": \"Run\",\r\n    \"Application.GameStart.executor\": \"Run\",\r\n    \"Application.Main_Menu.executor\": \"Run\",\r\n    \"Downloaded.Files.Path.Enabled\": \"false\",\r\n    \"Repository.Attach.Annotations\": \"false\",\r\n    \"Repository.Attach.JavaDocs\": \"false\",\r\n    \"Repository.Attach.Sources\": \"false\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"#3 on jeecoo\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_directory_selection\": \"C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/java/com/example/game\",\r\n    \"last_opened_file_path\": \"C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/resources/com/example/images\",\r\n    \"list.type.of.created.stylesheet\": \"CSS\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"prot.structure.last.edited\": \"Libraries\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Jeecoo\\IdeaProjects\\TiraTira\\src\\main\\resources\\com\\example\\images\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Jeecoo\\IdeaProjects\\TiraTira\\src\\main\\resources\\com\\example\\game\" />\r\n      <recent name=\"C:\\Users\\Jeecoo\\IdeaProjects\\TiraTira\\src\\main\\resources\\com\\example\\main_menu\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"com.example.game\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main_Menu\">\r\n    <configuration name=\"GameOver\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.game.GameOver\" />\r\n      <module name=\"Game\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.game.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main_Menu\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.game.Main_Menu\" />\r\n      <module name=\"Game\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.game.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main_Menu\" />\r\n        <item itemvalue=\"Application.GameOver\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"0003b694-3dfc-4e23-b036-188fa65adb58\" name=\"Changes\" comment=\"\" />\r\n      <created>1715324830513</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1715324830513</updated>\r\n      <workItem from=\"1715324831508\" duration=\"1859000\" />\r\n      <workItem from=\"1715327123781\" duration=\"8172000\" />\r\n      <workItem from=\"1715339163153\" duration=\"7959000\" />\r\n      <workItem from=\"1715347169690\" duration=\"18249000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"main menu and game over\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715346556008</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715346556008</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"main menu and game over\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715349180294</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715349180294</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"main menu and game over\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715350129960</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715350129960</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"player and new player input box (database) implemented\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715351833841</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715351833841</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"player and new player input box (database) implemented\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715351940805</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715351940805</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"player and new player input box (database) implemented\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715352118351</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715352118351</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"player and new player input box (database) implemented\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715358144822</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715358144822</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"player and new player input box (database) implemented\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715359662524</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715359662524</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"player and new player input box (database) implemented\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715360696317</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715360696317</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"player and new player input box (database) implemented\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715361249205</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715361249205</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"player and new player input box (database) implemented\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1715364349686</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1715364349686</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"12\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"main menu and game over\" />\r\n    <MESSAGE value=\"player and new player input box (database) implemented\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"player and new player input box (database) implemented\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.RuntimeException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -6,7 +6,10 @@
+   <component name="ChangeListManager">
+     <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="player and new player input box (database) implemented">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Bullets/PlayerBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Bullets/PlayerBullet.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game/main_menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/main_menu.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -36,33 +39,36 @@
+     &quot;assignee&quot;: &quot;jeecoo&quot;
+   }
+ }</component>
+-  <component name="GitHubPullRequestState"><![CDATA[{
+-  "prStates": [
+-    {
+-      "id": {
+-        "id": "PR_kwDOL5QNZM5vGgIn",
+-        "number": 3
+-      },
+-      "lastSeen": 1715349274105
+-    }
+-  ]
+-}]]></component>
+-  <component name="GithubPullRequestsUISettings"><![CDATA[{
+-  "selectedUrlAndAccountId": {
+-    "url": "https://github.com/Derlashwarma/TiraTira.git",
+-    "accountId": "f7c8a755-91d1-4a56-91d7-6c43920a837f"
++  <component name="GitHubPullRequestState">{
++  &quot;prStates&quot;: [
++    {
++      &quot;id&quot;: {
++        &quot;id&quot;: &quot;PR_kwDOL5QNZM5vGgIn&quot;,
++        &quot;number&quot;: 3
++      },
++      &quot;lastSeen&quot;: 1715349274105
++    }
++  ]
++}</component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/Derlashwarma/TiraTira.git&quot;,
++    &quot;accountId&quot;: &quot;f7c8a755-91d1-4a56-91d7-6c43920a837f&quot;
+   },
+-  "recentNewPullRequestHead": {
+-    "server": {
+-      "useHttp": false,
+-      "host": "github.com",
+-      "port": null,
+-      "suffix": null
++  &quot;recentNewPullRequestHead&quot;: {
++    &quot;server&quot;: {
++      &quot;useHttp&quot;: false,
++      &quot;host&quot;: &quot;github.com&quot;,
++      &quot;port&quot;: null,
++      &quot;suffix&quot;: null
+     },
+-    "owner": "Derlashwarma",
+-    "repository": "TiraTira"
++    &quot;owner&quot;: &quot;Derlashwarma&quot;,
++    &quot;repository&quot;: &quot;TiraTira&quot;
+   }
+-}]]></component>
++}</component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 3
+ }</component>
+@@ -81,6 +87,7 @@
+     "Repository.Attach.Annotations": "false",
+     "Repository.Attach.JavaDocs": "false",
+     "Repository.Attach.Sources": "false",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+     "git-widget-placeholder": "#3 on jeecoo",
+@@ -93,9 +100,10 @@
+     "node.js.selected.package.eslint": "(autodetect)",
+     "node.js.selected.package.tslint": "(autodetect)",
+     "nodejs_package_manager_path": "npm",
+-    "prot.structure.last.edited": "Libraries",
+-    "project.structure.proportion": "0.0",
++    "project.structure.last.edited": "Libraries",
++    "project.structure.proportion": "0.15",
+     "project.structure.side.proportion": "0.2",
++    "prot.structure.last.edited": "Libraries",
+     "vue.rearranger.settings.migration": "true"
+   }
+ }]]></component>
+Index: src/main/java/com/example/game/Game.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.game;\r\n\r\nimport com.example.game.Entity.Enemy;\r\nimport com.example.game.Entity.Player;\r\nimport javafx.application.Platform;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Node;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.scene.paint.Color;\r\nimport javafx.stage.Stage;\r\n\r\nimport javax.imageio.ImageIO;\r\nimport java.awt.image.BufferedImage;\r\nimport java.io.*;\r\nimport java.security.spec.RSAOtherPrimeInfo;\r\nimport java.util.ArrayList;\r\nimport java.util.Objects;\r\nimport java.util.Random;\r\n\r\npublic class Game implements Runnable{\r\n    public static AnchorPane main_container;\r\n    public static boolean game_running;\r\n    private double minimumHealth = 100;\r\n    private double minimumSpeed = 50;\r\n    private int interval = 2000;\r\n    public static ArrayList<Runnable> enemies;\r\n    private ImageView character;\r\n    public static int score;\r\n    public static Player player;\r\n    private static String name;\r\n\r\n    public Game(AnchorPane pane, ImageView character) {\r\n        this.main_container = pane;\r\n        game_running = true;\r\n        enemies = new ArrayList<>();\r\n        this.character = character;\r\n    }\r\n    public static void addScore(int sc){\r\n        score += sc;\r\n    }\r\n    public static void endGame(){\r\n        game_running = false;\r\n        Platform.runLater(() -> {\r\n            Stage currentStage = (Stage) main_container.getScene().getWindow(); // Get the current stage\r\n            currentStage.close(); // Close current stage\r\n            try {\r\n                FXMLLoader fxmlLoader = new FXMLLoader(Game.class.getResource(\"game_over.fxml\"));\r\n                Parent root = fxmlLoader.load();\r\n                GameOver gameOverController = fxmlLoader.getController();\r\n                gameOverController.setTotalScore(score);\r\n                gameOverController.setPlayerName(player.getName() + \"'S SCORE:\");\r\n                Stage stage = new Stage();\r\n                stage.setScene(new Scene(root));\r\n                stage.getScene().getStylesheets().add(Game.class.getResource(\"menu_styles.css\").toExternalForm());\r\n                stage.show();\r\n            } catch (IOException e) {\r\n                e.printStackTrace();\r\n            }\r\n        });\r\n    }\r\n\r\n    public ImageView clone(ImageView to_clone) {\r\n        ImageView imageView = new ImageView(to_clone.getImage());\r\n        imageView.setFitHeight(to_clone.getFitHeight());\r\n        imageView.setFitWidth(to_clone.getFitWidth());\r\n        imageView.setRotate(to_clone.getRotate());\r\n        return imageView;\r\n    }\r\n\r\n    public static void setPlayer(String player) {\r\n        name = player;\r\n    }\r\n\r\n    @Override\r\n    public void run() {\r\n        while(game_running){\r\n            player = new Player(20, Color.GREEN, \"JEECOO\");\r\n            player.setAnchorPane(main_container);\r\n            player.setAnchorPane(main_container);\r\n            Thread playerThread = new Thread(player);\r\n            playerThread.start();\r\n\r\n            main_container.setOnMouseMoved(event -> {\r\n                character.setLayoutX(event.getX()-50);\r\n                character.setLayoutY(event.getY()-40);\r\n                player.setLayoutX(event.getX());\r\n                player.setLayoutY(event.getY());\r\n                player.setCurrentX(event.getX());\r\n                player.setCurrentY(event.getY());\r\n            });\r\n            Random random = new Random();\r\n            while(game_running) {\r\n                int minRange = 5;\r\n                int maxRange = 495;\r\n                int range = maxRange - minRange + 1;\r\n                int previousValue = 0;\r\n                int tempValue = random.nextInt(range + 1) + minRange;\r\n                int randomX = tempValue;\r\n                if (tempValue == previousValue || tempValue == previousValue + 50 || tempValue == previousValue - 50) {\r\n                    do {\r\n                        tempValue = random.nextInt(range + 1) + minRange;\r\n                        randomX = tempValue;\r\n                    } while (tempValue == previousValue || tempValue == previousValue + 50 || tempValue == previousValue - 50);\r\n                }\r\n                if(enemies.size() < 10) {\r\n                    long speed = (long)(random.nextDouble() * (50 - minimumSpeed) + minimumSpeed);\r\n                    double health = random.nextInt((int)minimumHealth);\r\n                    Enemy enemy = new Enemy(speed, 50, randomX, 0, Color.BLUE,\"Enemy\");\r\n                    enemy.setAnchorPane(main_container);\r\n                    enemy.setHealth(health);\r\n                    Thread enemyThread = new Thread(enemy);\r\n                    Platform.runLater(()->{\r\n                        main_container.getChildren().add(enemy);\r\n                    });\r\n                    enemyThread.start();\r\n                }\r\n\r\n                try {\r\n                    Thread.sleep(interval);\r\n                    if(interval > 50) {\r\n                        interval -= 10;\r\n                    }\r\n                    minimumHealth += 10;\r\n                } catch (InterruptedException e) {\r\n                    throw new RuntimeException(e);\r\n                }\r\n            }\r\n            System.out.println(\"GAME OVER\");\r\n            System.out.println(\"TOTAL SCORE: \" + score);\r\n            MySQLConnection.updatePlayerScore(name,score);\r\n            Platform.runLater(()->{\r\n                main_container.getChildren().removeAll();\r\n                Stage stage = (Stage) character.getScene().getWindow();\r\n                stage.close();\r\n            });\r\n        }\r\n\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/game/Game.java b/src/main/java/com/example/game/Game.java
+--- a/src/main/java/com/example/game/Game.java	
++++ b/src/main/java/com/example/game/Game.java	
+@@ -78,7 +78,7 @@
+     @Override
+     public void run() {
+         while(game_running){
+-            player = new Player(20, Color.GREEN, "JEECOO");
++            player = new Player(20, Color.YELLOW, "JEECOO");
+             player.setAnchorPane(main_container);
+             player.setAnchorPane(main_container);
+             Thread playerThread = new Thread(player);
