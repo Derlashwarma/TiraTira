@@ -7,7 +7,7 @@ public class EnemyT1Bomber extends Enemy{
     public EnemyT1Bomber(long speed, double size, double currentX, double currentY, Color color, String name) {
         super(80, 20, 300 ,currentX, currentY, color, name);
     }
-
+    // hello
     @Override
     public void move() {
         Platform.runLater(() -> {
