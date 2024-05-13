@@ -7,7 +7,7 @@ import javafx.application.Platform;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-public class Enemy extends Entity implements Runnable{
+public class Enemy extends Entity implements Runnable {
     private final double BOTTOM_LIMIT = 760;
     private long speed;
     public Enemy(long speed,double size,double currentX, double currentY, Color color, String name) {
@@ -15,37 +15,17 @@ public class Enemy extends Entity implements Runnable{
         setCurrentX(currentX);
         setCurrentY(currentY);
         setDirectionX(1);
-        setDirection(1);
-        this.speed = speed;
+//        setDirection(1);
     }
 
     @Override
     public void run() {
         Game.enemies.add(this);
-        int counter = 0;
-        while(getLayoutY() < BOTTOM_LIMIT  && isAlive() && Game.game_running) {
+        while (getLayoutY() < BOTTOM_LIMIT && isAlive() && Game.game_running) {
             move();
-            if((counter % 20) == 0 ) {
-                EnemyBulletLevel1 bullet = new EnemyBulletLevel1(getLayoutX(),getLayoutY());
-                bullet.setPane(anchorPane);
-                Platform.runLater(()->{
-                    anchorPane.getChildren().add(bullet);
-                });
-                Thread enemyBullet = new Thread(bullet);
-                enemyBullet.start();
-            }
-            if((counter % 5) == 0 ) {
-                if(second_form.isVisible()){
-                    second_form.setVisible(false);
-                }
-                else{
-                    second_form.setVisible(true);
-                }
-            }
-
+            shoot();
             try {
-                Thread.sleep(speed);
-                counter++;
+                Thread.sleep(getSpeed());
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
