@@ -3,16 +3,77 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.shape.Polygon?>
+<?import java.lang.Double?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane fx:id="main_container" prefHeight="800.0" prefWidth="500.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.Main_Menu">
     <children>
-        <Button layoutX="150" layoutY="530" onAction="#startGame" styleClass="button-color" text="START GAME" />
-        <Button layoutX="150" layoutY="590" onAction="#showGuide" styleClass="button-color" text="GUIDE" />
-        <Button layoutX="150" layoutY="650" onAction="#showHighScores" styleClass="button-color" text="RANKING" />
+        <Button layoutX="150" layoutY="570" onAction="#startGame" styleClass="button-color" text="START GAME"/>
+        <Button layoutX="150" layoutY="640" onAction="#quitGame" styleClass="button-color" text="QUIT GAME"/>
 
-        <TextField fx:id="playerNameInput" layoutX="150" layoutY="380" promptText="Player Name" styleClass="text-field" />
-        <TextField fx:id="newPlayerNameInput" layoutX="150" layoutY="440" promptText="New Player Name" styleClass="text-field" />
+        <Button layoutX="420" layoutY="500" onAction="#howToPlay" styleClass="imageButton">
+            <graphic>
+                <ImageView fitWidth="25" fitHeight="25"  preserveRatio="true">
+                    <image>
+                        <Image url="@../images/instructions.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button layoutX="420" layoutY="570" onAction="#showPlayers" styleClass="imageButton">
+            <graphic>
+                <ImageView fitWidth="25" fitHeight="25"  preserveRatio="true" styleClass="imageButton">
+                    <image>
+                        <Image url="@../images/users.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button layoutX="420" layoutY="640" onAction="#showLeaderboard" styleClass="imageButton">
+            <graphic>
+                <ImageView fitWidth="25" fitHeight="25"  preserveRatio="true">
+                    <image>
+                        <Image url="@../images/leaderboard.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
+        <Button layoutX="30" layoutY="500" onAction="#facebook" styleClass="imageButton">
+            <graphic>
+                <ImageView fitWidth="25" fitHeight="25"  preserveRatio="true">
+                    <image>
+                        <Image url="@../images/facebook.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button layoutX="30" layoutY="570" onAction="#discord" styleClass="imageButton">
+            <graphic>
+                <ImageView fitWidth="25" fitHeight="25"  preserveRatio="true">
+                    <image>
+                        <Image url="@../images/discord.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button layoutX="30" layoutY="640" onAction="#twitter" styleClass="imageButton">
+            <graphic>
+                <ImageView fitWidth="25" fitHeight="25" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/twiiter.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+<!--        <Button layoutX="150" layoutY="620" onAction="#showPlayers" styleClass="button-color" text="PLAYERS" />-->
+<!--        <Button layoutX="150" layoutY="680" onAction="#showLeaderboard" styleClass="button-color" text="LEADERBOARD" />-->
+
+        <TextField fx:id="playerNameInput" layoutX="150" layoutY="410" promptText="Player Name" styleClass="text-field" />
+        <TextField fx:id="newPlayerNameInput" layoutX="150" layoutY="470" promptText="New Player Name" styleClass="text-field" />
         <!-- Added userMessageLabel -->
-        <Label fx:id="userMessageLabel" layoutX="50" layoutY="340" styleClass="messageLabel" text="" prefWidth="400" alignment="CENTER" />
+        <Label fx:id="userMessageLabel" layoutX="50" layoutY="360" styleClass="messageLabel" text="" prefWidth="400" alignment="CENTER" />
     </children>
 
 

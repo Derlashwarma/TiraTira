@@ -12,7 +12,7 @@
     -fx-background-color: linear-gradient(to left, #F7E803, #F58F00);
     -fx-pref-width: 200px;
     -fx-pref-height: 50px;
-    -fx-font-size: 20px;
+    -fx-font-size: 23px;
     -fx-text-fill: #0828a8;
     -fx-font-family: "Britannic Bold";
     -fx-alignment: center;
@@ -74,4 +74,44 @@
     -fx-font-size: 60px;
     -fx-pref-width: 200px;
     -fx-pref-height: 50px;
+}
+.text-area {
+    -fx-background-radius: 18px;
+    -fx-font-family: "Britannic Bold";
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-text-fill: #EDEADE;
+    -fx-border-color: #EDEADE;
+    -fx-border-width: 1px;
+    -fx-padding: 18px;
+    -fx-text-alignment: justify;
+    -fx-letter-spacing: 2px;
+    -fx-word-spacing: 10px;
+    -fx-background-color: rgba(255, 255, 255, 0.14);
+    -fx-border-radius: 12px;
+}
+
+
+.font{
+    -fx-fill: #FFD700;
+}
+
+.imageButton {
+    -fx-background-color: linear-gradient(to left, #F7E803, #F58F00);
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;
+    -fx-font-size: 20px;
+    -fx-text-fill: #0828a8;
+    -fx-font-family: "Britannic Bold";
+    -fx-alignment: center;
+    -fx-padding: 10px;
+    -fx-margin: 50px;
+}
+
+.how-to-play {
+    -fx-font-family: "Britannic Bold";
+    -fx-alignment: center;
+    -fx-font-size: 42px;
+    -fx-text-fill: linear-gradient(to bottom, #F7E803, #F58F00);
+    -fx-text-alignment: justify;
 }
