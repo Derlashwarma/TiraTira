@@ -15,7 +15,7 @@ public class Player extends Entity implements Runnable{
     private String name;
     ArrayList<Thread> bullets;
     public Player(double size, Color color, String name) {
-        super(size, color, name);
+        super(size,0, 200, color, name);
         bullets = new ArrayList<>();
         this.name = name;
     }
