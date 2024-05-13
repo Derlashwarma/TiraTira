@@ -44,6 +44,9 @@ public class Entity extends javafx.scene.shape.Circle{
     }
     public void setEnemy(ImageView enemy) {
         this.enemy = enemy;
+        if(this.enemy != null){
+            addEnemy();
+        }
     }
     public void addEnemy(){
         Platform.runLater(()->{
@@ -130,7 +133,6 @@ public class Entity extends javafx.scene.shape.Circle{
 
     public void move() {
         setCurrentY(getCurrentY() + 1);
-
         Platform.runLater(() -> {
             if(enemy != null){
                 enemy.setLayoutX(currentX-50);

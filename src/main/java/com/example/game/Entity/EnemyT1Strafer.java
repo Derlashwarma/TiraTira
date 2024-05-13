@@ -10,7 +10,8 @@ import java.util.TimerTask;
 
 public class EnemyT1Strafer extends Enemy{
     public EnemyT1Strafer(double currentX, double currentY, Color color, String name) {
-        super(50, 10, 200 ,currentX, currentY, color, name);
+        super(50, 40, 200 ,currentX, currentY, color, name);
+        setVisible(false);
     }
     @Override
     public void shoot(){
@@ -61,6 +62,10 @@ public class EnemyT1Strafer extends Enemy{
         setCurrentY(getCurrentY() + 1);
 
         Platform.runLater(() -> {
+            if(enemy != null) {
+                enemy.setLayoutX(getCurrentX()-50);
+                enemy.setLayoutY(getCurrentY()-40);
+            }
             setLayoutX(getCurrentX());
             setLayoutY(getCurrentY());
         });

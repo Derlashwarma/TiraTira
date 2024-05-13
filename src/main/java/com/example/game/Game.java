@@ -193,7 +193,6 @@ public class Game implements Runnable{
                 enemy_character = clone(enemy_type_2);
                 break;
             // Add more cases for other enemy types if needed
-
             default:
                 throw new IllegalArgumentException("Invalid enemy type: " + enemyType);
         }
