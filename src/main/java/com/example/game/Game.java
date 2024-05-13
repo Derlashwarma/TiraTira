@@ -30,16 +30,18 @@ public class Game implements Runnable{
     public static ArrayList<Runnable> enemies;
     private ImageView character;
     private ImageView background;
+    private ImageView background2;
     public static int score;
     public static Player player;
     private static String name;
 
-    public Game(AnchorPane pane, ImageView character, ImageView background) {
+    public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2) {
         this.main_container = pane;
         game_running = true;
         enemies = new ArrayList<>();
         this.character = character;
         this.background = background;
+        this.background2 = background2;
     }
     public static void addScore(int sc){
         score += sc;
@@ -114,8 +116,8 @@ public class Game implements Runnable{
                     double health = random.nextInt((int)minimumHealth);
                     Enemy enemy = new Enemy(speed, 50, randomX, 0, Color.RED,"Enemy");
                     enemy.setVisible(false);
-                    ImageView enemy_char = clone(character);
-                    ImageView second_form = clone(background);
+                    ImageView enemy_char = clone(background);
+                    ImageView second_form = clone(background2);
                     enemy.setEnemy(enemy_char, second_form);
                     enemy.setAnchorPane(main_container);
                     enemy.setHealth(health);
