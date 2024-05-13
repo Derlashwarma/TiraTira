@@ -195,6 +195,20 @@ public class Main_Menu extends Application {
 
     public void showPlayers(ActionEvent actionEvent) {
         System.out.println("Showing current players...");
+        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        currentStage.close();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("current_players.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Registered Players");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void showLeaderboard(ActionEvent actionEvent) {
