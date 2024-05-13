@@ -110,3 +110,11 @@
     -fx-text-fill: linear-gradient(to bottom, #F7E803, #F58F00);
     -fx-text-alignment: justify;
 }
+
+.current_layers {
+    -fx-font-family: "Britannic Bold";
+    -fx-alignment: center;
+    -fx-font-size: 32px;
+    -fx-text-fill: linear-gradient(to bottom, #F7E803, #F58F00);
+    -fx-text-alignment: justify;
+}
