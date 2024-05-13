@@ -69,6 +69,10 @@ public class Main_Menu extends Application {
         }
 
         if (!newPlayerName.isEmpty()) {
+            if (isMaxPlayersReached()) {
+                userMessageLabel.setText("Maximum number of players reached. Please remove a player.");
+                return;
+            }
             try (Connection connection = MySQLConnection.getConnection();
                  PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ?")) {
 
@@ -131,6 +135,19 @@ public class Main_Menu extends Application {
             }
         } else {
             userMessageLabel.setText("Please enter player name.");
+        }
+    }
+
+    private boolean isMaxPlayersReached() {
+        try (Connection connection = MySQLConnection.getConnection();
+             PreparedStatement countStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE isDeleted = 0")) {
+            ResultSet resultSet = countStatement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+            return count >= 10;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return true;
         }
     }
 

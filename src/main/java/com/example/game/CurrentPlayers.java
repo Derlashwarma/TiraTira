@@ -1,15 +1,19 @@
 package com.example.game;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -23,39 +27,82 @@ public class CurrentPlayers extends Application {
     private AnchorPane main_container;
 
     @FXML
-    private TableView<Player> playersTable;
+    private TableView<CurrentPlayer> playersTable;
 
     @FXML
-    private TableColumn<Player, Integer> idColumn;
+    private TableColumn<CurrentPlayer, String> usernameColumn;
 
-    @FXML
-    private TableColumn<Player, String> usernameColumn;
+    private final ObservableList<CurrentPlayer> playerList = FXCollections.observableArrayList();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource("current_players.fxml"));
-        fxmlLoader.setController(this);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("current_players.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
-        primaryStage.setTitle("Current Players");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-        loadPlayers();
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Instructions");
+        stage.show();
     }
 
-    private void loadPlayers() {
-        try (Connection connection = MySQLConnection.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, username FROM player WHERE isDeleted = 0")) {
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String username = resultSet.getString("username");
-                playersTable.getItems().add(new Player(id, username));
+    @FXML
+    private void initialize() {
+        usernameColumn.setCellValueFactory(cellData -> cellData.getValue().usernameProperty());
+
+        fetchPlayersFromDatabase();
+        populateTableView();
+        addButtonColumns();
+    }
+
+    private void addButtonColumns() {
+        TableColumn<CurrentPlayer, Void> editColumn = new TableColumn<>("Edit");
+        editColumn.setPrefWidth(120);
+        editColumn.setCellFactory(createButtonCellFactory("Edit", this::handleEditAction));
+        playersTable.getColumns().add(editColumn);
+
+        TableColumn<CurrentPlayer, Void> deleteColumn = new TableColumn<>("Delete");
+        deleteColumn.setPrefWidth(120);
+        deleteColumn.setCellFactory(createButtonCellFactory("Delete", this::handleDeleteAction));
+        playersTable.getColumns().add(deleteColumn);
+    }
+
+    private void handleEditAction(CurrentPlayer player) {
+        // Handle edit action for the given player
+        System.out.println("Edit player: " + player.getUsername());
+    }
+
+    private void handleDeleteAction(CurrentPlayer player) {
+        // Handle delete action for the given player
+        System.out.println("Delete player: " + player.getUsername());
+    }
+
+    private Callback<TableColumn<CurrentPlayer, Void>, TableCell<CurrentPlayer, Void>> createButtonCellFactory(String buttonText, ActionHandler<CurrentPlayer> handler) {
+        return new Callback<>() {
+            @Override
+            public TableCell<CurrentPlayer, Void> call(TableColumn<CurrentPlayer, Void> param) {
+                return new TableCell<>() {
+                    private final Button button = new Button(buttonText);
+
+                    {
+                        button.getStyleClass().add("editDelete-color");
+                        button.setOnAction(event -> {
+                            CurrentPlayer player = getTableView().getItems().get(getIndex());
+                            handler.handleAction(player);
+                        });
+                    }
+
+                    @Override
+                    protected void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(button);
+                        }
+                    }
+                };
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        };
     }
 
     @FXML
@@ -76,13 +123,41 @@ public class CurrentPlayers extends Application {
         }
     }
 
+    private void fetchPlayersFromDatabase() {
+        try (Connection connection = MySQLConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM player WHERE isDeleted = 0");
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String username = resultSet.getString("username");
+                playerList.add(new CurrentPlayer(id, username));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void populateTableView() {
+        playersTable.setItems(playerList);
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
 
-    public void deletePlayer(ActionEvent actionEvent) {
+    @FXML
+    private void editPlayerAction(ActionEvent event) {
+        CurrentPlayer player = playersTable.getSelectionModel().getSelectedItem();
+        if (player != null) {
+            handleEditAction(player);
+        }
     }
 
-    public void editPlayer(ActionEvent actionEvent) {
+    @FXML
+    private void deletePlayerAction(ActionEvent event) {
+        CurrentPlayer player = playersTable.getSelectionModel().getSelectedItem();
+        if (player != null) {
+            handleDeleteAction(player);
+        }
     }
 }
