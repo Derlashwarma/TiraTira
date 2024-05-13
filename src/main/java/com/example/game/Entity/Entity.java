@@ -2,6 +2,8 @@ package com.example.game.Entity;
 
 import com.example.game.Bullets.EnemyBulletLevel1;
 import javafx.application.Platform;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
@@ -25,6 +27,10 @@ public class Entity extends javafx.scene.shape.Circle{
     private int directionX;
     private int directionY;
 
+    private int direction;
+    private boolean isAlive;
+    protected ImageView enemy;
+    protected ImageView second_form;
 
     private int counter = 0;
 
@@ -37,7 +43,6 @@ public class Entity extends javafx.scene.shape.Circle{
         this.name = name;
         isAlive = true;
     }
-
     public int getCounter() {
         return counter;
     }
@@ -122,8 +127,14 @@ public class Entity extends javafx.scene.shape.Circle{
         setCurrentY(getCurrentY() + 1);
 
         Platform.runLater(() -> {
-            setLayoutX(getCurrentX());
-            setLayoutY(getCurrentY());
+            if(enemy != null){
+                enemy.setLayoutX(currentX-50);
+                enemy.setLayoutY(currentY-40);
+                second_form.setLayoutX(currentX-50);
+                second_form.setLayoutY(currentY-40);
+            }
+            setLayoutX(currentX);
+            setLayoutY(currentY);
         });
     }
 

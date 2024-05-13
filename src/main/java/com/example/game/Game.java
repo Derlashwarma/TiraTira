@@ -30,15 +30,17 @@ public class Game implements Runnable{
     private int interval = 2000;
     public static ArrayList<Runnable> enemies;
     private ImageView character;
+    private ImageView background;
     public static int score;
     public static Player player;
     private static String name;
 
-    public Game(AnchorPane pane, ImageView character) {
+    public Game(AnchorPane pane, ImageView character, ImageView background) {
         this.main_container = pane;
         game_running = true;
         enemies = new ArrayList<>();
         this.character = character;
+        this.background = background;
     }
     public static void addScore(int sc){
         score += sc;
@@ -68,7 +70,7 @@ public class Game implements Runnable{
         ImageView imageView = new ImageView(to_clone.getImage());
         imageView.setFitHeight(to_clone.getFitHeight());
         imageView.setFitWidth(to_clone.getFitWidth());
-        imageView.setRotate(to_clone.getRotate());
+        imageView.setRotate(180);
         return imageView;
     }
 
@@ -84,6 +86,7 @@ public class Game implements Runnable{
             player.setAnchorPane(main_container);
             Thread playerThread = new Thread(player);
             playerThread.start();
+
 
             main_container.setOnMouseMoved(event -> {
                 character.setLayoutX(event.getX()-50);
