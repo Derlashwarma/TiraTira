@@ -1,6 +1,8 @@
 package com.example.game.Bullets;
 
 import com.example.game.Entity.Enemy;
+import com.example.game.Entity.EnemyT1Bomber;
+import com.example.game.Entity.EnemyT1Strafer;
 import com.example.game.Game;
 import javafx.application.Platform;
 import javafx.scene.Node;
@@ -29,10 +31,16 @@ public class PlayerBullet extends Bullet{
                             enemy.changeHealth(-damage);
                             if(enemy.getHealth() <= 0) {
                                 Platform.runLater(() -> pane.getChildren().remove(enemy));
+                                int add = 0;
                                 if(node instanceof Enemy) {
-                                    Game.addScore(1);
-                                    System.out.println("SCOORE" + 1);
+                                    if(node instanceof EnemyT1Bomber){
+                                        add = 5;
+                                    }
+                                    else if(node instanceof EnemyT1Strafer){
+                                        add = 2;
+                                    }
                                 }
+                                Game.addScore(add);
                             }
                         }
                         Platform.runLater(() -> pane.getChildren().remove(this));

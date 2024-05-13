@@ -56,5 +56,12 @@ public abstract class Bullet extends javafx.scene.shape.Rectangle implements Run
             Thread.currentThread().interrupt();
         });
     }
+    public double getCurrentX() {
+        return currentX;
+    }
+
+    public double getCurrentY() {
+        return currentY;
+    }
 
 }

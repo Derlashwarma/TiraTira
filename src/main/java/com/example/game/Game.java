@@ -1,6 +1,9 @@
 package com.example.game;
 
+import com.example.game.Bullets.EnemyBulletLevel1;
 import com.example.game.Entity.Enemy;
+import com.example.game.Entity.EnemyT1Bomber;
+import com.example.game.Entity.EnemyT1Strafer;
 import com.example.game.Entity.Player;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -17,9 +20,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.security.spec.RSAOtherPrimeInfo;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class Game implements Runnable{
     public static AnchorPane main_container;
@@ -29,15 +30,19 @@ public class Game implements Runnable{
     private int interval = 2000;
     public static ArrayList<Runnable> enemies;
     private ImageView character;
+    private ImageView enemy_type_1;
+    private ImageView enemy_type_2;
     public static int score;
     public static Player player;
     private static String name;
 
-    public Game(AnchorPane pane, ImageView character) {
+    public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2) {
         this.main_container = pane;
         game_running = true;
         enemies = new ArrayList<>();
         this.character = character;
+        this.enemy_type_1 = background;
+        this.enemy_type_2 = background2;
     }
     public static void addScore(int sc){
         score += sc;
@@ -67,7 +72,7 @@ public class Game implements Runnable{
         ImageView imageView = new ImageView(to_clone.getImage());
         imageView.setFitHeight(to_clone.getFitHeight());
         imageView.setFitWidth(to_clone.getFitWidth());
-        imageView.setRotate(to_clone.getRotate());
+        imageView.setRotate(180);
         return imageView;
     }
 
@@ -83,6 +88,7 @@ public class Game implements Runnable{
             player.setAnchorPane(main_container);
             Thread playerThread = new Thread(player);
             playerThread.start();
+
 
             main_container.setOnMouseMoved(event -> {
                 character.setLayoutX(event.getX()-50);
@@ -100,24 +106,32 @@ public class Game implements Runnable{
                 int previousValue = 0;
                 int tempValue = random.nextInt(range + 1) + minRange;
                 int randomX = tempValue;
-                if (tempValue == previousValue || tempValue == previousValue + 50 || tempValue == previousValue - 50) {
-                    do {
-                        tempValue = random.nextInt(range + 1) + minRange;
-                        randomX = tempValue;
-                    } while (tempValue == previousValue || tempValue == previousValue + 50 || tempValue == previousValue - 50);
-                }
-                if(enemies.size() < 10) {
-                    long speed = (long)(random.nextDouble() * (50 - minimumSpeed) + minimumSpeed);
-                    double health = random.nextInt((int)minimumHealth);
-                    Enemy enemy = new Enemy(speed, 50, randomX, 0, Color.BLUE,"Enemy");
-                    enemy.setAnchorPane(main_container);
-                    enemy.setHealth(health);
-                    Thread enemyThread = new Thread(enemy);
-                    Platform.runLater(()->{
-                        main_container.getChildren().add(enemy);
-                    });
-                    enemyThread.start();
-                }
+
+//                if (tempValue == previousValue || tempValue == previousValue + 50 || tempValue == previousValue - 50) {
+//                    do {
+//                        tempValue =
+//                        randomX = tempValue;
+//                    } while (tempValue == previousValue || tempValue == previousValue + 50 || tempValue == previousValue - 50);
+//                }
+//                int bomberWidth = 20; // Assuming the width of the Bomber entity is 20 units
+//                int x = (int) main_container.widthProperty().get();
+                randomX = random.nextInt(50, 500 - 50);
+
+                makeFleet("Strafer", 50, 3);
+                makeFleet("Bomber",randomX , 1);
+
+//                if(enemies.size() < 10) {
+//                    long speed = (long)(random.nextDouble() * (50 - minimumSpeed) + minimumSpeed);
+//                    double health = random.nextInt((int)minimumHealth);
+//                    EnemyT1Strafer enemy = new EnemyT1Strafer(50, randomX, Color.BLUE,"Enemy");
+//                    enemy.setAnchorPane(main_container);
+//                    enemy.setHealth(health);
+//                    Thread enemyThread = new Thread(enemy);
+//                    Platform.runLater(()->{
+//                        main_container.getChildren().add(enemy);
+//                    });
+//                    enemyThread.start();
+//                }
 
                 try {
                     Thread.sleep(interval);
@@ -141,4 +155,53 @@ public class Game implements Runnable{
 
 
     }
+
+    private void makeFleet(String enemyType, int startLocation, int countOfEnemies) {
+        if (enemies.isEmpty()) {
+            Timer timer = new Timer();
+            TimerTask task = new TimerTask() {
+                int count = 0;
+
+                @Override
+                public void run() {
+                    double locationStart = startLocation;
+                    if (count < countOfEnemies) {
+                        final double initialLocation = locationStart;
+                        Platform.runLater(() -> {
+                            createEnemy(enemyType, initialLocation);
+                        });
+                        count++;
+                    } else {
+                        timer.cancel();
+                    }
+                }
+            };
+            timer.scheduleAtFixedRate(task, 0, 3000);
+        }
+    }
+
+    private void createEnemy(String enemyType, double locationX) {
+        Enemy enemy;
+        ImageView enemy_character = null;
+        switch (enemyType) {
+            case "Strafer":
+                enemy = new EnemyT1Strafer(locationX, 50, Color.BLUE, "Strafer");
+                enemy_character = clone(enemy_type_1);
+                break;
+            case "Bomber":
+                enemy = new EnemyT1Bomber(10, 20, locationX, 50, Color.RED, "Bomber");
+                enemy_character = clone(enemy_type_2);
+                break;
+            // Add more cases for other enemy types if needed
+            default:
+                throw new IllegalArgumentException("Invalid enemy type: " + enemyType);
+        }
+        enemy.setEnemy(enemy_character);
+        enemy.setAnchorPane(main_container);
+        main_container.getChildren().add(enemy);
+        Thread enemyThread = new Thread(enemy);
+        enemyThread.start();
+    }
+
+
 }

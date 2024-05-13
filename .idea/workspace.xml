@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="player and new player input box (database) implemented">
+
       <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/images/discord.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/images/facebook.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/images/instructions.png" afterDir="false" />
@@ -19,6 +20,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game/instructions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/instructions.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game/main_menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/main_menu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game/menu_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/menu_styles.css" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +39,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="russel-may-13" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,11 +77,16 @@
     &quot;repository&quot;: &quot;TiraTira&quot;
   }
 }</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2gGXLKlB96r1wHhBw06pvfxNu0T" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -110,8 +117,9 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
+
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Jeecoo\IdeaProjects\TiraTira\src\main\resources\com\example\images" />
@@ -139,6 +147,8 @@
       </method>
     </configuration>
     <configuration name="Main_Menu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.example.game.Main_Menu" />
       <module name="Game" />
       <extension name="coverage">
@@ -153,6 +163,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main_Menu" />
+        <item itemvalue="Application.GameOver" />
         <item itemvalue="Application.Main_Menu" />
         <item itemvalue="Application.GameOver" />
       </list>
@@ -178,6 +190,11 @@
       <workItem from="1715327123781" duration="8172000" />
       <workItem from="1715339163153" duration="7959000" />
       <workItem from="1715347169690" duration="18249000" />
+      <workItem from="1715513666911" duration="4361000" />
+      <workItem from="1715570473096" duration="655000" />
+      <workItem from="1715571141392" duration="527000" />
+      <workItem from="1715571680950" duration="6978000" />
+      <workItem from="1715597187417" duration="883000" />
     </task>
     <task id="LOCAL-00001" summary="main menu and game over">
       <option name="closed" value="true" />
@@ -274,6 +291,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="main menu and game over" />
     <MESSAGE value="player and new player input box (database) implemented" />
     <option name="LAST_COMMIT_MESSAGE" value="player and new player input box (database) implemented" />
@@ -287,5 +305,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
