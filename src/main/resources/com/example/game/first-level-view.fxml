@@ -10,7 +10,7 @@
             <Image url="@../images/character_plane.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="background" fitHeight="100.0" fitWidth="100.0" layoutX="175.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="background" fitHeight="100.0" fitWidth="100.0" layoutX="200.0" layoutY="261.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/twitter.png" />
          </image>
