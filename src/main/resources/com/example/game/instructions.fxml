@@ -5,9 +5,10 @@
 
 <AnchorPane fx:id="main_container" prefHeight="800.0" prefWidth="500.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.Instructions">
     <children>
-            <Label alignment="CENTER" prefHeight="260" prefWidth="450" layoutX="26" layoutY="380" styleClass="text-area" stylesheets="@menu_styles.css" wrapText="true">
-                Welcome to Space Horizon - the ultimate space shooter game! Use your mouse to evade enemy bullets to survive and obliterate foes to become the ultimate space hero. But beware: one hit and you lose 10 health points.  Blast foes to bits, but don't collide with them - it's instant game over!  ! As you conquer levels, brace for tougher challenges. Get ready to soar, shoot, and dominate the cosmos! Are you ready to conquer the cosmos and carve your name in spacefaring legend? Get ready to soar, shoot, and dominate the cosmos!
+            <Label alignment="CENTER" layoutX="26" layoutY="330" prefHeight="50" prefWidth="450" styleClass="how-to-play" text="HOW TO PLAY" />
+            <Label alignment="CENTER" layoutX="26" layoutY="390" prefHeight="290" prefWidth="450" styleClass="text-area" stylesheets="@menu_styles.css" wrapText="true">
+                Welcome to Space Horizon - the ultimate space shooter game! Use your mouse to evade enemy bullets to survive and obliterate foes to become the ultimate space hero. But beware: one hit and you lose 10 health points.  Blast foes to bits, but don't collide with them - it's instant game over! As you conquer levels, brace for tougher challenges. Are you ready to conquer the cosmos and carve your name in spacefaring legend? Get ready to soar, shoot, and dominate the cosmos!
             </Label>
-            <Button layoutX="150" layoutY="670" onAction="#backButton" styleClass="button-color" text="EXIT" />
+            <Button layoutX="150" layoutY="700" onAction="#backButton" styleClass="button-color" text="EXIT" />
     </children>
 </AnchorPane>

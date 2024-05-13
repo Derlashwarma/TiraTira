@@ -16,18 +16,19 @@ public class Instructions extends Application{
     private AnchorPane main_container;
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage primaryStage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource("instructions.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
-        stage.setTitle("Instructions");
-        stage.setScene(scene);
-        stage.show();
+        primaryStage.setTitle("Instructions");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
+
 
     @FXML
     private void backButton(ActionEvent actionEvent) {
-        Stage currentStage = (Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow();
+        Stage currentStage = (Stage) main_container.getScene().getWindow();
         currentStage.close();
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource("main_menu.fxml"));

@@ -29,7 +29,7 @@ public class Enemy extends Entity implements Runnable{
                 bullet.setPane(anchorPane);
                 Platform.runLater(()->{
                     anchorPane.getChildren().add(bullet);
-                });
+                }); 
                 Thread enemyBullet = new Thread(bullet);
                 enemyBullet.start();
             }
