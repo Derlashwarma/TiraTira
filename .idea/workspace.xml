@@ -36,33 +36,36 @@
     &quot;assignee&quot;: &quot;jeecoo&quot;
   }
 }</component>
-  <component name="GitHubPullRequestState"><![CDATA[{
-  "prStates": [
+  <component name="GitHubPullRequestState">{
+  &quot;prStates&quot;: [
     {
-      "id": {
-        "id": "PR_kwDOL5QNZM5vGgIn",
-        "number": 3
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOL5QNZM5vGgIn&quot;,
+        &quot;number&quot;: 3
       },
-      "lastSeen": 1715349274105
+      &quot;lastSeen&quot;: 1715349274105
     }
   ]
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Derlashwarma/TiraTira.git",
-    "accountId": "f7c8a755-91d1-4a56-91d7-6c43920a837f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Derlashwarma/TiraTira.git&quot;,
+    &quot;accountId&quot;: &quot;f7c8a755-91d1-4a56-91d7-6c43920a837f&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "Derlashwarma",
-    "repository": "TiraTira"
+    &quot;owner&quot;: &quot;Derlashwarma&quot;,
+    &quot;repository&quot;: &quot;TiraTira&quot;
   }
-}]]></component>
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -81,21 +84,23 @@
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "#3 on jeecoo",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/java/com/example/game",
-    "last_opened_file_path": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/resources/com/example/images",
+    "last_opened_file_path": "Z:/L14X15W05/Final Project/TiraTira",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "prot.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
+    "prot.structure.last.edited": "Libraries",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -127,7 +132,7 @@
     </configuration>
     <configuration name="Main_Menu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.game.Main_Menu" />
-      <module name="Game" />
+      <module name="TiraTira" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.example.game.*" />

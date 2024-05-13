@@ -108,8 +108,8 @@ public class Main_Menu extends Application {
                     try {
                         GameStart gameStart = new GameStart(playerName);
                         gameStart.start(new Stage());
-                        System.out.println("Starting the game...");\
-                        Stage currentStage = (Stage) playerNameInput.getScene().getWindow();
+                        System.out.println("Starting the game...");
+                        currentStage = (Stage) playerNameInput.getScene().getWindow();
                         currentStage.close();
                     } catch (Exception e) {
                         e.printStackTrace();
