@@ -18,6 +18,7 @@ public class Main_Menu extends Application {
     public TextField playerNameInput;
     public TextField newPlayerNameInput;
     public Label userMessageLabel;
+    private Stage currentStage;
 
     public void initialize() {
         playerNameInput.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -102,7 +103,7 @@ public class Main_Menu extends Application {
                 int count = resultSet.getInt(1);
 
                 if (count > 0) {
-                    Stage currentStage = (Stage) playerNameInput.getScene().getWindow();
+                    currentStage = (Stage) playerNameInput.getScene().getWindow();
                     currentStage.close();
 
                     try {
@@ -129,9 +130,10 @@ public class Main_Menu extends Application {
         try {
             GameStart gameStart = new GameStart(playerNameInput.getText());
             gameStart.start(new Stage());
-            System.out.println("Starting a new game...");
-            Stage currentStage = (Stage) playerNameInput.getScene().getWindow();
-            currentStage.close();
+            currentStage = (Stage) playerNameInput.getScene().getWindow();
+            Platform.runLater(()->{
+                currentStage.close();
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
