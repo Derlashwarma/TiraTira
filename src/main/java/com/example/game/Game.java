@@ -30,8 +30,8 @@ public class Game implements Runnable{
     private int interval = 2000;
     public static ArrayList<Runnable> enemies;
     private ImageView character;
-    private ImageView background;
-    private ImageView background2;
+    private ImageView enemy_type_1;
+    private ImageView enemy_type_2;
     public static int score;
     public static Player player;
     private static String name;
@@ -41,8 +41,8 @@ public class Game implements Runnable{
         game_running = true;
         enemies = new ArrayList<>();
         this.character = character;
-        this.background = background;
-        this.background2 = background2;
+        this.enemy_type_1 = background;
+        this.enemy_type_2 = background2;
     }
     public static void addScore(int sc){
         score += sc;
@@ -182,18 +182,22 @@ public class Game implements Runnable{
 
     private void createEnemy(String enemyType, double locationX) {
         Enemy enemy;
+        ImageView enemy_character = null;
         switch (enemyType) {
             case "Strafer":
                 enemy = new EnemyT1Strafer(locationX, 50, Color.BLUE, "Strafer");
+                enemy_character = clone(enemy_type_1);
                 break;
             case "Bomber":
                 enemy = new EnemyT1Bomber(10, 20, locationX, 50, Color.RED, "Bomber");
+                enemy_character = clone(enemy_type_2);
                 break;
             // Add more cases for other enemy types if needed
 
             default:
                 throw new IllegalArgumentException("Invalid enemy type: " + enemyType);
         }
+        enemy.setEnemy(enemy_character);
         enemy.setAnchorPane(main_container);
         main_container.getChildren().add(enemy);
         Thread enemyThread = new Thread(enemy);

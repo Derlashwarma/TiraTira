@@ -1,6 +1,7 @@
 package com.example.game.Entity;
 
 import javafx.application.Platform;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 public class EnemyT1Bomber extends Enemy{

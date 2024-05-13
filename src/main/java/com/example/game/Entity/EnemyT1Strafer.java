@@ -2,6 +2,7 @@ package com.example.game.Entity;
 
 import com.example.game.Bullets.EnemyBulletLevel1;
 import javafx.application.Platform;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 import java.util.Timer;

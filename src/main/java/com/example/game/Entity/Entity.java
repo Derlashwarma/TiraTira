@@ -36,11 +36,19 @@ public class Entity extends javafx.scene.shape.Circle{
     // Constructors takes all basic that makes up an Plane
 
     public Entity(double size, long speed, double health, Color color, String name){
-        super(size);
+        super(size,Color.WHITE);
         this.speed = speed;
         this.health = health;
         this.name = name;
         isAlive = true;
+    }
+    public void setEnemy(ImageView enemy) {
+        this.enemy = enemy;
+    }
+    public void addEnemy(){
+        Platform.runLater(()->{
+            anchorPane.getChildren().add(enemy);
+        });
     }
     public int getCounter() {
         return counter;
@@ -57,8 +65,6 @@ public class Entity extends javafx.scene.shape.Circle{
     public void setSpeed(long speed) {
         this.speed = speed;
     }
-
-
 
     public int getDirectionX() {
         return directionX;

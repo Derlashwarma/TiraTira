@@ -15,7 +15,6 @@ public class Enemy extends Entity implements Runnable {
         setCurrentX(currentX);
         setCurrentY(currentY);
         setDirectionX(1);
-//        setDirection(1);
     }
 
     @Override
