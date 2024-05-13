@@ -17,10 +17,12 @@ public class Level1 implements Initializable {
     ImageView character;
     @FXML
     ImageView background;
+    @FXML
+    ImageView background2;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Game game = new Game(main_container, character, background);
+        Game game = new Game(main_container, character, background, background2);
         Thread gameThread = new Thread(game);
        gameThread.start();
     }

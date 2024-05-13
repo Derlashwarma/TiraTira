@@ -31,16 +31,18 @@ public class Game implements Runnable{
     public static ArrayList<Runnable> enemies;
     private ImageView character;
     private ImageView background;
+    private ImageView background2;
     public static int score;
     public static Player player;
     private static String name;
 
-    public Game(AnchorPane pane, ImageView character, ImageView background) {
+    public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2) {
         this.main_container = pane;
         game_running = true;
         enemies = new ArrayList<>();
         this.character = character;
         this.background = background;
+        this.background2 = background2;
     }
     public static void addScore(int sc){
         score += sc;
