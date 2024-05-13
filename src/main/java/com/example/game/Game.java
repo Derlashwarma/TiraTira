@@ -31,7 +31,6 @@ public class Game implements Runnable{
     private ImageView character;
     public static int score;
     public static Player player;
-    private static String name;
 
     public Game(AnchorPane pane, ImageView character) {
         this.main_container = pane;
@@ -61,18 +60,6 @@ public class Game implements Runnable{
                 e.printStackTrace();
             }
         });
-    }
-
-    public ImageView clone(ImageView to_clone) {
-        ImageView imageView = new ImageView(to_clone.getImage());
-        imageView.setFitHeight(to_clone.getFitHeight());
-        imageView.setFitWidth(to_clone.getFitWidth());
-        imageView.setRotate(to_clone.getRotate());
-        return imageView;
-    }
-
-    public static void setPlayer(String player) {
-        name = player;
     }
 
     @Override
@@ -131,11 +118,8 @@ public class Game implements Runnable{
             }
             System.out.println("GAME OVER");
             System.out.println("TOTAL SCORE: " + score);
-            MySQLConnection.updatePlayerScore(name,score);
             Platform.runLater(()->{
                 main_container.getChildren().removeAll();
-                Stage stage = (Stage) character.getScene().getWindow();
-                stage.close();
             });
         }
 

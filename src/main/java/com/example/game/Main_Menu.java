@@ -1,20 +1,11 @@
 package com.example.game;
 
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,17 +38,16 @@ public class Main_Menu extends Application {
         });
     }
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource("main_menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
-        primaryStage.setTitle("Space Horizon");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.setTitle("Space Horizon");
+        stage.setScene(scene);
+        stage.show();
 
         MySQLConnection.createPlayerTable();
     }
-
 
     public void startGame() {
         String playerName = playerNameInput.getText();
@@ -142,6 +132,17 @@ public class Main_Menu extends Application {
         }
     }
 
+
+    public void showGuide() {
+        // Add logic to show the guide
+        System.out.println("Showing the guide...");
+    }
+
+    public void showHighScores() {
+        // Add logic to show high scores
+        System.out.println("Showing high scores...");
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -152,64 +153,5 @@ public class Main_Menu extends Application {
 
     public TextField getPlayerNameInput() {
         return playerNameInput;
-    }
-
-    public void howToPlay(ActionEvent actionEvent) {
-        System.out.println("Showing the guide...");
-        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        currentStage.close();
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Instructions.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("Instructions");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    public void showPlayers(ActionEvent actionEvent) {
-        System.out.println("Showing current players...");
-    }
-
-    public void showLeaderboard(ActionEvent actionEvent) {
-        System.out.println("Showing high scores...");
-    }
-
-    public void quitGame() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Quit Game");
-        alert.setHeaderText(null);
-        alert.setContentText("Are you sure you want to quit the game?");
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
-                Stage stage = (Stage) playerNameInput.getScene().getWindow();
-                stage.close();
-            }
-        });
-    }
-
-    public void facebook() {
-        openWebPage("https://www.facebook.com");
-    }
-
-    public void discord() {
-        openWebPage("https://www.discord.com");
-    }
-
-    public void twitter() {
-        openWebPage("https://www.twitter.com");
-    }
-
-    private void openWebPage(String url) {
-        try {
-            Desktop.getDesktop().browse(new URI(url));
-        } catch (IOException | URISyntaxException e) {
-            e.printStackTrace();
-        }
     }
 }
