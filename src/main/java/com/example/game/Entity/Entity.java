@@ -1,6 +1,8 @@
 package com.example.game.Entity;
 
 import javafx.application.Platform;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
@@ -16,12 +18,19 @@ public class Entity extends javafx.scene.shape.Circle{
 
     private int direction;
     private boolean isAlive;
+    protected ImageView enemy;
+    protected ImageView second_form;
 
     public Entity(double size, Color color, String name){
         super(size);
         health = 200;
         this.name = name;
         isAlive = true;
+    }
+
+    public void setEnemy(ImageView enemy, ImageView second){
+        this.enemy = enemy;
+        this.second_form = second;
     }
     public String getName(){return name;}
 
@@ -70,6 +79,12 @@ public class Entity extends javafx.scene.shape.Circle{
     public void move() {
         int width = (int) anchorPane.widthProperty().get();
         Platform.runLater(() -> {
+            if(enemy != null){
+                enemy.setLayoutX(currentX-50);
+                enemy.setLayoutY(currentY-40);
+                second_form.setLayoutX(currentX-50);
+                second_form.setLayoutY(currentY-40);
+            }
             setLayoutX(currentX);
             setLayoutY(currentY);
         });
@@ -81,7 +96,6 @@ public class Entity extends javafx.scene.shape.Circle{
         if (currentX-x < 0) {
             setDirectionX(1);
         }
-
         currentX += directionX;
         currentY += direction;
     }

@@ -4,13 +4,14 @@ import com.example.game.Bullets.EnemyBulletLevel1;
 import com.example.game.Bullets.PlayerBullet;
 import com.example.game.Game;
 import javafx.application.Platform;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 public class Enemy extends Entity implements Runnable{
     private final double BOTTOM_LIMIT = 760;
     private long speed;
     public Enemy(long speed,double size,double currentX, double currentY, Color color, String name) {
-        super(size, color, name);
+        super(size, Color.WHITE, name);
         setCurrentX(currentX);
         setCurrentY(currentY);
         setDirectionX(1);
@@ -33,6 +34,15 @@ public class Enemy extends Entity implements Runnable{
                 Thread enemyBullet = new Thread(bullet);
                 enemyBullet.start();
             }
+            if((counter % 5) == 0 ) {
+                if(second_form.isVisible()){
+                    second_form.setVisible(false);
+                }
+                else{
+                    second_form.setVisible(true);
+                }
+            }
+
             try {
                 Thread.sleep(speed);
                 counter++;
@@ -42,6 +52,8 @@ public class Enemy extends Entity implements Runnable{
         }
         Platform.runLater(() -> {
             anchorPane.getChildren().remove(this);
+            anchorPane.getChildren().remove(enemy);
+            anchorPane.getChildren().remove(second_form);
         });
         Thread.currentThread().interrupt();
         Game.enemies.remove(this);

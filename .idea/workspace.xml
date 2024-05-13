@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="player and new player input box (database) implemented">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Bullets/BulletView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/images/BG_Space003.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Bullets/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Bullets/Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Levels/Level1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Levels/Level1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game/first-level-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/first-level-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game/menu_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/menu_styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,44 +45,47 @@
     &quot;assignee&quot;: &quot;jeecoo&quot;
   }
 }</component>
-  <component name="GitHubPullRequestState"><![CDATA[{
-  "prStates": [
+  <component name="GitHubPullRequestState">{
+  &quot;prStates&quot;: [
     {
-      "id": {
-        "id": "PR_kwDOL5QNZM5vGgIn",
-        "number": 3
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOL5QNZM5vGgIn&quot;,
+        &quot;number&quot;: 3
       },
-      "lastSeen": 1715349274105
+      &quot;lastSeen&quot;: 1715349274105
     }
   ]
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Derlashwarma/TiraTira.git",
-    "accountId": "f7c8a755-91d1-4a56-91d7-6c43920a837f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Derlashwarma/TiraTira.git&quot;,
+    &quot;accountId&quot;: &quot;f7c8a755-91d1-4a56-91d7-6c43920a837f&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "Derlashwarma",
-    "repository": "TiraTira"
+    &quot;owner&quot;: &quot;Derlashwarma&quot;,
+    &quot;repository&quot;: &quot;TiraTira&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2gGXLKlB96r1wHhBw06pvfxNu0T" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.GameOver.executor": "Run",
     "Application.GameStart.executor": "Run",
     "Application.Main_Menu.executor": "Run",
@@ -81,21 +93,24 @@
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "#3 on jeecoo",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/java/com/example/game",
-    "last_opened_file_path": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/resources/com/example/images",
+    "last_opened_file_path": "E:/Code/OOP2/TiraTira",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "prot.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "prot.structure.last.edited": "Libraries",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -148,8 +163,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-21.0.2-corretto-21.0.2-4caba194b151-51586f01" />
       </set>
     </attachedChunks>
   </component>
@@ -165,6 +179,10 @@
       <workItem from="1715327123781" duration="8172000" />
       <workItem from="1715339163153" duration="7959000" />
       <workItem from="1715347169690" duration="18249000" />
+      <workItem from="1715513666911" duration="4361000" />
+      <workItem from="1715570473096" duration="655000" />
+      <workItem from="1715571141392" duration="527000" />
+      <workItem from="1715571680950" duration="6978000" />
     </task>
     <task id="LOCAL-00001" summary="main menu and game over">
       <option name="closed" value="true" />
@@ -261,6 +279,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="main menu and game over" />
     <MESSAGE value="player and new player input box (database) implemented" />
     <option name="LAST_COMMIT_MESSAGE" value="player and new player input box (database) implemented" />
@@ -274,5 +293,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

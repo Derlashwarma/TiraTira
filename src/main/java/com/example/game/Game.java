@@ -29,15 +29,17 @@ public class Game implements Runnable{
     private int interval = 2000;
     public static ArrayList<Runnable> enemies;
     private ImageView character;
+    private ImageView background;
     public static int score;
     public static Player player;
     private static String name;
 
-    public Game(AnchorPane pane, ImageView character) {
+    public Game(AnchorPane pane, ImageView character, ImageView background) {
         this.main_container = pane;
         game_running = true;
         enemies = new ArrayList<>();
         this.character = character;
+        this.background = background;
     }
     public static void addScore(int sc){
         score += sc;
@@ -67,7 +69,7 @@ public class Game implements Runnable{
         ImageView imageView = new ImageView(to_clone.getImage());
         imageView.setFitHeight(to_clone.getFitHeight());
         imageView.setFitWidth(to_clone.getFitWidth());
-        imageView.setRotate(to_clone.getRotate());
+        imageView.setRotate(180);
         return imageView;
     }
 
@@ -83,6 +85,7 @@ public class Game implements Runnable{
             player.setAnchorPane(main_container);
             Thread playerThread = new Thread(player);
             playerThread.start();
+
 
             main_container.setOnMouseMoved(event -> {
                 character.setLayoutX(event.getX()-50);
@@ -109,12 +112,16 @@ public class Game implements Runnable{
                 if(enemies.size() < 10) {
                     long speed = (long)(random.nextDouble() * (50 - minimumSpeed) + minimumSpeed);
                     double health = random.nextInt((int)minimumHealth);
-                    Enemy enemy = new Enemy(speed, 50, randomX, 0, Color.BLUE,"Enemy");
+                    Enemy enemy = new Enemy(speed, 50, randomX, 0, Color.RED,"Enemy");
+                    enemy.setVisible(false);
+                    ImageView enemy_char = clone(character);
+                    ImageView second_form = clone(background);
+                    enemy.setEnemy(enemy_char, second_form);
                     enemy.setAnchorPane(main_container);
                     enemy.setHealth(health);
                     Thread enemyThread = new Thread(enemy);
                     Platform.runLater(()->{
-                        main_container.getChildren().add(enemy);
+                        main_container.getChildren().addAll(enemy,enemy_char,second_form);
                     });
                     enemyThread.start();
                 }
