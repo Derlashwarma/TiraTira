@@ -146,14 +146,12 @@ public class Game implements Runnable{
             System.out.println("GAME OVER");
             System.out.println("TOTAL SCORE: " + score);
             MySQLConnection.updatePlayerScore(name,score);
-            Platform.runLater(()->{
-                main_container.getChildren().removeAll();
+
+            Platform.runLater(() -> {
                 Stage stage = (Stage) character.getScene().getWindow();
                 stage.close();
             });
         }
-
-
     }
 
     private void makeFleet(String enemyType, int startLocation, int countOfEnemies) {

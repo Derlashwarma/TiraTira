@@ -1,6 +1,7 @@
 package com.example.game;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -50,7 +51,9 @@ public class GameOver extends Application {
         Main_Menu mainMenuController = fxmlLoader.getController();
         mainMenuController.setPlayerName(playerName);
 
-        mainMenuController.startNewGame();
+        Platform.runLater(()->{
+            mainMenuController.startNewGame();
+        });
     }
 
 
