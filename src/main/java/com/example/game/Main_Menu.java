@@ -90,7 +90,7 @@ public class Main_Menu extends Application {
                 return;
             }
             try (Connection connection = MySQLConnection.getConnection();
-                 PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ?")) {
+                 PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ? AND isDeleted = 0")) {
 
                 checkStatement.setString(1, newPlayerName);
                 ResultSet resultSet = checkStatement.executeQuery();
@@ -125,7 +125,7 @@ public class Main_Menu extends Application {
             }
         } else if (!playerName.isEmpty()) {
             try (Connection connection = MySQLConnection.getConnection();
-                 PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ?")) {
+                 PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ? AND isDeleted = 0")) {
 
                 checkStatement.setString(1, playerName);
                 ResultSet resultSet = checkStatement.executeQuery();

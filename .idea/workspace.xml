@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="Registered Player implemented (can CRUD - edit and isDelete user) &#10;&#10;centered the game icon">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/images/confirmation_icon.png" afterDir="false" />
+    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="added an icon during delete alert">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/CurrentPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/CurrentPlayers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game/instructions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/instructions.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +179,7 @@
       <workItem from="1715347169690" duration="18249000" />
       <workItem from="1715655183895" duration="829000" />
       <workItem from="1715672571140" duration="203000" />
-      <workItem from="1715684255370" duration="20031000" />
+      <workItem from="1715684255370" duration="20563000" />
     </task>
     <task id="LOCAL-00001" summary="main menu and game over">
       <option name="closed" value="true" />
@@ -312,7 +309,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715703387991</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="added an icon during delete alert">
+      <option name="closed" value="true" />
+      <created>1715704773930</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1715704773930</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,7 +341,8 @@
     <MESSAGE value="Game Icon created" />
     <MESSAGE value="Registered Player implemented (can CRUD - edit and isDelete user)" />
     <MESSAGE value="Registered Player implemented (can CRUD - edit and isDelete user) &#10;&#10;centered the game icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Registered Player implemented (can CRUD - edit and isDelete user) &#10;&#10;centered the game icon" />
+    <MESSAGE value="added an icon during delete alert" />
+    <option name="LAST_COMMIT_MESSAGE" value="added an icon during delete alert" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
