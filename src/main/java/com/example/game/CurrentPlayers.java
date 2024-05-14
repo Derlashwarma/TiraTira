@@ -165,6 +165,12 @@ public class CurrentPlayers extends Application {
                                 alert.setHeaderText("Delete Player");
                                 alert.setContentText("Are you sure you want to delete " + player.getUsername() + "?");
 
+                                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                                InputStream iconStream = getClass().getResourceAsStream("/com/example/images/confirmation_icon.png");
+                                if (iconStream != null) {
+                                    stage.getIcons().add(new Image(iconStream));
+                                }
+
                                 Optional<ButtonType> result = alert.showAndWait();
                                 if (result.isPresent() && result.get() == ButtonType.OK) {
                                     handler.handleAction(player);

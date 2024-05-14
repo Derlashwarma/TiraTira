@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="Registered Player implemented (can CRUD - edit and isDelete user)">
+    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="Registered Player implemented (can CRUD - edit and isDelete user) &#10;&#10;centered the game icon">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/images/confirmation_icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/GameOver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/GameOver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/GameStart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Instructions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Instructions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/CurrentPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/CurrentPlayers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game/instructions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/instructions.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="jeecoogwapoo" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,7 +94,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "jeecoogwapoo",
+    "git-widget-placeholder": "jeecoocoo",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/java/com/example/game",
     "last_opened_file_path": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/resources/com/example/images",
@@ -183,7 +182,7 @@
       <workItem from="1715347169690" duration="18249000" />
       <workItem from="1715655183895" duration="829000" />
       <workItem from="1715672571140" duration="203000" />
-      <workItem from="1715684255370" duration="18656000" />
+      <workItem from="1715684255370" duration="20031000" />
     </task>
     <task id="LOCAL-00001" summary="main menu and game over">
       <option name="closed" value="true" />
@@ -305,7 +304,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715702709757</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Registered Player implemented (can CRUD - edit and isDelete user) &#10;&#10;centered the game icon">
+      <option name="closed" value="true" />
+      <created>1715703387991</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715703387991</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,7 +335,8 @@
     <MESSAGE value="Register Players Page 60%" />
     <MESSAGE value="Game Icon created" />
     <MESSAGE value="Registered Player implemented (can CRUD - edit and isDelete user)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Registered Player implemented (can CRUD - edit and isDelete user)" />
+    <MESSAGE value="Registered Player implemented (can CRUD - edit and isDelete user) &#10;&#10;centered the game icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Registered Player implemented (can CRUD - edit and isDelete user) &#10;&#10;centered the game icon" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

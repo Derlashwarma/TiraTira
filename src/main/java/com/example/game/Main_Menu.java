@@ -110,6 +110,8 @@ public class Main_Menu extends Application {
                                 GameStart gameStart = new GameStart(newPlayerName);
                                 gameStart.start(new Stage());
                                 System.out.println("Starting the game...");
+                                currentStage = (Stage) playerNameInput.getScene().getWindow();
+                                currentStage.close();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -172,6 +174,7 @@ public class Main_Menu extends Application {
             GameStart gameStart = new GameStart(playerNameInput.getText());
             gameStart.start(new Stage());
             currentStage = (Stage) playerNameInput.getScene().getWindow();
+            currentStage.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
