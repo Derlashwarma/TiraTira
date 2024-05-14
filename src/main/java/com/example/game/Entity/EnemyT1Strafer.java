@@ -9,8 +9,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class EnemyT1Strafer extends Enemy{
-    public EnemyT1Strafer(double currentX, double currentY, Color color, String name) {
-        super(50, 40, 200 ,currentX, currentY, color, name);
+    public EnemyT1Strafer(long speed, double currentX, double currentY, Color color, String name) {
+        super(speed, 40, 200 ,currentX, currentY, color, name);
         setVisible(false);
     }
     @Override
@@ -48,27 +48,54 @@ public class EnemyT1Strafer extends Enemy{
 
     @Override
     public void move() {
-        int width = (int) anchorPane.widthProperty().get();
-        double x = this.getRadius();
+        int mov = getMovementPattern();
+        if(mov == 0){
+            double x = this.getRadius();
 
-        if (getCurrentX() + x > width) {
-            setDirectionX(-1);
-        }
-        if (getCurrentX() - x < 0) {
-            setDirectionX(1);
-        }
-
-        setCurrentX(getCurrentX() + getDirectionX());
-        setCurrentY(getCurrentY() + 1);
-
-        Platform.runLater(() -> {
-            if(enemy != null) {
-                enemy.setLayoutX(getCurrentX()-50);
-                enemy.setLayoutY(getCurrentY()-40);
+            if (getCurrentX() + x > 500) {
+                setDirectionX(-1);
             }
-            setLayoutX(getCurrentX());
-            setLayoutY(getCurrentY());
-        });
+            if (getCurrentX() - x < 0) {
+                setDirectionX(1);
+            }
+
+            setCurrentX(getCurrentX() + getDirectionX());
+            setCurrentY(getCurrentY() + 1);
+
+            Platform.runLater(() -> {
+                if(enemy != null) {
+                    enemy.setLayoutX(getCurrentX()-50);
+                    enemy.setLayoutY(getCurrentY()-40);
+                }
+                setLayoutX(getCurrentX());
+                setLayoutY(getCurrentY());
+            });
+        } else if (mov == 1) {
+            double x = this.getRadius();
+            setDirectionY(0);
+
+            if (getCurrentX() + x > 500) {
+                setDirectionX(-1);
+                setDirectionY(5);
+            }
+            if (getCurrentX() - x < 0) {
+                setDirectionX(1);
+                setDirectionY(5);
+            }
+
+            setCurrentX(getCurrentX() + getDirectionX());
+            setCurrentY(getCurrentY() + getDirectionY());
+
+            Platform.runLater(() -> {
+                if(enemy != null) {
+                    enemy.setLayoutX(getCurrentX()-50);
+                    enemy.setLayoutY(getCurrentY()-40);
+                }
+                setLayoutX(getCurrentX());
+                setLayoutY(getCurrentY());
+            });
+        }
+
     }
 
 }

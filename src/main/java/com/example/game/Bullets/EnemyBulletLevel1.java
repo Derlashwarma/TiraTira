@@ -14,7 +14,7 @@ public class EnemyBulletLevel1 extends Bullet {
 
     private Player player;
     public EnemyBulletLevel1(double currentX, double currentY) {
-        super(10, 1, 10, 10, currentX, currentY, Color.PURPLE, 1, "Enemy");
+        super(5, 1, 10, 10, currentX, currentY, Color.PURPLE, 1, "Enemy");
         this.player = Game.player;
     }
     @Override
