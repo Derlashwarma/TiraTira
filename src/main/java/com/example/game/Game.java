@@ -5,6 +5,7 @@ import com.example.game.Entity.Enemy;
 import com.example.game.Entity.EnemyT1Bomber;
 import com.example.game.Entity.EnemyT1Strafer;
 import com.example.game.Entity.Player;
+import com.example.game.Levels.BattleMaker;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -35,6 +36,7 @@ public class Game implements Runnable{
     public static int score;
     public static Player player;
     private static String name;
+
 
     public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2) {
         this.main_container = pane;
@@ -82,7 +84,7 @@ public class Game implements Runnable{
 
     @Override
     public void run() {
-        while(game_running){
+        BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2, enemies);
             player = new Player(20, Color.GREEN, "JEECOO");
             player.setAnchorPane(main_container);
             player.setAnchorPane(main_container);
@@ -98,41 +100,10 @@ public class Game implements Runnable{
                 player.setCurrentX(event.getX());
                 player.setCurrentY(event.getY());
             });
-            Random random = new Random();
+            Thread bmThread = new Thread(bm);
+            bmThread.start();
             while(game_running) {
-                int minRange = 5;
-                int maxRange = 495;
-                int range = maxRange - minRange + 1;
-                int previousValue = 0;
-                int tempValue = random.nextInt(range + 1) + minRange;
-                int randomX = tempValue;
-
-//                if (tempValue == previousValue || tempValue == previousValue + 50 || tempValue == previousValue - 50) {
-//                    do {
-//                        tempValue =
-//                        randomX = tempValue;
-//                    } while (tempValue == previousValue || tempValue == previousValue + 50 || tempValue == previousValue - 50);
-//                }
-//                int bomberWidth = 20; // Assuming the width of the Bomber entity is 20 units
-//                int x = (int) main_container.widthProperty().get();
-                randomX = random.nextInt(50, 500 - 50);
-
-                makeFleet("Strafer", 50, 3);
-                makeFleet("Bomber",randomX , 1);
-
-//                if(enemies.size() < 10) {
-//                    long speed = (long)(random.nextDouble() * (50 - minimumSpeed) + minimumSpeed);
-//                    double health = random.nextInt((int)minimumHealth);
-//                    EnemyT1Strafer enemy = new EnemyT1Strafer(50, randomX, Color.BLUE,"Enemy");
-//                    enemy.setAnchorPane(main_container);
-//                    enemy.setHealth(health);
-//                    Thread enemyThread = new Thread(enemy);
-//                    Platform.runLater(()->{
-//                        main_container.getChildren().add(enemy);
-//                    });
-//                    enemyThread.start();
-//                }
-
+                bm.setScore(score);
                 try {
                     Thread.sleep(interval);
                     if(interval > 50) {
@@ -151,54 +122,6 @@ public class Game implements Runnable{
                 Stage stage = (Stage) character.getScene().getWindow();
                 stage.close();
             });
-        }
-    }
-
-    private void makeFleet(String enemyType, int startLocation, int countOfEnemies) {
-        if (enemies.isEmpty()) {
-            Timer timer = new Timer();
-            TimerTask task = new TimerTask() {
-                int count = 0;
-
-                @Override
-                public void run() {
-                    double locationStart = startLocation;
-                    if (count < countOfEnemies) {
-                        final double initialLocation = locationStart;
-                        Platform.runLater(() -> {
-                            createEnemy(enemyType, initialLocation);
-                        });
-                        count++;
-                    } else {
-                        timer.cancel();
-                    }
-                }
-            };
-            timer.scheduleAtFixedRate(task, 0, 3000);
-        }
-    }
-
-    private void createEnemy(String enemyType, double locationX) {
-        Enemy enemy;
-        ImageView enemy_character = null;
-        switch (enemyType) {
-            case "Strafer":
-                enemy = new EnemyT1Strafer(locationX, 50, Color.BLUE, "Strafer");
-                enemy_character = clone(enemy_type_1);
-                break;
-            case "Bomber":
-                enemy = new EnemyT1Bomber(10, 20, locationX, 50, Color.RED, "Bomber");
-                enemy_character = clone(enemy_type_2);
-                break;
-            // Add more cases for other enemy types if needed
-            default:
-                throw new IllegalArgumentException("Invalid enemy type: " + enemyType);
-        }
-        enemy.setEnemy(enemy_character);
-        enemy.setAnchorPane(main_container);
-        main_container.getChildren().add(enemy);
-        Thread enemyThread = new Thread(enemy);
-        enemyThread.start();
     }
 
 

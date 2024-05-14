@@ -5,7 +5,7 @@
 
 <AnchorPane fx:id="main_container" prefHeight="800.0" prefWidth="500.0" styleClass="game-background" stylesheets="@menu_styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.Levels.Level1">
    <children>
-      <ImageView fx:id="character" fitHeight="100.0" fitWidth="100.0" layoutX="220.0" layoutY="611.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="character" fitHeight="100.0" fitWidth="100.0" layoutX="-140.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
          <image>
             <Image url="@../images/character_plane.png" />
          </image>
@@ -15,7 +15,7 @@
             <Image url="@../images/EnemyShip.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="background2" fitHeight="100.0" fitWidth="100.0" layoutX="-160.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="background2" fitHeight="100.0" fitWidth="100.0" layoutX="-162.0" layoutY="515.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/EnemyShip.png" />
          </image></ImageView>

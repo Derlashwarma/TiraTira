@@ -8,8 +8,18 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 public class Enemy extends Entity implements Runnable {
+    private int movementPattern = 0;
     private final double BOTTOM_LIMIT = 760;
     private long speed;
+
+    public int getMovementPattern() {
+        return movementPattern;
+    }
+
+    public void setMovementPattern(int movementPattern) {
+        this.movementPattern = movementPattern;
+    }
+
     public Enemy(long speed,double size,double health,double currentX, double currentY, Color color, String name) {
         super(size,speed, health ,Color.WHITE, name);
         setCurrentX(currentX);
@@ -37,4 +47,6 @@ public class Enemy extends Entity implements Runnable {
         Thread.currentThread().interrupt();
         Game.enemies.remove(this);
     }
+
+
 }
