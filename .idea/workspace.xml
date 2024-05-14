@@ -5,21 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Levels/BattleMaker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_05_2024_2_55_pm__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_05_2024_2_55_pm__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_05_2024_3_42_pm__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_05_2024_3_42_pm__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_05_2024_3_43_pm__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_05_2024_3_43_pm__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_05_2024_4_07_pm__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_05_2024_4_07_pm__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_05_2024_4_07_pm__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_05_2024_4_07_pm__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_13_2024_4_12_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_13_2024_4_12_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_13_05_2024_2_55_pm__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_13_05_2024_2_55_pm__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Bullets/EnemyBulletLevel1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Bullets/EnemyBulletLevel1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Bullets/PlayerBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Bullets/PlayerBullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/EnemyT1Strafer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/EnemyT1Strafer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/GameOver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/GameOver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Levels/BattleMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Levels/BattleMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Levels/Level1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Levels/Level1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game/first-level-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/first-level-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,36 +85,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameOver.executor": "Run",
-    "Application.GameStart.executor": "Run",
-    "Application.Instructions.executor": "Run",
-    "Application.Main_Menu.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "BattleMaker",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/java/com/example/game",
-    "last_opened_file_path": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/resources/com/example/images",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "prot.structure.last.edited": "Libraries",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameOver.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GameStart.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Instructions.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main_Menu.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;BattleMaker&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/java/com/example/game&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/resources/com/example/images&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;prot.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Jeecoo\IdeaProjects\TiraTira\src\main\resources\com\example\images" />
@@ -284,6 +278,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="main menu and game over" />

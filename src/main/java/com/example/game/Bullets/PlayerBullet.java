@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class PlayerBullet extends Bullet{
     public PlayerBullet(double currentX, double currentY,String name) {
-        super(20,1,10,10,currentX,currentY, Color.GREEN,-1,name);
+        super(100,1,10,10,currentX,currentY, Color.GREEN,-1,name);
     }
     public void setAnchorPane(AnchorPane pane){
         super.pane = pane;

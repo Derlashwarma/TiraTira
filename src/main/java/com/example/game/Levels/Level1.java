@@ -24,6 +24,6 @@ public class Level1 implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Game game = new Game(main_container, character, background, background2);
         Thread gameThread = new Thread(game);
-       gameThread.start();
+        gameThread.start();
     }
 }

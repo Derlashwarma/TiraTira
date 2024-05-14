@@ -141,7 +141,7 @@ public class Main_Menu extends Application {
             gameStart.start(new Stage());
             currentStage = (Stage) playerNameInput.getScene().getWindow();
             Platform.runLater(()->{
-                currentStage.close();
+                //currentStage.close();
             });
         } catch (Exception e) {
             e.printStackTrace();

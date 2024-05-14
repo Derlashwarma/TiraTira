@@ -36,15 +36,17 @@ public class Game implements Runnable{
     public static int score;
     public static Player player;
     private static String name;
+    public static int size;
 
 
     public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2) {
-        this.main_container = pane;
+        main_container = pane;
         game_running = true;
         enemies = new ArrayList<>();
         this.character = character;
         this.enemy_type_1 = background;
         this.enemy_type_2 = background2;
+        size = 0;
     }
     public static void addScore(int sc){
         score += sc;
@@ -69,6 +71,14 @@ public class Game implements Runnable{
             }
         });
     }
+    public synchronized static void addEnemy(Runnable enemy){
+        enemies.add(enemy);
+        size++;
+    }
+    public synchronized static void removeEnemy(Runnable enemy){
+        enemies.remove(enemy);
+        size--;
+    }
 
     public ImageView clone(ImageView to_clone) {
         ImageView imageView = new ImageView(to_clone.getImage());
@@ -84,7 +94,7 @@ public class Game implements Runnable{
 
     @Override
     public void run() {
-        BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2, enemies);
+            BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2);
             player = new Player(20, Color.GREEN, "JEECOO");
             player.setAnchorPane(main_container);
             player.setAnchorPane(main_container);
@@ -112,6 +122,9 @@ public class Game implements Runnable{
                     minimumHealth += 10;
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
+                }
+                synchronized ((Object)BattleMaker.isActiveCount){
+                    BattleMaker.isActiveCount = enemies.isEmpty();
                 }
             }
             System.out.println("GAME OVER");

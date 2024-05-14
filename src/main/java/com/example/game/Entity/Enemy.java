@@ -45,7 +45,7 @@ public class Enemy extends Entity implements Runnable {
             anchorPane.getChildren().remove(second_form);
         });
         Thread.currentThread().interrupt();
-        Game.enemies.remove(this);
+        Game.removeEnemy(this);
     }
 
 
