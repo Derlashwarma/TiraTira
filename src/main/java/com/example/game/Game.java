@@ -1,38 +1,27 @@
 package com.example.game;
 
-import com.example.game.Bullets.EnemyBulletLevel1;
-import com.example.game.Entity.Enemy;
-import com.example.game.Entity.EnemyT1Bomber;
-import com.example.game.Entity.EnemyT1Strafer;
 import com.example.game.Entity.Player;
 import com.example.game.Levels.BattleMaker;
+import com.example.game.Sound.SoundManager;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
-import java.security.spec.RSAOtherPrimeInfo;
 import java.util.*;
 
 public class Game implements Runnable{
     public static AnchorPane main_container;
     public static boolean game_running;
-    private double minimumHealth = 100;
-    private double minimumSpeed = 50;
     private int interval = 2000;
     public static ArrayList<Runnable> enemies;
-    private ImageView character;
-    private ImageView enemy_type_1;
-    private ImageView enemy_type_2;
+    private final ImageView character;
+    private final ImageView enemy_type_1;
+    private final ImageView enemy_type_2;
     public static int score;
     public static Player player;
     private static String name;
@@ -94,6 +83,8 @@ public class Game implements Runnable{
 
     @Override
     public void run() {
+            SoundManager sm = new SoundManager();
+            sm.playSound("Doom");
             BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2);
             player = new Player(20, Color.GREEN, "JEECOO");
             player.setAnchorPane(main_container);
@@ -119,7 +110,7 @@ public class Game implements Runnable{
                     if(interval > 50) {
                         interval -= 10;
                     }
-                    minimumHealth += 10;
+//                    player.setHealth(10);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

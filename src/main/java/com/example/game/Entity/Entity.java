@@ -1,6 +1,7 @@
 package com.example.game.Entity;
 
 import com.example.game.Bullets.EnemyBulletLevel1;
+import com.example.game.Sound.SoundManager;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,6 +11,8 @@ import javafx.scene.paint.Color;
 import java.util.Random;
 
 public class Entity extends javafx.scene.shape.Circle{
+
+    SoundManager sm = new SoundManager();
 
     // Main attributes of Entity
     private double health;
@@ -152,6 +155,7 @@ public class Entity extends javafx.scene.shape.Circle{
             bullet.setPane(anchorPane);
             Platform.runLater(() -> {
                 anchorPane.getChildren().add(bullet);
+                sm.playSound("Player");
             });
             Thread enemyBullet = new Thread(bullet);
             enemyBullet.start();

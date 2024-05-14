@@ -27,6 +27,7 @@ public class EnemyT1Strafer extends Enemy{
                         bullet.setPane(anchorPane);
                         Platform.runLater(() -> {
                             anchorPane.getChildren().add(bullet);
+                            sm.playSound("Strafer");
                         });
                         Thread enemyBullet = new Thread(bullet);
                         enemyBullet.start();
