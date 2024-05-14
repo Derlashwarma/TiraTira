@@ -150,6 +150,7 @@ public class Entity extends javafx.scene.shape.Circle{
 
     // Adjusted shoot method
     public void shoot() {
+        ///www
         if ((counter % 100) == 0) { // Fixed speed parameter to 100
             EnemyBulletLevel1 bullet = new EnemyBulletLevel1(getLayoutX(), getLayoutY());
             bullet.setPane(anchorPane);
