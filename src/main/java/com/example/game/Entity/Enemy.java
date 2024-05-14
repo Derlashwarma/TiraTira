@@ -4,46 +4,49 @@ import com.example.game.Bullets.EnemyBulletLevel1;
 import com.example.game.Bullets.PlayerBullet;
 import com.example.game.Game;
 import javafx.application.Platform;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-public class Enemy extends Entity implements Runnable{
+public class Enemy extends Entity implements Runnable {
+    private int movementPattern = 0;
     private final double BOTTOM_LIMIT = 760;
     private long speed;
-    public Enemy(long speed,double size,double currentX, double currentY, Color color, String name) {
-        super(size, color, name);
+
+    public int getMovementPattern() {
+        return movementPattern;
+    }
+
+    public void setMovementPattern(int movementPattern) {
+        this.movementPattern = movementPattern;
+    }
+
+    public Enemy(long speed,double size,double health,double currentX, double currentY, Color color, String name) {
+        super(size,speed, health ,Color.WHITE, name);
         setCurrentX(currentX);
         setCurrentY(currentY);
         setDirectionX(1);
-        setDirection(1);
-        this.speed = speed;
     }
 
     @Override
     public void run() {
         Game.enemies.add(this);
-        int counter = 0;
-        while(getLayoutY() < BOTTOM_LIMIT  && isAlive() && Game.game_running) {
+        while (getLayoutY() < BOTTOM_LIMIT && isAlive() && Game.game_running) {
             move();
-            if((counter % 20) == 0 ) {
-                EnemyBulletLevel1 bullet = new EnemyBulletLevel1(getLayoutX(),getLayoutY());
-                bullet.setPane(anchorPane);
-                Platform.runLater(()->{
-                    anchorPane.getChildren().add(bullet);
-                }); 
-                Thread enemyBullet = new Thread(bullet);
-                enemyBullet.start();
-            }
+            shoot();
             try {
-                Thread.sleep(speed);
-                counter++;
+                Thread.sleep(getSpeed());
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
         Platform.runLater(() -> {
             anchorPane.getChildren().remove(this);
+            anchorPane.getChildren().remove(enemy);
+            anchorPane.getChildren().remove(second_form);
         });
         Thread.currentThread().interrupt();
-        Game.enemies.remove(this);
+        Game.removeEnemy(this);
     }
+
+
 }

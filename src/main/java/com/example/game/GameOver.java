@@ -1,6 +1,7 @@
 package com.example.game;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -45,12 +46,13 @@ public class GameOver extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource("main_menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
-
         Main_Menu mainMenuController = fxmlLoader.getController();
         mainMenuController.setPlayerName(playerName);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
 
-        mainMenuController.startNewGame();
+        Platform.runLater(()->{
+            mainMenuController.startNewGame();
+        });
     }
 
 

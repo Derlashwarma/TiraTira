@@ -1,7 +1,11 @@
 package com.example.game;
 
+import com.example.game.Bullets.EnemyBulletLevel1;
 import com.example.game.Entity.Enemy;
+import com.example.game.Entity.EnemyT1Bomber;
+import com.example.game.Entity.EnemyT1Strafer;
 import com.example.game.Entity.Player;
+import com.example.game.Levels.BattleMaker;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -17,9 +21,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.security.spec.RSAOtherPrimeInfo;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class Game implements Runnable{
     public static AnchorPane main_container;
@@ -29,14 +31,22 @@ public class Game implements Runnable{
     private int interval = 2000;
     public static ArrayList<Runnable> enemies;
     private ImageView character;
+    private ImageView enemy_type_1;
+    private ImageView enemy_type_2;
     public static int score;
     public static Player player;
+    private static String name;
+    public static int size;
 
-    public Game(AnchorPane pane, ImageView character) {
-        this.main_container = pane;
+
+    public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2) {
+        main_container = pane;
         game_running = true;
         enemies = new ArrayList<>();
         this.character = character;
+        this.enemy_type_1 = background;
+        this.enemy_type_2 = background2;
+        size = 0;
     }
     public static void addScore(int sc){
         score += sc;
@@ -61,15 +71,36 @@ public class Game implements Runnable{
             }
         });
     }
+    public synchronized static void addEnemy(Runnable enemy){
+        enemies.add(enemy);
+        size++;
+    }
+    public synchronized static void removeEnemy(Runnable enemy){
+        enemies.remove(enemy);
+        size--;
+    }
+
+    public ImageView clone(ImageView to_clone) {
+        ImageView imageView = new ImageView(to_clone.getImage());
+        imageView.setFitHeight(to_clone.getFitHeight());
+        imageView.setFitWidth(to_clone.getFitWidth());
+        imageView.setRotate(180);
+        return imageView;
+    }
+
+    public static void setPlayer(String player) {
+        name = player;
+    }
 
     @Override
     public void run() {
-        while(game_running){
+            BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2);
             player = new Player(20, Color.GREEN, "JEECOO");
             player.setAnchorPane(main_container);
             player.setAnchorPane(main_container);
             Thread playerThread = new Thread(player);
             playerThread.start();
+
 
             main_container.setOnMouseMoved(event -> {
                 character.setLayoutX(event.getX()-50);
@@ -79,33 +110,10 @@ public class Game implements Runnable{
                 player.setCurrentX(event.getX());
                 player.setCurrentY(event.getY());
             });
-            Random random = new Random();
+            Thread bmThread = new Thread(bm);
+            bmThread.start();
             while(game_running) {
-                int minRange = 5;
-                int maxRange = 495;
-                int range = maxRange - minRange + 1;
-                int previousValue = 0;
-                int tempValue = random.nextInt(range + 1) + minRange;
-                int randomX = tempValue;
-                if (tempValue == previousValue || tempValue == previousValue + 50 || tempValue == previousValue - 50) {
-                    do {
-                        tempValue = random.nextInt(range + 1) + minRange;
-                        randomX = tempValue;
-                    } while (tempValue == previousValue || tempValue == previousValue + 50 || tempValue == previousValue - 50);
-                }
-                if(enemies.size() < 10) {
-                    long speed = (long)(random.nextDouble() * (50 - minimumSpeed) + minimumSpeed);
-                    double health = random.nextInt((int)minimumHealth);
-                    Enemy enemy = new Enemy(speed, 50, randomX, 0, Color.BLUE,"Enemy");
-                    enemy.setAnchorPane(main_container);
-                    enemy.setHealth(health);
-                    Thread enemyThread = new Thread(enemy);
-                    Platform.runLater(()->{
-                        main_container.getChildren().add(enemy);
-                    });
-                    enemyThread.start();
-                }
-
+                bm.setScore(score);
                 try {
                     Thread.sleep(interval);
                     if(interval > 50) {
@@ -115,14 +123,19 @@ public class Game implements Runnable{
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
+                synchronized ((Object)BattleMaker.isActiveCount){
+                    BattleMaker.isActiveCount = enemies.isEmpty();
+                }
             }
             System.out.println("GAME OVER");
             System.out.println("TOTAL SCORE: " + score);
-            Platform.runLater(()->{
-                main_container.getChildren().removeAll();
+            MySQLConnection.updatePlayerScore(name,score);
+
+            Platform.runLater(() -> {
+                Stage stage = (Stage) character.getScene().getWindow();
+                stage.close();
             });
-        }
-
-
     }
+
+
 }
