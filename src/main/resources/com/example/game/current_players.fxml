@@ -11,9 +11,9 @@
         <URL value="@menu_styles.css" />
     </stylesheets>
     <children>
-        <Label alignment="CENTER" layoutX="26" layoutY="280" prefHeight="50" prefWidth="450" styleClass="current_players" text="REGISTERED PLAYERS" />
+        <Label alignment="CENTER" layoutX="26" layoutY="270" prefHeight="50" prefWidth="450" styleClass="current_players" text="REGISTERED PLAYERS" />
 
-        <TableView fx:id="playersTable" layoutX="26" layoutY="330" prefWidth="450" prefHeight="500" styleClass="tableHeader">
+        <TableView fx:id="playersTable" layoutX="26" layoutY="340" prefWidth="450" prefHeight="500" styleClass="tableHeader">
             <columns>
                 <TableColumn text="Player Name" fx:id="usernameColumn" minWidth="200" maxWidth="200"/>
             </columns>
@@ -29,5 +29,7 @@
                 </ImageView>
             </graphic>
         </Button>
+        <Label fx:id="userMessageLabel" layoutX="50" layoutY="300" styleClass="messageLabel" text="" prefWidth="400" alignment="CENTER" />
+
     </children>
 </AnchorPane>

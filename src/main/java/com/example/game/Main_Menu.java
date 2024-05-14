@@ -79,7 +79,7 @@ public class Main_Menu extends Application {
         String newPlayerName = newPlayerNameInput.getText();
 
         if (!playerName.isEmpty() && !newPlayerName.isEmpty()) {
-            userMessageLabel.setText("Enter player name or create a new one");
+            userMessageLabel.setText("Enter player name or create a new one.");
             return;
         }
 
@@ -97,7 +97,7 @@ public class Main_Menu extends Application {
                 int count = resultSet.getInt(1);
 
                 if (count > 0) {
-                    userMessageLabel.setText("Player name is already taken");
+                    userMessageLabel.setText("Player name is already taken.");
                 } else {
                     try (PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO player (username) VALUES (?)")) {
                         insertStatement.setString(1, newPlayerName);

@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.converter.DefaultStringConverter;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +26,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class CurrentPlayers extends Application {
+    public Label userMessageLabel;
     @FXML
     private AnchorPane main_container;
 
@@ -50,11 +52,26 @@ public class CurrentPlayers extends Application {
     @FXML
     private void initialize() {
         usernameColumn.setCellValueFactory(cellData -> cellData.getValue().usernameProperty());
-        usernameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        usernameColumn.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter() {
+            @Override
+            public String fromString(String string) {
+                return string.toUpperCase();
+            }
+        }));
         usernameColumn.setOnEditCommit(event -> {
             CurrentPlayer player = event.getRowValue();
-            player.setUsername(event.getNewValue().toUpperCase());
-            updatePlayerInDatabase(player);
+            String oldName = player.getUsername().toUpperCase();
+            String newName = event.getNewValue();
+            if (newName.equals(oldName)) {
+                userMessageLabel.setText("No changes done.");
+            } else if (!isPlayerNameTaken(newName)) {
+                userMessageLabel.setText("");
+                player.setUsername(newName.toUpperCase());
+                updatePlayerInDatabase(player);
+            } else {
+                userMessageLabel.setText("Player name is already taken.");
+                playersTable.refresh();
+            }
         });
 
         fetchPlayersFromDatabase();
@@ -98,6 +115,21 @@ public class CurrentPlayers extends Application {
             playersTable.edit(rowIndex, usernameColumn);
         }
     }
+
+    private boolean isPlayerNameTaken(String newName) {
+        try (Connection connection = MySQLConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM player WHERE username = ? AND isDeleted = 0")) {
+            statement.setString(1, newName);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                return resultSet.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 
     private void handleDeleteAction(CurrentPlayer player) {
         System.out.println("Delete player: " + player.getUsername());
