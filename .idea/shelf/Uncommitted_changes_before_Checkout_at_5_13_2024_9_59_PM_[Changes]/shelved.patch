@@ -1,0 +1,84 @@
+Index: src/main/java/com/example/game/CurrentPlayers.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.game;\r\n\r\nimport javafx.application.Application;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Button;\r\nimport javafx.scene.control.TableColumn;\r\nimport javafx.scene.control.TableView;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.util.Objects;\r\n\r\npublic class CurrentPlayers extends Application {\r\n    @FXML\r\n    private AnchorPane main_container;\r\n\r\n    @FXML\r\n    private TableView<Player> playersTable;\r\n\r\n    @FXML\r\n    private TableColumn<Player, Integer> idColumn;\r\n\r\n    @FXML\r\n    private TableColumn<Player, String> usernameColumn;\r\n\r\n    @Override\r\n    public void start(Stage primaryStage) throws Exception {\r\n        FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource(\"current_players.fxml\"));\r\n        fxmlLoader.setController(this);\r\n        Scene scene = new Scene(fxmlLoader.load());\r\n        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(\"menu_styles.css\")).toExternalForm());\r\n        primaryStage.setTitle(\"Current Players\");\r\n        primaryStage.setScene(scene);\r\n        primaryStage.show();\r\n\r\n        loadPlayers();\r\n    }\r\n\r\n    private void loadPlayers() {\r\n        try (Connection connection = MySQLConnection.getConnection();\r\n             PreparedStatement preparedStatement = connection.prepareStatement(\"SELECT id, username FROM player WHERE isDeleted = 0\")) {\r\n            ResultSet resultSet = preparedStatement.executeQuery();\r\n            while (resultSet.next()) {\r\n                int id = resultSet.getInt(\"id\");\r\n                String username = resultSet.getString(\"username\");\r\n                playersTable.getItems().add(new Player(id, username));\r\n            }\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void backButton() {\r\n        Stage currentStage = (Stage) main_container.getScene().getWindow();\r\n        currentStage.close();\r\n\r\n        FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource(\"main_menu.fxml\"));\r\n        try {\r\n            Scene scene = new Scene(fxmlLoader.load());\r\n            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(\"menu_styles.css\")).toExternalForm());\r\n\r\n            Stage mainMenuStage = new Stage();\r\n            mainMenuStage.setScene(scene);\r\n            mainMenuStage.show();\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        launch(args);\r\n    }\r\n\r\n    public void deletePlayer(ActionEvent actionEvent) {\r\n    }\r\n\r\n    public void editPlayer(ActionEvent actionEvent) {\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/com/example/game/CurrentPlayers.java b/src/main/java/com/example/game/CurrentPlayers.java
+--- a/src/main/java/com/example/game/CurrentPlayers.java	
++++ b/src/main/java/com/example/game/CurrentPlayers.java	
+@@ -1,5 +1,6 @@
+ package com.example.game;
+ 
++import com.example.game.Entity.Player;
+ import javafx.application.Application;
+ import javafx.event.ActionEvent;
+ import javafx.fxml.FXML;
+@@ -23,21 +24,20 @@
+     private AnchorPane main_container;
+ 
+     @FXML
+-    private TableView<Player> playersTable;
++    private TableView<CurrentPlayer> playersTable;
+ 
+     @FXML
+-    private TableColumn<Player, Integer> idColumn;
++    private TableColumn<CurrentPlayer, Integer> idColumn;
+ 
+     @FXML
+-    private TableColumn<Player, String> usernameColumn;
++    private TableColumn<CurrentPlayer, String> usernameColumn;
+ 
+     @Override
+     public void start(Stage primaryStage) throws Exception {
+         FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource("current_players.fxml"));
+-        fxmlLoader.setController(this);
+         Scene scene = new Scene(fxmlLoader.load());
+         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+-        primaryStage.setTitle("Current Players");
++        primaryStage.setTitle("Instructions");
+         primaryStage.setScene(scene);
+         primaryStage.show();
+ 
+@@ -51,7 +51,7 @@
+             while (resultSet.next()) {
+                 int id = resultSet.getInt("id");
+                 String username = resultSet.getString("username");
+-                playersTable.getItems().add(new Player(id, username));
++                playersTable.getItems().add(new CurrentPlayer(id, username));
+             }
+         } catch (SQLException e) {
+             e.printStackTrace();
+@@ -76,13 +76,29 @@
+         }
+     }
+ 
+-    public static void main(String[] args) {
+-        launch(args);
+-    }
+-
++    @FXML
+     public void deletePlayer(ActionEvent actionEvent) {
++        CurrentPlayer currentPlayer = playersTable.getSelectionModel().getSelectedItem();
++        if (currentPlayer != null) {
++            // Perform delete operation here
++            int playerId = currentPlayer.getId();
++            // Example of how to delete player from the table
++            playersTable.getItems().remove(currentPlayer);
++        }
+     }
+ 
++    @FXML
+     public void editPlayer(ActionEvent actionEvent) {
++        CurrentPlayer currentPlayer = playersTable.getSelectionModel().getSelectedItem();
++        if (currentPlayer != null) {
++            int playerId = currentPlayer.getId();
++            String newUsername = "New Username"; // Example of new username
++            currentPlayer.setUsername(newUsername);
++            playersTable.refresh(); // Refresh table to reflect changes
++        }
++    }
++
++    public static void main(String[] args) {
++        launch(args);
+     }
+ }

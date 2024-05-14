@@ -1,0 +1,33 @@
+Index: src/main/java/com/example/game/CurrentPlayer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/game/CurrentPlayer.java b/src/main/java/com/example/game/CurrentPlayer.java
+new file mode 100644
+--- /dev/null	
++++ b/src/main/java/com/example/game/CurrentPlayer.java	
+@@ -0,0 +1,23 @@
++package com.example.game;
++
++public class CurrentPlayer {
++    private int id;
++    private String username;
++
++    public CurrentPlayer(int id, String username) {
++        this.id = id;
++        this.username = username;
++    }
++
++    public int getId() {
++        return id;
++    }
++
++    public String getUsername() {
++        return username;
++    }
++
++    public void setUsername(String newUsername) {
++        username = newUsername;
++    }
++}

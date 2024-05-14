@@ -25,7 +25,8 @@ public class MySQLConnection {
             String createTable = "CREATE TABLE IF NOT EXISTS player (" +
                                 "id INT AUTO_INCREMENT PRIMARY KEY," +
                                 "username VARCHAR(255)," +
-                                "scores INT" +
+                                "scores INT," +
+                                "isDeleted BOOLEAN DEFAULT FALSE" +
                                 ");";
 
             statement.execute(createTable);

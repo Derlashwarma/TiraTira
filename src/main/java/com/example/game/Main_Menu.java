@@ -70,6 +70,10 @@ public class Main_Menu extends Application {
         }
 
         if (!newPlayerName.isEmpty()) {
+            if (isMaxPlayersReached()) {
+                userMessageLabel.setText("Maximum number of players reached. Please remove a player.");
+                return;
+            }
             try (Connection connection = MySQLConnection.getConnection();
                  PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ?")) {
 
@@ -135,14 +139,24 @@ public class Main_Menu extends Application {
         }
     }
 
+    private boolean isMaxPlayersReached() {
+        try (Connection connection = MySQLConnection.getConnection();
+             PreparedStatement countStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE isDeleted = 0")) {
+            ResultSet resultSet = countStatement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+            return count >= 10;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
     public void startNewGame() {
         try {
             GameStart gameStart = new GameStart(playerNameInput.getText());
             gameStart.start(new Stage());
             currentStage = (Stage) playerNameInput.getScene().getWindow();
-            Platform.runLater(()->{
-                //currentStage.close();
-            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -180,6 +194,20 @@ public class Main_Menu extends Application {
 
     public void showPlayers(ActionEvent actionEvent) {
         System.out.println("Showing current players...");
+        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        currentStage.close();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("current_players.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Registered Players");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void showLeaderboard(ActionEvent actionEvent) {

@@ -115,3 +115,76 @@
     -fx-text-fill: linear-gradient(to bottom, #F7E803, #F58F00);
     -fx-text-alignment: justify;
 }
+
+.current_players {
+    -fx-font-family: "Britannic Bold";
+    -fx-alignment: center;
+    -fx-font-size: 32px;
+    -fx-text-fill: linear-gradient(to bottom, #F7E803, #F58F00);
+    -fx-text-alignment: justify;
+}
+
+.table-view {
+    -fx-font-family: "Britannic Bold";
+    -fx-background-color: transparent;
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-cell-size: 100px;
+    -fx-border-radius: 5px;
+    -fx-border-color: yellow;
+    -fx-border-width: 1px;
+}
+
+.table-view .column-header-background,
+.table-view .column-header,
+.table-view .table-row-cell {
+    -fx-background-color: rgba(255, 255, 255, 0.1); /* Adjust opacity for glass effect */
+    -fx-border-color: rgba(255, 255, 255, 0.5); /* Adjust opacity for border */
+    -fx-border-width: 1px;
+    -fx-text-fill: red;
+}
+
+.table-view .table-row-cell{
+    -fx-text-fill: white;
+    -fx-border-color: yellow;
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell {
+    -fx-background-color: rgba(255, 255, 255, 0.1); /* Adjust opacity for glass effect */
+}
+.table-cell {
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-padding: 5px;
+    -fx-background-color: transparent;
+}
+
+.table-cell .button {
+    -fx-pref-height: 20px;
+    -fx-alignment: center; /* Center align buttons */
+    -fx-padding: 5px; /* Add padding to the buttons */
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: transparent;
+}
+.table-view .table-row-cell:odd {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: transparent
+}
+
+.editDelete-color{
+    -fx-background-color: linear-gradient(to left, #F7E803, #F58F00);
+    -fx-pref-width: 80px;
+    -fx-pref-height: 20px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #0828a8;
+    -fx-font-family: "Britannic Bold";
+    -fx-alignment: center;
+    -fx-padding: 10px;
+    -fx-margin: 50px;
+}
