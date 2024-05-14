@@ -50,6 +50,7 @@ public class Instructions extends Application{
 
 
             Stage mainMenuStage = new Stage();
+            mainMenuStage.setTitle("Space Horizon");
             mainMenuStage.setScene(scene);
             mainMenuStage.show();
 

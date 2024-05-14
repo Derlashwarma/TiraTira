@@ -230,6 +230,7 @@ public class CurrentPlayers extends Application {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
 
             Stage mainMenuStage = new Stage();
+            mainMenuStage.setTitle("Space Horizon");
             mainMenuStage.setScene(scene);
             mainMenuStage.show();
 

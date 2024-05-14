@@ -24,14 +24,14 @@ public class GameOver extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(GameOver.class.getResource("game_over.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+        stage.setScene(scene);
+        stage.setTitle("Game Over");
         InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
         if (iconStream == null) {
             throw new RuntimeException("Icon resource not found");
         }
         Image icon = new Image(iconStream);
         stage.getIcons().add(icon);
-        stage.setTitle("Game Over");
-        stage.setScene(scene);
         stage.show();
         stage.centerOnScreen();
 
@@ -90,6 +90,7 @@ public class GameOver extends Application {
             }
             Image icon = new Image(iconStream);
             mainMenuStage.getIcons().add(icon);
+            mainMenuStage.setTitle("Space Horizon!");
             mainMenuStage.show();
             mainMenuStage.centerOnScreen();
             mainMenuStage.show();

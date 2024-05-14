@@ -71,6 +71,7 @@ public class Game implements Runnable{
                 }
                 Image icon = new Image(iconStream);
                 stage.getIcons().add(icon);
+                stage.setTitle("Game Over!");
                 stage.show();
                 stage.centerOnScreen();
             } catch (IOException e) {

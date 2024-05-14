@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="added an icon during delete alert">
+    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="fix some bugs during log in of playername and new playername">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/CurrentPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/CurrentPlayers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/GameOver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/GameOver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Instructions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Instructions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +182,7 @@
       <workItem from="1715347169690" duration="18249000" />
       <workItem from="1715655183895" duration="829000" />
       <workItem from="1715672571140" duration="203000" />
-      <workItem from="1715684255370" duration="20563000" />
+      <workItem from="1715684255370" duration="21390000" />
     </task>
     <task id="LOCAL-00001" summary="main menu and game over">
       <option name="closed" value="true" />
@@ -317,7 +320,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715704773930</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fix some bugs during log in of playername and new playername">
+      <option name="closed" value="true" />
+      <created>1715705414879</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1715705414879</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +353,8 @@
     <MESSAGE value="Registered Player implemented (can CRUD - edit and isDelete user)" />
     <MESSAGE value="Registered Player implemented (can CRUD - edit and isDelete user) &#10;&#10;centered the game icon" />
     <MESSAGE value="added an icon during delete alert" />
-    <option name="LAST_COMMIT_MESSAGE" value="added an icon during delete alert" />
+    <MESSAGE value="fix some bugs during log in of playername and new playername" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix some bugs during log in of playername and new playername" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
