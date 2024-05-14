@@ -6,9 +6,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Objects;
 
 public class GameOver extends Application {
@@ -49,6 +51,13 @@ public class GameOver extends Application {
         Main_Menu mainMenuController = fxmlLoader.getController();
         mainMenuController.setPlayerName(playerName);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+
+        InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+        if (iconStream == null) {
+            throw new RuntimeException("Icon resource not found");
+        }
+        Image icon = new Image(iconStream);
+        currentStage.getIcons().add(icon);
 
         Platform.runLater(()->{
             mainMenuController.startNewGame();

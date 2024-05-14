@@ -11,11 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -118,6 +120,13 @@ public class CurrentPlayers extends Application {
             Stage mainMenuStage = new Stage();
             mainMenuStage.setScene(scene);
             mainMenuStage.show();
+
+            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+            if (iconStream == null) {
+                throw new RuntimeException("Icon resource not found");
+            }
+            Image icon = new Image(iconStream);
+            mainMenuStage.getIcons().add(icon);
         } catch (IOException e) {
             e.printStackTrace();
         }

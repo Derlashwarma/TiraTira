@@ -5,10 +5,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Objects;
 
 public class Instructions extends Application{
@@ -20,9 +22,19 @@ public class Instructions extends Application{
         FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource("instructions.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+
+        InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+        if (iconStream == null) {
+            throw new RuntimeException("Icon resource not found");
+        }
+        Image icon = new Image(iconStream);
+        primaryStage.getIcons().add(icon);
+
         primaryStage.setTitle("Instructions");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
     }
 
 
@@ -36,9 +48,17 @@ public class Instructions extends Application{
             Scene scene = new Scene(fxmlLoader.load());
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
 
+
             Stage mainMenuStage = new Stage();
             mainMenuStage.setScene(scene);
             mainMenuStage.show();
+
+            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+            if (iconStream == null) {
+                throw new RuntimeException("Icon resource not found");
+            }
+            Image icon = new Image(iconStream);
+            mainMenuStage.getIcons().add(icon);
         } catch (IOException e) {
             e.printStackTrace();
         }

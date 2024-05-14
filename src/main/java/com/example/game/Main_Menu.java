@@ -10,9 +10,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Connection;
@@ -21,12 +24,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 
+import static java.awt.SystemColor.window;
+
 public class Main_Menu extends Application {
 
     public TextField playerNameInput;
     public TextField newPlayerNameInput;
     public Label userMessageLabel;
     private Stage currentStage;
+//    ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("        window.setIconImage(icon.getImage());")));
 
     public void initialize() {
         playerNameInput.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -52,6 +58,14 @@ public class Main_Menu extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource("main_menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+
+        InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+        if (iconStream == null) {
+            throw new RuntimeException("Icon resource not found");
+        }
+        Image icon = new Image(iconStream);
+        primaryStage.getIcons().add(icon);
+
         primaryStage.setTitle("Space Horizon");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -184,8 +198,15 @@ public class Main_Menu extends Application {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Instructions");
+            stage.setTitle("How To Play");
             stage.show();
+
+            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+            if (iconStream == null) {
+                throw new RuntimeException("Icon resource not found");
+            }
+            Image icon = new Image(iconStream);
+            stage.getIcons().add(icon);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -200,10 +221,20 @@ public class Main_Menu extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("current_players.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+
+
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Registered Players");
             stage.show();
+
+            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+            if (iconStream == null) {
+                throw new RuntimeException("Icon resource not found");
+            }
+            Image icon = new Image(iconStream);
+            stage.getIcons().add(icon);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

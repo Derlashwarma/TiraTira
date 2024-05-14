@@ -188,3 +188,10 @@
     -fx-padding: 10px;
     -fx-margin: 50px;
 }
+
+.logo-pane {
+    -fx-background-image: url('../images/logo_space_horizon2.png');
+    -fx-background-size: contain; /* Adjust as needed */
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}

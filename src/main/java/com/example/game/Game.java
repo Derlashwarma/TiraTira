@@ -54,8 +54,8 @@ public class Game implements Runnable{
     public static void endGame(){
         game_running = false;
         Platform.runLater(() -> {
-            Stage currentStage = (Stage) main_container.getScene().getWindow(); // Get the current stage
-            currentStage.close(); // Close current stage
+            Stage currentStage = (Stage) main_container.getScene().getWindow();
+            currentStage.close();
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Game.class.getResource("game_over.fxml"));
                 Parent root = fxmlLoader.load();
