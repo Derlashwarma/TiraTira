@@ -24,9 +24,17 @@ public class GameOver extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(GameOver.class.getResource("game_over.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+        InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+        if (iconStream == null) {
+            throw new RuntimeException("Icon resource not found");
+        }
+        Image icon = new Image(iconStream);
+        stage.getIcons().add(icon);
         stage.setTitle("Game Over");
         stage.setScene(scene);
         stage.show();
+        stage.centerOnScreen();
+
     }
 
     public void setPlayerName(String playerName) {
@@ -58,6 +66,7 @@ public class GameOver extends Application {
         }
         Image icon = new Image(iconStream);
         currentStage.getIcons().add(icon);
+        currentStage.centerOnScreen();
 
         Platform.runLater(()->{
             mainMenuController.startNewGame();
@@ -73,9 +82,16 @@ public class GameOver extends Application {
         try {
             Scene scene = new Scene(fxmlLoader.load());
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
-
             Stage mainMenuStage = new Stage();
             mainMenuStage.setScene(scene);
+            InputStream iconStream = Game.class.getResourceAsStream("/com/example/images/game_icon2.png");
+            if (iconStream == null) {
+                throw new RuntimeException("Icon resource not found");
+            }
+            Image icon = new Image(iconStream);
+            mainMenuStage.getIcons().add(icon);
+            mainMenuStage.show();
+            mainMenuStage.centerOnScreen();
             mainMenuStage.show();
         } catch (IOException e) {
             e.printStackTrace();

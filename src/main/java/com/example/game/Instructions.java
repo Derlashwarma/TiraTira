@@ -59,6 +59,7 @@ public class Instructions extends Application{
             }
             Image icon = new Image(iconStream);
             mainMenuStage.getIcons().add(icon);
+            mainMenuStage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
         }

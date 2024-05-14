@@ -68,6 +68,7 @@ public class Main_Menu extends Application {
 
         primaryStage.setTitle("Space Horizon");
         primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
         primaryStage.show();
 
         MySQLConnection.createPlayerTable();

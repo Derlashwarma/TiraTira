@@ -65,7 +65,14 @@ public class Game implements Runnable{
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.getScene().getStylesheets().add(Game.class.getResource("menu_styles.css").toExternalForm());
+                InputStream iconStream = Game.class.getResourceAsStream("/com/example/images/game_icon2.png");
+                if (iconStream == null) {
+                    throw new RuntimeException("Icon resource not found");
+                }
+                Image icon = new Image(iconStream);
+                stage.getIcons().add(icon);
                 stage.show();
+                stage.centerOnScreen();
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -29,6 +29,7 @@ public class GameStart extends Application {
         }
         Image icon = new Image(iconStream);
         stage.getIcons().add(icon);
+        stage.centerOnScreen();
     }
 
     public GameStart(String playerName) {
