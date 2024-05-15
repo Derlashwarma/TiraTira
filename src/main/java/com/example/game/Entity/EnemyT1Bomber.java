@@ -5,8 +5,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 public class EnemyT1Bomber extends Enemy{
-    public EnemyT1Bomber(long speed, double size, double currentX, double currentY, Color color, String name) {
-        super(80, 40, 300 ,currentX, currentY, color, name);
+    public EnemyT1Bomber(long speed, double size, double currentX, double currentY, Color color, String name, ImageView projectile) {
+        super(80, 40, 300 ,currentX, currentY, color, name, projectile);
         setVisible(false);
     }
     // hello

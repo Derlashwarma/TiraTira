@@ -22,7 +22,10 @@ public class BattleMaker implements Runnable {
     private int score;
 
     private int BattleScenario;
+
+    private ImageView projectile;
     public static boolean isActiveCount;
+
 
     public BattleMaker(AnchorPane mainContainer, ImageView enemyType1, ImageView enemyType2) {
         this.mainContainer = mainContainer;
@@ -95,17 +98,17 @@ public class BattleMaker implements Runnable {
         switch (enemyType) {
             // Fast movement on x-axis but slow on y-axis
             case "StraferV1":
-                enemy = new EnemyT1Strafer(20,locationX, 50, Color.BLUE, "Strafer");
+                enemy = new EnemyT1Strafer(20,locationX, 50, Color.BLUE, "Strafer", projectile);
                 enemy.setMovementPattern(1);
                 enemyCharacter = clone(enemyType1);
                 break;
             // Fast movement on x-axis and y-axis
             case "StraferV2":
-                enemy = new EnemyT1Strafer(10,locationX, 50, Color.BLUE, "Strafer");
+                enemy = new EnemyT1Strafer(10,locationX, 50, Color.BLUE, "Strafer", projectile);
                 enemyCharacter = clone(enemyType1);
                 break;
             case "Bomber":
-                enemy = new EnemyT1Bomber(10, 20, locationX, 50, Color.RED, "Bomber");
+                enemy = new EnemyT1Bomber(10, 20, locationX, 50, Color.RED, "Bomber", projectile);
                 enemyCharacter = clone(enemyType2);
                 break;
             // Add more cases for other enemy types if needed

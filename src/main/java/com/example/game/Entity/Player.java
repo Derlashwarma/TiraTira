@@ -18,7 +18,7 @@ public class Player extends Entity implements Runnable{
     private ImageView bullet;
 
     public Player(double size, Color color, String name, ImageView playerProd) {
-        super(size,0, 200, color, name);
+        super(size,0, 200, color, name, playerProd);
         bullets = new ArrayList<>();
         this.name = name;
         this.playerProjectile = playerProd;

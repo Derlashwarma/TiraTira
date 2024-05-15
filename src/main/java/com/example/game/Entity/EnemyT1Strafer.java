@@ -9,8 +9,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class EnemyT1Strafer extends Enemy{
-    public EnemyT1Strafer(long speed, double currentX, double currentY, Color color, String name) {
-        super(speed, 40, 200 ,currentX, currentY, color, name);
+
+    private ImageView projectile;
+    public EnemyT1Strafer(long speed, double currentX, double currentY, Color color, String name, ImageView projectile) {
+        super(speed, 40, 200 ,currentX, currentY, color, name, projectile);
         setVisible(false);
     }
     @Override

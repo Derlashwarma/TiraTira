@@ -31,16 +31,19 @@ public class Entity extends javafx.scene.shape.Circle{
     protected ImageView enemy;
     protected ImageView second_form;
 
+    protected ImageView enemyProj;
+
     private int counter = 0;
 
     // Constructors takes all basic that makes up an Plane
 
-    public Entity(double size, long speed, double health, Color color, String name){
+    public Entity(double size, long speed, double health, Color color, String name,ImageView enemyProjectile){
         super(size,Color.WHITE);
         this.speed = speed;
         this.health = health;
         this.name = name;
         isAlive = true;
+        this.enemyProj = enemyProjectile;
     }
     public void setEnemy(ImageView enemy) {
         this.enemy = enemy;
@@ -145,13 +148,23 @@ public class Entity extends javafx.scene.shape.Circle{
         });
     }
 
+    private ImageView clone(ImageView to_clone) {
+        ImageView imageView = new ImageView(to_clone.getImage());
+        imageView.setFitHeight(to_clone.getFitHeight());
+        imageView.setFitWidth(to_clone.getFitWidth());
+        return imageView;
+    }
+
     // Adjusted shoot method
     public void shoot() {
         if ((counter % 100) == 0) { // Fixed speed parameter to 100
             EnemyBulletLevel1 bullet = new EnemyBulletLevel1(getLayoutX(), getLayoutY());
             bullet.setPane(anchorPane);
+            bullet.setVisible(false);
+            ImageView clone = clone(enemyProj);
+            bullet.setBullet(clone);
             Platform.runLater(() -> {
-                anchorPane.getChildren().add(bullet);
+                anchorPane.getChildren().addAll(bullet, clone);
             });
             Thread enemyBullet = new Thread(bullet);
             enemyBullet.start();
