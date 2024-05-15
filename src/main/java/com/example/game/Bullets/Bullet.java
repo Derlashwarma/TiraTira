@@ -4,6 +4,7 @@ import com.example.game.Entity.Enemy;
 import com.example.game.Game;
 import javafx.application.Platform;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 
@@ -18,6 +19,7 @@ public abstract class Bullet extends javafx.scene.shape.Rectangle implements Run
     protected int direction;
     protected double damage;
     protected String name;
+    protected ImageView bulletImage;
     protected static final Object lock = new Object();
 
     protected AnchorPane pane;
@@ -30,8 +32,15 @@ public abstract class Bullet extends javafx.scene.shape.Rectangle implements Run
         this.direction = direction;
         this.name = name;
     }
+    public void setBullet(ImageView bulletImage) {
+        this.bulletImage = bulletImage;
+    }
     protected void move(){
         Platform.runLater(()->{
+            if(bulletImage != null) {
+                bulletImage.setLayoutY(currentY);
+                bulletImage.setLayoutX(currentX);
+            }
             setLayoutX(currentX);
             setLayoutY(currentY);
         });
@@ -53,6 +62,7 @@ public abstract class Bullet extends javafx.scene.shape.Rectangle implements Run
         }
         Platform.runLater(() ->{
             pane.getChildren().remove(this);
+            pane.getChildren().remove(bulletImage);
             Thread.currentThread().interrupt();
         });
     }
