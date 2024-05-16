@@ -72,7 +72,7 @@ public class LeaderboardController {
 
     private void fetchTopPlayers() {
         try (Connection connection = MySQLConnection.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT username, scores FROM player WHERE scores > 0 ORDER BY scores DESC LIMIT 5");
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT username, scores FROM player WHERE scores > 0 AND isDeleted = 0 ORDER BY scores DESC LIMIT 5");
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
             int rank = 1;
