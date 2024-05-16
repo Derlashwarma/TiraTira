@@ -127,7 +127,7 @@
 .table-view {
     -fx-font-family: "Britannic Bold";
     -fx-background-color: transparent;
-    -fx-font-size: 12px;
+    -fx-font-size: 20px;
     -fx-text-fill: white;
     -fx-cell-size: 80px;
     -fx-border-radius: 10px;
@@ -243,4 +243,29 @@ table-view .column-header-background,
     -fx-text-fill: #0828a8;
     -fx-font-family: "Britannic Bold";
     -fx-alignment: center;
+}
+
+.leaderboard {
+    -fx-font-family: "Britannic Bold";
+    -fx-alignment: center;
+    -fx-font-size: 46px;
+    -fx-text-fill: linear-gradient(to bottom, #F7E803, #F58F00);
+    -fx-text-alignment: justify;
+}
+
+
+.leaderboardTable {
+    -fx-font-size: 30px;
+}
+.table-row-cell {
+    -fx-cell-size: 60px;
+}
+
+.table-view .rank_styles {
+    -fx-font-size: 22px;
+}
+
+.first-rank .table-cell {
+    -fx-text-fill: #F7E803;
+    -fx-font-size: 30px;
 }
