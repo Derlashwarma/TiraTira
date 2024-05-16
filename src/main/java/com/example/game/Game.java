@@ -33,24 +33,29 @@ public class Game implements Runnable{
     private ImageView character;
     private ImageView enemy_type_1;
     private ImageView enemy_type_2;
+    private ImageView playerBullet;
     public static int score;
     public static Player player;
     private static String name;
     public static int size;
 
 
-    public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2) {
+    public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2, String playerName, ImageView playerProd) {
+      //add imageView sa player bullet 
         main_container = pane;
         game_running = true;
         enemies = new ArrayList<>();
         this.character = character;
         this.enemy_type_1 = background;
         this.enemy_type_2 = background2;
+        this.playerBullet = playerProd;
         size = 0;
+        Game.name = playerName;
     }
     public static void addScore(int sc){
         score += sc;
     }
+
     public static void endGame(){
         game_running = false;
         Platform.runLater(() -> {
@@ -102,8 +107,8 @@ public class Game implements Runnable{
 
     @Override
     public void run() {
-            BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2);
-            player = new Player(20, Color.GREEN, "JEECOO");
+            BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2, clone(playerBullet));
+            player = new Player(20, Color.GREEN,name,clone(playerBullet));
             player.setAnchorPane(main_container);
             player.setAnchorPane(main_container);
             Thread playerThread = new Thread(player);
@@ -111,7 +116,7 @@ public class Game implements Runnable{
 
 
             main_container.setOnMouseMoved(event -> {
-                character.setLayoutX(event.getX()-50);
+                character.setLayoutX(event.getX()-40);
                 character.setLayoutY(event.getY()-40);
                 player.setLayoutX(event.getX());
                 player.setLayoutY(event.getY());

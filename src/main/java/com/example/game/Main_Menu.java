@@ -32,7 +32,7 @@ public class Main_Menu extends Application {
     public TextField newPlayerNameInput;
     public Label userMessageLabel;
     private Stage currentStage;
-//    ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("        window.setIconImage(icon.getImage());")));
+    private static String name;
 
     public void initialize() {
         playerNameInput.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -107,6 +107,7 @@ public class Main_Menu extends Application {
                             System.out.println("Player " + newPlayerName + " added to the database.");
 
                             try {
+                                name = newPlayerName;
                                 GameStart gameStart = new GameStart(newPlayerName);
                                 gameStart.start(new Stage());
                                 System.out.println("Starting the game...");
@@ -137,6 +138,7 @@ public class Main_Menu extends Application {
                     currentStage.close();
 
                     try {
+                        name = playerName;
                         GameStart gameStart = new GameStart(playerName);
                         gameStart.start(new Stage());
                         System.out.println("Starting the game...");
@@ -167,6 +169,9 @@ public class Main_Menu extends Application {
             e.printStackTrace();
             return true;
         }
+    }
+    public static String getName(){
+        return Main_Menu.name;
     }
 
     public void startNewGame() {

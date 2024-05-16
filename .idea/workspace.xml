@@ -28,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="jeecoogwapoo" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -113,6 +113,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Code\OOP2\TiraTiraV3\TiraTira\src\main\resources\com\example\images" />
       <recent name="C:\Users\Jeecoo\IdeaProjects\TiraTira\src\main\resources\com\example\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -163,8 +164,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-21.0.2-corretto-21.0.2-4caba194b151-51586f01" />
       </set>
     </attachedChunks>
   </component>

@@ -5,17 +5,21 @@ import com.example.game.Entity.Player;
 import com.example.game.Game;
 import javafx.application.Platform;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class EnemyBulletLevel1 extends Bullet {
 
     private Player player;
-    public EnemyBulletLevel1(double currentX, double currentY) {
+    private ImageView projectile;
+    public EnemyBulletLevel1(double currentX, double currentY, ImageView enemyProj) {
         super(5, 1, 10, 10, currentX, currentY, Color.PURPLE, 1, "Enemy");
         this.player = Game.player;
+        this.projectile = enemyProj;
     }
     @Override
     protected boolean checkCollision() {
