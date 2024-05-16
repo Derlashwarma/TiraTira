@@ -37,9 +37,11 @@ public class MySQLConnection {
     }
     public static void updatePlayerScore(String username, int score) {
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE player SET scores = ? WHERE username = ?")) {
-            preparedStatement.setInt(1, score);
-            preparedStatement.setString(2, username);
+             PreparedStatement preparedStatement = connection.prepareStatement(
+                     "UPDATE player SET scores =? WHERE username =? AND scores <?")) {
+            preparedStatement.setInt(1, score); // Target score
+            preparedStatement.setString(2, username); // Username to match
+            preparedStatement.setInt(3, score); // Current score to compare against
             int rowsAffected = preparedStatement.executeUpdate();
             System.out.println("Score updated for " + username + ". Rows affected: " + rowsAffected);
         } catch (SQLException e) {

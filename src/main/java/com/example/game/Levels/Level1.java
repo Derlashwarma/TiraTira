@@ -1,6 +1,8 @@
 package com.example.game.Levels;
 
 import com.example.game.Game;
+import com.example.game.GameStart;
+import com.example.game.Main_Menu;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;

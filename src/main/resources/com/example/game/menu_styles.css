@@ -79,7 +79,7 @@
     -fx-background-radius: 18px;
     -fx-font-family: "Britannic Bold";
     -fx-alignment: center;
-    -fx-font-size: 20px;
+    -fx-font-size: 23px;
     -fx-text-fill: #EDEADE;
     -fx-border-color: #EDEADE;
     -fx-border-width: 1px;
@@ -127,30 +127,29 @@
 .table-view {
     -fx-font-family: "Britannic Bold";
     -fx-background-color: transparent;
-    -fx-font-size: 18px;
+    -fx-font-size: 20px;
     -fx-text-fill: white;
-    -fx-cell-size: 100px;
-    -fx-border-radius: 5px;
-    -fx-border-color: yellow;
+    -fx-cell-size: 80px;
+    -fx-border-radius: 10px;
+    -fx-border-color: rgba(255, 255, 255, 0.5);
     -fx-border-width: 1px;
+    -fx-padding: 10px;
 }
 
-.table-view .column-header-background,
-.table-view .column-header,
-.table-view .table-row-cell {
-    -fx-background-color: rgba(255, 255, 255, 0.1); /* Adjust opacity for glass effect */
-    -fx-border-color: rgba(255, 255, 255, 0.5); /* Adjust opacity for border */
-    -fx-border-width: 1px;
-    -fx-text-fill: red;
+.table-view .column-header{
+    -fx-font-size: 18px;
+    -fx-text-fill: yellow;
+
 }
 
 .table-view .table-row-cell{
     -fx-text-fill: white;
-    -fx-border-color: yellow;
+    /*-fx-border-color: yellow;*/
     -fx-background-color: transparent;
 }
 
 .table-view .table-cell {
+    -fx-font-size: 16px;
     -fx-background-color: rgba(255, 255, 255, 0.1); /* Adjust opacity for glass effect */
 }
 .table-cell {
@@ -161,9 +160,10 @@
 }
 
 .table-cell .button {
-    -fx-pref-height: 20px;
-    -fx-alignment: center; /* Center align buttons */
-    -fx-padding: 5px; /* Add padding to the buttons */
+    -fx-pref-width: 50px;
+    -fx-pref-height: 80px;
+    -fx-alignment: center;
+    -fx-padding: 5px;
 }
 
 .table-view .table-row-cell {
@@ -174,17 +174,98 @@
 }
 
 .table-view .table-row-cell:selected {
-    -fx-background-color: transparent
+    /*-fx-background-color: transparent*/
 }
 
 .editDelete-color{
     -fx-background-color: linear-gradient(to left, #F7E803, #F58F00);
-    -fx-pref-width: 80px;
-    -fx-pref-height: 20px;
     -fx-font-size: 14px;
     -fx-text-fill: #0828a8;
     -fx-font-family: "Britannic Bold";
     -fx-alignment: center;
     -fx-padding: 10px;
     -fx-margin: 50px;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 50px;
+}
+
+.logo-pane {
+    -fx-background-image: url('../images/logo_space_horizon2.png');
+    -fx-background-size: contain; /* Adjust as needed */
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.tableHeader {
+    -fx-font-size: 18px;
+}
+
+
+.table-view .column-header-background,
+.table-view .column-header {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-border-color: rgba(255, 255, 255, 0.5);
+    -fx-border-radius: 5px;
+    /*-fx-text-fill: red;*/
+}
+
+.table-view .table-row-cell,
+.table-view .table-column-cell{
+    -fx-border-style: none;
+}
+
+
+table-view .column-header-background,
+.table-view .column-header,
+.table-view .table-cell {
+    -fx-border-style: none;
+}
+
+.table-view .column-header {
+    -fx-padding: 0px;
+}
+
+.table-view .table-cell {
+    -fx-padding: 5px;
+}
+.table-view .column-header .label {
+    -fx-text-fill: #00ffff;
+}
+
+#playersTable .column-header {
+    -fx-text-fill: red;
+}
+
+.back-button {
+    -fx-background-color: linear-gradient(to left, #F7E803, #F58F00);
+    -fx-pref-width: 80px;
+    -fx-pref-height: 2px;
+    -fx-text-fill: #0828a8;
+    -fx-font-family: "Britannic Bold";
+    -fx-alignment: center;
+}
+
+.leaderboard {
+    -fx-font-family: "Britannic Bold";
+    -fx-alignment: center;
+    -fx-font-size: 46px;
+    -fx-text-fill: linear-gradient(to bottom, #F7E803, #F58F00);
+    -fx-text-alignment: justify;
+}
+
+
+.leaderboardTable {
+    -fx-font-size: 30px;
+}
+.table-row-cell {
+    -fx-cell-size: 60px;
+}
+
+.table-view .rank_styles {
+    -fx-font-size: 22px;
+}
+
+.first-rank .table-cell {
+    -fx-text-fill: #F7E803;
+    -fx-font-size: 30px;
 }

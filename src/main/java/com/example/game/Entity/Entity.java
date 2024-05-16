@@ -162,7 +162,7 @@ public class Entity extends javafx.scene.shape.Circle{
         if ((counter % 100) == 0) { // Fixed speed parameter to 100
             EnemyBulletLevel1 bullet = new EnemyBulletLevel1(getLayoutX(), getLayoutY(), enemyProj);
             bullet.setPane(anchorPane);
-            bullet.setVisible(false);
+//            bullet.setVisible(false);
             ImageView clone = clone(enemyProj);
             bullet.setBullet(clone);
             Platform.runLater(() -> {

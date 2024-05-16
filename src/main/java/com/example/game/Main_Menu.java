@@ -10,9 +10,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Connection;
@@ -21,12 +24,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 
+import static java.awt.SystemColor.window;
+
 public class Main_Menu extends Application {
 
     public TextField playerNameInput;
     public TextField newPlayerNameInput;
     public Label userMessageLabel;
     private Stage currentStage;
+    private static String name;
 
     public void initialize() {
         playerNameInput.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -52,8 +58,17 @@ public class Main_Menu extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource("main_menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+
+        InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+        if (iconStream == null) {
+            throw new RuntimeException("Icon resource not found");
+        }
+        Image icon = new Image(iconStream);
+        primaryStage.getIcons().add(icon);
+
         primaryStage.setTitle("Space Horizon");
         primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
         primaryStage.show();
 
         MySQLConnection.createPlayerTable();
@@ -71,7 +86,7 @@ public class Main_Menu extends Application {
         }
 
         if (!playerName.isEmpty() && !newPlayerName.isEmpty()) {
-            userMessageLabel.setText("Enter player name or create a new one");
+            userMessageLabel.setText("Enter player name or create a new one.");
             return;
         }
 
@@ -81,7 +96,7 @@ public class Main_Menu extends Application {
                 return;
             }
             try (Connection connection = MySQLConnection.getConnection();
-                 PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ?")) {
+                 PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ? AND isDeleted = 0")) {
 
                 checkStatement.setString(1, newPlayerName);
                 ResultSet resultSet = checkStatement.executeQuery();
@@ -89,7 +104,7 @@ public class Main_Menu extends Application {
                 int count = resultSet.getInt(1);
 
                 if (count > 0) {
-                    userMessageLabel.setText("Player name is already taken");
+                    userMessageLabel.setText("Player name is already taken.");
                 } else {
                     try (PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO player (username) VALUES (?)")) {
                         insertStatement.setString(1, newPlayerName);
@@ -98,9 +113,12 @@ public class Main_Menu extends Application {
                             System.out.println("Player " + newPlayerName + " added to the database.");
 
                             try {
+                                name = newPlayerName;
                                 GameStart gameStart = new GameStart(newPlayerName);
                                 gameStart.start(new Stage());
                                 System.out.println("Starting the game...");
+                                currentStage = (Stage) playerNameInput.getScene().getWindow();
+                                currentStage.close();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -114,7 +132,7 @@ public class Main_Menu extends Application {
             }
         } else if (!playerName.isEmpty()) {
             try (Connection connection = MySQLConnection.getConnection();
-                 PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ?")) {
+                 PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ? AND isDeleted = 0")) {
 
                 checkStatement.setString(1, playerName);
                 ResultSet resultSet = checkStatement.executeQuery();
@@ -126,6 +144,7 @@ public class Main_Menu extends Application {
                     currentStage.close();
 
                     try {
+                        name = playerName;
                         GameStart gameStart = new GameStart(playerName);
                         gameStart.start(new Stage());
                         System.out.println("Starting the game...");
@@ -157,12 +176,16 @@ public class Main_Menu extends Application {
             return true;
         }
     }
+    public static String getName(){
+        return Main_Menu.name;
+    }
 
     public void startNewGame() {
         try {
             GameStart gameStart = new GameStart(playerNameInput.getText());
             gameStart.start(new Stage());
             currentStage = (Stage) playerNameInput.getScene().getWindow();
+            currentStage.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -190,8 +213,15 @@ public class Main_Menu extends Application {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Instructions");
+            stage.setTitle("Introduction");
             stage.show();
+
+            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+            if (iconStream == null) {
+                throw new RuntimeException("Icon resource not found");
+            }
+            Image icon = new Image(iconStream);
+            stage.getIcons().add(icon);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -206,10 +236,20 @@ public class Main_Menu extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("current_players.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+
+
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Registered Players");
             stage.show();
+
+            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+            if (iconStream == null) {
+                throw new RuntimeException("Icon resource not found");
+            }
+            Image icon = new Image(iconStream);
+            stage.getIcons().add(icon);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -218,6 +258,29 @@ public class Main_Menu extends Application {
 
     public void showLeaderboard(ActionEvent actionEvent) {
         System.out.println("Showing high scores...");
+        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        currentStage.close();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("leaderboard.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+
+
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Leaderboard");
+            stage.show();
+
+            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+            if (iconStream == null) {
+                throw new RuntimeException("Icon resource not found");
+            }
+            Image icon = new Image(iconStream);
+            stage.getIcons().add(icon);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void quitGame() {
@@ -225,12 +288,18 @@ public class Main_Menu extends Application {
         alert.setTitle("Quit Game");
         alert.setHeaderText(null);
         alert.setContentText("Are you sure you want to quit the game?");
+        Stage stage2 = (Stage) alert.getDialogPane().getScene().getWindow();
+        InputStream iconStream = getClass().getResourceAsStream("/com/example/images/confirmation_icon.png");
+        if (iconStream != null) {
+            stage2.getIcons().add(new Image(iconStream));
+        }
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 Stage stage = (Stage) playerNameInput.getScene().getWindow();
                 stage.close();
             }
         });
+
     }
 
     public void facebook() {

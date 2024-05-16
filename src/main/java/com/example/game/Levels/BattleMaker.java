@@ -124,7 +124,7 @@ public class BattleMaker implements Runnable {
         enemy.setEnemyBullet(enemyBullet);
         Game.addEnemy(enemy);
         Platform.runLater(()->{
-            mainContainer.getChildren().addAll(enemy,enemyBullet);
+            mainContainer.getChildren().add(enemy);
         });
         Thread enemyThread = new Thread(enemy);
         enemyThread.start();
