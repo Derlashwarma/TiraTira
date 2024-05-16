@@ -53,16 +53,14 @@ public abstract class Bullet extends javafx.scene.shape.Rectangle implements Run
     @Override
     public void run() {
         while(currentY < BOTTOM_LIMIT && currentY > TOP_LIMIT && !checkCollision() ) {
-            move();
-            if(getCurrentX() < 10 && getCurrentY() < 10) {
+            try {
+                move();
+                Thread.sleep((long)speed);
+            } catch (Exception e) {
                 break;
             }
-            try {
-                Thread.sleep((long)speed);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
         }
+
         Platform.runLater(() ->{
             pane.getChildren().remove(this);
             pane.getChildren().remove(bulletImage);

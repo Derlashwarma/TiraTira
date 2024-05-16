@@ -61,9 +61,9 @@ public class Player extends Entity implements Runnable{
     public void run() {
         while(getHealth() > 0 && Game.game_running) {
             move();
-            PlayerBullet playerBullet = new PlayerBullet(getLayoutX(),getLayoutY()-30, name);
+            PlayerBullet playerBullet = new PlayerBullet(getLayoutX()-10,getLayoutY()-50, name);
             playerBullet.setAnchorPane(anchorPane);
-            playerBullet.setVisible(false);
+//            playerBullet.setVisible(false);
             ImageView clone = clone(playerProjectile);
             playerBullet.setBullet(clone);
             Platform.runLater(() -> {
