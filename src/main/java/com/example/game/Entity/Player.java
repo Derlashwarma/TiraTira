@@ -13,11 +13,15 @@ import java.util.ArrayList;
 
 public class Player extends Entity implements Runnable{
     private String name;
+    private ImageView playerProjectile;
     ArrayList<Thread> bullets;
-    public Player(double size, Color color, String name) {
+    private ImageView bullet;
+
+    public Player(double size, Color color, String name, ImageView playerProd) {
         super(size,0, 200, color, name);
         bullets = new ArrayList<>();
         this.name = name;
+        this.playerProjectile = playerProd;
     }
     public String getName(){
         return name;
@@ -42,6 +46,16 @@ public class Player extends Entity implements Runnable{
             }
         }
     }
+    private ImageView clone(ImageView to_clone) {
+        ImageView imageView = new ImageView(to_clone.getImage());
+        imageView.setFitHeight(to_clone.getFitHeight());
+        imageView.setFitWidth(to_clone.getFitWidth());
+        return imageView;
+    }
+
+    public void setBullet(ImageView bullet){
+        this.bullet = bullet;
+    }
 
     @Override
     public void run() {
@@ -49,8 +63,11 @@ public class Player extends Entity implements Runnable{
             move();
             PlayerBullet playerBullet = new PlayerBullet(getLayoutX(),getLayoutY()-30, name);
             playerBullet.setAnchorPane(anchorPane);
+            playerBullet.setVisible(false);
+            ImageView clone = clone(playerProjectile);
+            playerBullet.setBullet(clone);
             Platform.runLater(() -> {
-                anchorPane.getChildren().add(playerBullet);
+                anchorPane.getChildren().addAll(playerBullet,clone);
             });
 
             Thread thread = new Thread(playerBullet);

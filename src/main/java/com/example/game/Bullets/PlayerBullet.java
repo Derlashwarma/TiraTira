@@ -6,6 +6,7 @@ import com.example.game.Entity.EnemyT1Strafer;
 import com.example.game.Game;
 import javafx.application.Platform;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -19,6 +20,7 @@ public class PlayerBullet extends Bullet{
     public void setAnchorPane(AnchorPane pane){
         super.pane = pane;
     }
+
 
     @Override
     protected boolean checkCollision() {

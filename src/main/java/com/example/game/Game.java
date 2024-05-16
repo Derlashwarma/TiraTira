@@ -33,6 +33,7 @@ public class Game implements Runnable{
     private ImageView character;
     private ImageView enemy_type_1;
     private ImageView enemy_type_2;
+    private ImageView playerBullet;
     public static int score;
     public static Player player;
     private static String name;
@@ -40,12 +41,14 @@ public class Game implements Runnable{
 
 
     public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2, String playerName) {
+      //add imageView sa player bullet 
         main_container = pane;
         game_running = true;
         enemies = new ArrayList<>();
         this.character = character;
         this.enemy_type_1 = background;
         this.enemy_type_2 = background2;
+        this.playerBullet = playerProd;
         size = 0;
         Game.name = playerName;
     }

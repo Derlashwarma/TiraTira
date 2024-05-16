@@ -4,6 +4,7 @@ import com.example.game.Bullets.EnemyBulletLevel1;
 import com.example.game.Bullets.PlayerBullet;
 import com.example.game.Game;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
@@ -11,6 +12,7 @@ public class Enemy extends Entity implements Runnable {
     private int movementPattern = 0;
     private final double BOTTOM_LIMIT = 760;
     private long speed;
+    private ImageView enemyProjectile;
 
     public int getMovementPattern() {
         return movementPattern;
@@ -25,6 +27,14 @@ public class Enemy extends Entity implements Runnable {
         setCurrentX(currentX);
         setCurrentY(currentY);
         setDirectionX(1);
+        //this.enemyProjectile = enemyProj;
+    }
+
+    private ImageView clone(ImageView to_clone) {
+        ImageView imageView = new ImageView(to_clone.getImage());
+        imageView.setFitHeight(to_clone.getFitHeight());
+        imageView.setFitWidth(to_clone.getFitWidth());
+        return imageView;
     }
 
     @Override
