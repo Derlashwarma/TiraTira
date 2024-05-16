@@ -22,12 +22,18 @@ public class Enemy extends Entity implements Runnable {
         this.movementPattern = movementPattern;
     }
 
-    public Enemy(long speed,double size,double health,double currentX, double currentY, Color color, String name) {
+    private int points;
+
+    public Enemy(long speed,double size,double health,double currentX, double currentY, Color color, String name, int points) {
         super(size,speed, health ,Color.WHITE, name);
         setCurrentX(currentX);
         setCurrentY(currentY);
         setDirectionX(1);
+        this.points = points;
         //this.enemyProjectile = enemyProj;
+    }
+    public int getPoints() {
+        return points;
     }
 
     private ImageView clone(ImageView to_clone) {

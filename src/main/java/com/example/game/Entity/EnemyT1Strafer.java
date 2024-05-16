@@ -12,7 +12,7 @@ public class EnemyT1Strafer extends Enemy{
 
     private ImageView projectile;
     public EnemyT1Strafer(long speed, double currentX, double currentY, Color color, String name, ImageView enemyProj) {
-        super(speed, 40, 200 ,currentX, currentY, color, name);
+        super(speed, 40, 200 ,currentX, currentY, color, name, 2);
         setVisible(false);
         this.projectile = enemyProj;
     }
