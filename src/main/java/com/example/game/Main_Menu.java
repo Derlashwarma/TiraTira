@@ -207,7 +207,7 @@ public class Main_Menu extends Application {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("How To Play");
+            stage.setTitle("Introduction");
             stage.show();
 
             InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
