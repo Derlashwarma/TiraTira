@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="leaderboard created">
+    
+    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="may 16&#10;added player model&#10;different proj for player and enemy&#10;adjusted proj output">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/images/scrollingBG_1.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game/leaderboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/leaderboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game/menu_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/menu_styles.css" afterDir="false" />
 
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="russel-may-15" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -93,10 +94,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "#15 on leaderboard",
+    "git-widget-placeholder": "russel-may-16",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/java/com/example/game",
-    "last_opened_file_path": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/resources/com/example/images",
+    "last_opened_file_path": "E:/Code/OOP2/TiraTiraV3/TiraTira/src/main/resources/com/example/images",
+
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -116,6 +118,7 @@
       <recent name="C:\Users\Jeecoo\IdeaProjects\TiraTira\src\main\resources\com\example\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Code\OOP2\TiraTiraV3\TiraTira\src\main\resources\com\example\images" />
       <recent name="C:\Users\Jeecoo\IdeaProjects\TiraTira\src\main\resources\com\example\game" />
       <recent name="C:\Users\Jeecoo\IdeaProjects\TiraTira\src\main\resources\com\example\main_menu" />
     </key>
@@ -180,9 +183,10 @@
       <workItem from="1715327123781" duration="8172000" />
       <workItem from="1715339163153" duration="7959000" />
       <workItem from="1715347169690" duration="18249000" />
-      <workItem from="1715655183895" duration="829000" />
-      <workItem from="1715672571140" duration="203000" />
-      <workItem from="1715684255370" duration="21390000" />
+      <workItem from="1715698130882" duration="2451000" />
+      <workItem from="1715753802544" duration="3082000" />
+      <workItem from="1715834028939" duration="3790000" />
+      <workItem from="1715845547233" duration="6091000" />
     </task>
     <task id="LOCAL-00001" summary="main menu and game over">
       <option name="closed" value="true" />
@@ -344,7 +348,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715863173671</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00014" summary="may 16 russel update">
+      <option name="closed" value="true" />
+      <created>1715835988809</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715835988809</updated>
+    </task>
+    <task id="LOCAL-00015" summary="may 16&#10;added player model&#10;different proj for player and enemy&#10;adjusted proj output">
+      <option name="closed" value="true" />
+      <created>1715861099866</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715861099866</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,13 +385,10 @@
     <MESSAGE value="main menu and game over" />
     <MESSAGE value="player and new player input box (database) implemented" />
     <MESSAGE value="Register Players Page 60%" />
-    <MESSAGE value="Game Icon created" />
-    <MESSAGE value="Registered Player implemented (can CRUD - edit and isDelete user)" />
-    <MESSAGE value="Registered Player implemented (can CRUD - edit and isDelete user) &#10;&#10;centered the game icon" />
-    <MESSAGE value="added an icon during delete alert" />
-    <MESSAGE value="fix some bugs during log in of playername and new playername" />
-    <MESSAGE value="leaderboard created" />
-    <option name="LAST_COMMIT_MESSAGE" value="leaderboard created" />
+    <MESSAGE value="may 15 russel update" />
+    <MESSAGE value="may 16 russel update" />
+    <MESSAGE value="may 16&#10;added player model&#10;different proj for player and enemy&#10;adjusted proj output" />
+    <option name="LAST_COMMIT_MESSAGE" value="may 16&#10;added player model&#10;different proj for player and enemy&#10;adjusted proj output" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

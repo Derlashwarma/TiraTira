@@ -4,7 +4,7 @@
 }
 
 .game-background{
-    -fx-background-image: url('../images/BG_Space003.png');
+    -fx-background-image: url('../images/scrollingBG_1.gif');
     -fx-background-size: cover;
 }
 

@@ -23,16 +23,18 @@ public class BattleMaker implements Runnable {
 
     private int BattleScenario;
 
-    private ImageView projectile;
+    private ImageView projectileP;
+    private ImageView projectileE;
     public static boolean isActiveCount;
 
 
-    public BattleMaker(AnchorPane mainContainer, ImageView enemyType1, ImageView enemyType2, ImageView enemyProj) {
+    public BattleMaker(AnchorPane mainContainer, ImageView enemyType1, ImageView enemyType2, ImageView playerProj, ImageView enemyProj) {
         this.mainContainer = mainContainer;
         this.enemyType1 = enemyType1;
         this.enemyType2 = enemyType2;
         isActiveCount = true;
-        this.projectile = enemyProj;
+        this.projectileP = playerProj;
+        this.projectileE = enemyProj;
     }
 
     @Override
@@ -99,17 +101,17 @@ public class BattleMaker implements Runnable {
         switch (enemyType) {
             // Fast movement on x-axis but slow on y-axis
             case "StraferV1":
-                enemy = new EnemyT1Strafer(20,locationX, 50, Color.BLUE, "Strafer", projectile);
+                enemy = new EnemyT1Strafer(20,locationX, 50, Color.BLUE, "Strafer", projectileE);
                 enemy.setMovementPattern(1);
                 enemyCharacter = clone(enemyType1);
                 break;
             // Fast movement on x-axis and y-axis
             case "StraferV2":
-                enemy = new EnemyT1Strafer(10,locationX, 50, Color.BLUE, "Strafer", projectile);
+                enemy = new EnemyT1Strafer(10,locationX, 50, Color.BLUE, "Strafer", projectileE);
                 enemyCharacter = clone(enemyType1);
                 break;
             case "Bomber":
-                enemy = new EnemyT1Bomber(10, 20, locationX, 50, Color.RED, "Bomber", projectile);
+                enemy = new EnemyT1Bomber(10, 20, locationX, 50, Color.RED, "Bomber", projectileE);
                 enemyCharacter = clone(enemyType2);
                 break;
             // Add more cases for other enemy types if needed
@@ -118,7 +120,7 @@ public class BattleMaker implements Runnable {
         }
         enemy.setEnemy(enemyCharacter);
         enemy.setAnchorPane(mainContainer);
-        ImageView enemyBullet = clone(projectile);
+        ImageView enemyBullet = clone(projectileE);
         enemy.setEnemyBullet(enemyBullet);
         Game.addEnemy(enemy);
         Platform.runLater(()->{
