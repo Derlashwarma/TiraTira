@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="leaderboard created">
+    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="fix some bugs during log in of playername and new playername">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_15_2024_10_54_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_15_2024_10_54_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_15_2024_10_58_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_15_2024_10_58_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_15_2024_10_59_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_15_2024_10_59_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_15_2024_11_08_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_15_2024_11_08_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_16_2024_5_49_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_16_2024_5_49_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_16_2024_5_56_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_16_2024_5_56_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_16_2024_5_59_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_16_2024_5_59_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_16_2024_5_49_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_16_2024_5_49_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_16_2024_5_59_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_16_2024_5_59_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/LeaderboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/LeaderboardController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -83,7 +91,6 @@
     "Application.GameOver.executor": "Run",
     "Application.GameStart.executor": "Run",
     "Application.Instructions.executor": "Run",
-    "Application.Leaderboard.executor": "Run",
     "Application.Main_Menu.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
@@ -92,19 +99,19 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "leaderboard",
+    "git-widget-placeholder": "#15 on leaderboard",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/java/com/example/game",
-    "last_opened_file_path": "E:/Code/OOP2/TiraTiraV3/TiraTira",
+    "last_opened_file_path": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/resources/com/example/images",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.46666667",
+    "project.structure.side.proportion": "0.2",
     "prot.structure.last.edited": "Libraries",
     "vue.rearranger.settings.migration": "true"
   }
@@ -162,7 +169,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-corretto-21.0.2-4caba194b151-51586f01" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -178,9 +186,9 @@
       <workItem from="1715327123781" duration="8172000" />
       <workItem from="1715339163153" duration="7959000" />
       <workItem from="1715347169690" duration="18249000" />
-      <workItem from="1715698130882" duration="2451000" />
-      <workItem from="1715753802544" duration="3082000" />
-      <workItem from="1715834028939" duration="1706000" />
+      <workItem from="1715655183895" duration="829000" />
+      <workItem from="1715672571140" duration="203000" />
+      <workItem from="1715684255370" duration="21390000" />
     </task>
     <task id="LOCAL-00001" summary="main menu and game over">
       <option name="closed" value="true" />
@@ -278,23 +286,55 @@
       <option name="project" value="LOCAL" />
       <updated>1715616620139</updated>
     </task>
-    <task id="LOCAL-00013" summary="may 15 russel update">
+    <task id="LOCAL-00013" summary="Game Icon created">
       <option name="closed" value="true" />
-      <created>1715757491242</created>
+      <created>1715689367087</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1715757491243</updated>
+      <updated>1715689367089</updated>
     </task>
-    <task id="LOCAL-00014" summary="leaderboard created">
+    <task id="LOCAL-00014" summary="Registered Player implemented (can CRUD - edit and isDelete user)">
       <option name="closed" value="true" />
-      <created>1715862172687</created>
+      <created>1715699613743</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1715862172687</updated>
+      <updated>1715699613743</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Registered Player implemented (can CRUD - edit and isDelete user)">
+      <option name="closed" value="true" />
+      <created>1715702709757</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715702709757</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Registered Player implemented (can CRUD - edit and isDelete user) &#10;&#10;centered the game icon">
+      <option name="closed" value="true" />
+      <created>1715703387991</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715703387991</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added an icon during delete alert">
+      <option name="closed" value="true" />
+      <created>1715704773930</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1715704773930</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fix some bugs during log in of playername and new playername">
+      <option name="closed" value="true" />
+      <created>1715705414879</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1715705414879</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,9 +355,12 @@
     <MESSAGE value="main menu and game over" />
     <MESSAGE value="player and new player input box (database) implemented" />
     <MESSAGE value="Register Players Page 60%" />
-    <MESSAGE value="may 15 russel update" />
-    <MESSAGE value="leaderboard created" />
-    <option name="LAST_COMMIT_MESSAGE" value="leaderboard created" />
+    <MESSAGE value="Game Icon created" />
+    <MESSAGE value="Registered Player implemented (can CRUD - edit and isDelete user)" />
+    <MESSAGE value="Registered Player implemented (can CRUD - edit and isDelete user) &#10;&#10;centered the game icon" />
+    <MESSAGE value="added an icon during delete alert" />
+    <MESSAGE value="fix some bugs during log in of playername and new playername" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix some bugs during log in of playername and new playername" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
