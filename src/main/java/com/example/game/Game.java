@@ -59,8 +59,8 @@ public class Game implements Runnable{
     public static void endGame(){
         game_running = false;
         Platform.runLater(() -> {
-            Stage currentStage = (Stage) main_container.getScene().getWindow(); // Get the current stage
-            currentStage.close(); // Close current stage
+            Stage currentStage = (Stage) main_container.getScene().getWindow();
+            currentStage.close();
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Game.class.getResource("game_over.fxml"));
                 Parent root = fxmlLoader.load();
@@ -70,7 +70,15 @@ public class Game implements Runnable{
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.getScene().getStylesheets().add(Game.class.getResource("menu_styles.css").toExternalForm());
+                InputStream iconStream = Game.class.getResourceAsStream("/com/example/images/game_icon2.png");
+                if (iconStream == null) {
+                    throw new RuntimeException("Icon resource not found");
+                }
+                Image icon = new Image(iconStream);
+                stage.getIcons().add(icon);
+                stage.setTitle("Game Over!");
                 stage.show();
+                stage.centerOnScreen();
             } catch (IOException e) {
                 e.printStackTrace();
             }

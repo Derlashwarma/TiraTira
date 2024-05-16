@@ -10,9 +10,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Connection;
@@ -20,6 +23,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
+
+import static java.awt.SystemColor.window;
 
 public class Main_Menu extends Application {
 
@@ -53,8 +58,17 @@ public class Main_Menu extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource("main_menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+
+        InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+        if (iconStream == null) {
+            throw new RuntimeException("Icon resource not found");
+        }
+        Image icon = new Image(iconStream);
+        primaryStage.getIcons().add(icon);
+
         primaryStage.setTitle("Space Horizon");
         primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
         primaryStage.show();
 
         MySQLConnection.createPlayerTable();
@@ -66,7 +80,7 @@ public class Main_Menu extends Application {
         String newPlayerName = newPlayerNameInput.getText();
 
         if (!playerName.isEmpty() && !newPlayerName.isEmpty()) {
-            userMessageLabel.setText("Enter player name or create a new one");
+            userMessageLabel.setText("Enter player name or create a new one.");
             return;
         }
 
@@ -76,7 +90,7 @@ public class Main_Menu extends Application {
                 return;
             }
             try (Connection connection = MySQLConnection.getConnection();
-                 PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ?")) {
+                 PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ? AND isDeleted = 0")) {
 
                 checkStatement.setString(1, newPlayerName);
                 ResultSet resultSet = checkStatement.executeQuery();
@@ -84,7 +98,7 @@ public class Main_Menu extends Application {
                 int count = resultSet.getInt(1);
 
                 if (count > 0) {
-                    userMessageLabel.setText("Player name is already taken");
+                    userMessageLabel.setText("Player name is already taken.");
                 } else {
                     try (PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO player (username) VALUES (?)")) {
                         insertStatement.setString(1, newPlayerName);
@@ -97,6 +111,8 @@ public class Main_Menu extends Application {
                                 GameStart gameStart = new GameStart(newPlayerName);
                                 gameStart.start(new Stage());
                                 System.out.println("Starting the game...");
+                                currentStage = (Stage) playerNameInput.getScene().getWindow();
+                                currentStage.close();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -110,7 +126,7 @@ public class Main_Menu extends Application {
             }
         } else if (!playerName.isEmpty()) {
             try (Connection connection = MySQLConnection.getConnection();
-                 PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ?")) {
+                 PreparedStatement checkStatement = connection.prepareStatement("SELECT COUNT(*) FROM player WHERE username = ? AND isDeleted = 0")) {
 
                 checkStatement.setString(1, playerName);
                 ResultSet resultSet = checkStatement.executeQuery();
@@ -163,6 +179,7 @@ public class Main_Menu extends Application {
             GameStart gameStart = new GameStart(playerNameInput.getText());
             gameStart.start(new Stage());
             currentStage = (Stage) playerNameInput.getScene().getWindow();
+            currentStage.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -190,8 +207,15 @@ public class Main_Menu extends Application {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Instructions");
+            stage.setTitle("How To Play");
             stage.show();
+
+            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+            if (iconStream == null) {
+                throw new RuntimeException("Icon resource not found");
+            }
+            Image icon = new Image(iconStream);
+            stage.getIcons().add(icon);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -206,10 +230,20 @@ public class Main_Menu extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("current_players.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+
+
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Registered Players");
             stage.show();
+
+            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+            if (iconStream == null) {
+                throw new RuntimeException("Icon resource not found");
+            }
+            Image icon = new Image(iconStream);
+            stage.getIcons().add(icon);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

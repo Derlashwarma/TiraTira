@@ -6,36 +6,28 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class CurrentPlayer {
-    private final IntegerProperty id;
+    private final int id;
     private final StringProperty username;
 
     public CurrentPlayer(int id, String username) {
-        this.id = new SimpleIntegerProperty(id);
+        this.id = id;
         this.username = new SimpleStringProperty(username);
     }
 
     public int getId() {
-        return id.get();
-    }
-
-    public IntegerProperty idProperty() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id.set(id);
     }
 
     public String getUsername() {
         return username.get();
     }
 
-    public StringProperty usernameProperty() {
-        return username;
-    }
-
     public void setUsername(String username) {
         this.username.set(username);
+    }
+
+    public StringProperty usernameProperty() {
+        return username;
     }
 }
 
