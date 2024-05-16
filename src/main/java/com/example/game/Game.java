@@ -96,7 +96,7 @@ public class Game implements Runnable{
 
     @Override
     public void run() {
-            BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2);
+            BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2, playerBullet);
             player = new Player(20, Color.GREEN, "JEECOO", playerBullet);
             player.setAnchorPane(main_container);
             player.setAnchorPane(main_container);

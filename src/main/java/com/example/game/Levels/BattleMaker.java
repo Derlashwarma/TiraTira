@@ -27,11 +27,12 @@ public class BattleMaker implements Runnable {
     public static boolean isActiveCount;
 
 
-    public BattleMaker(AnchorPane mainContainer, ImageView enemyType1, ImageView enemyType2) {
+    public BattleMaker(AnchorPane mainContainer, ImageView enemyType1, ImageView enemyType2, ImageView enemyProj) {
         this.mainContainer = mainContainer;
         this.enemyType1 = enemyType1;
         this.enemyType2 = enemyType2;
         isActiveCount = true;
+        this.projectile = enemyProj;
     }
 
     @Override
@@ -117,8 +118,12 @@ public class BattleMaker implements Runnable {
         }
         enemy.setEnemy(enemyCharacter);
         enemy.setAnchorPane(mainContainer);
+        ImageView enemyBullet = clone(projectile);
+        enemy.setEnemyBullet(enemyBullet);
         Game.addEnemy(enemy);
-        mainContainer.getChildren().add(enemy);
+        Platform.runLater(()->{
+            mainContainer.getChildren().addAll(enemy,enemyBullet);
+        });
         Thread enemyThread = new Thread(enemy);
         enemyThread.start();
     }

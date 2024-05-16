@@ -4,6 +4,7 @@ import com.example.game.Bullets.EnemyBulletLevel1;
 import com.example.game.Bullets.PlayerBullet;
 import com.example.game.Game;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
@@ -21,8 +22,8 @@ public class Enemy extends Entity implements Runnable {
         this.movementPattern = movementPattern;
     }
 
-    public Enemy(long speed,double size,double health,double currentX, double currentY, Color color, String name, ImageView enemyProj) {
-        super(size,speed, health ,Color.WHITE, name, enemyProj);
+    public Enemy(long speed,double size,double health,double currentX, double currentY, Color color, String name) {
+        super(size,speed, health ,Color.WHITE, name);
         setCurrentX(currentX);
         setCurrentY(currentY);
         setDirectionX(1);

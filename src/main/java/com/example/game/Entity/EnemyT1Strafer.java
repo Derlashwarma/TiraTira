@@ -11,9 +11,10 @@ import java.util.TimerTask;
 public class EnemyT1Strafer extends Enemy{
 
     private ImageView projectile;
-    public EnemyT1Strafer(long speed, double currentX, double currentY, Color color, String name, ImageView projectile) {
-        super(speed, 40, 200 ,currentX, currentY, color, name, projectile);
+    public EnemyT1Strafer(long speed, double currentX, double currentY, Color color, String name, ImageView enemyProj) {
+        super(speed, 40, 200 ,currentX, currentY, color, name);
         setVisible(false);
+        this.projectile = enemyProj;
     }
     @Override
     public void shoot(){
@@ -25,7 +26,7 @@ public class EnemyT1Strafer extends Enemy{
                 @Override
                 public void run() {
                     if (count < 3) {
-                        EnemyBulletLevel1 bullet = new EnemyBulletLevel1(getLayoutX(), getLayoutY());
+                        EnemyBulletLevel1 bullet = new EnemyBulletLevel1(getLayoutX(), getLayoutY(), projectile);
                         bullet.setPane(anchorPane);
                         Platform.runLater(() -> {
                             anchorPane.getChildren().add(bullet);

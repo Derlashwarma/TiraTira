@@ -52,8 +52,11 @@ public abstract class Bullet extends javafx.scene.shape.Rectangle implements Run
     protected abstract boolean checkCollision();
     @Override
     public void run() {
-        while(currentY < BOTTOM_LIMIT && currentY > TOP_LIMIT && !checkCollision()) {
+        while(currentY < BOTTOM_LIMIT && currentY > TOP_LIMIT && !checkCollision() ) {
             move();
+            if(getCurrentX() < 10 && getCurrentY() < 10) {
+                break;
+            }
             try {
                 Thread.sleep((long)speed);
             } catch (InterruptedException e) {
