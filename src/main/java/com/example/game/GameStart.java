@@ -1,5 +1,6 @@
 package com.example.game;
 
+import com.example.game.Levels.Level1;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,9 +10,7 @@ import java.io.IOException;
 
 public class GameStart extends Application {
 
-
-
-    private String playerName;
+    private static String playerName;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -23,7 +22,11 @@ public class GameStart extends Application {
     }
 
     public GameStart(String playerName) {
-        this.playerName = playerName;
+        GameStart.playerName = playerName;
+    }
+
+    public static String getPlayerName() {
+        return playerName;
     }
 
     public static void main(String[] args) {

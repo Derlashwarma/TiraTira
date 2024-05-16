@@ -39,7 +39,7 @@ public class Game implements Runnable{
     public static int size;
 
 
-    public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2) {
+    public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2, String playerName) {
         main_container = pane;
         game_running = true;
         enemies = new ArrayList<>();
@@ -47,10 +47,12 @@ public class Game implements Runnable{
         this.enemy_type_1 = background;
         this.enemy_type_2 = background2;
         size = 0;
+        Game.name = playerName;
     }
     public static void addScore(int sc){
         score += sc;
     }
+
     public static void endGame(){
         game_running = false;
         Platform.runLater(() -> {
@@ -95,7 +97,7 @@ public class Game implements Runnable{
     @Override
     public void run() {
             BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2);
-            player = new Player(20, Color.GREEN, "JEECOO");
+            player = new Player(20, Color.GREEN,name);
             player.setAnchorPane(main_container);
             player.setAnchorPane(main_container);
             Thread playerThread = new Thread(player);
