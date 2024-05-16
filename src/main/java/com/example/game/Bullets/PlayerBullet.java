@@ -34,13 +34,10 @@ public class PlayerBullet extends Bullet{
                             if(enemy.getHealth() <= 0) {
                                 Platform.runLater(() -> pane.getChildren().remove(enemy));
                                 int add = 0;
-                                if(node instanceof Enemy) {
-                                    if(node instanceof EnemyT1Bomber){
-                                        add = 5;
-                                    }
-                                    else if(node instanceof EnemyT1Strafer){
-                                        add = 2;
-                                    }
+                                if (node instanceof EnemyT1Strafer) {
+                                    add = 2;
+                                } else if (node instanceof EnemyT1Bomber) {
+                                    add = 5;
                                 }
                                 Game.addScore(add);
                             }
