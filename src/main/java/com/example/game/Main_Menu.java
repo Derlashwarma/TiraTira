@@ -282,12 +282,18 @@ public class Main_Menu extends Application {
         alert.setTitle("Quit Game");
         alert.setHeaderText(null);
         alert.setContentText("Are you sure you want to quit the game?");
+        Stage stage2 = (Stage) alert.getDialogPane().getScene().getWindow();
+        InputStream iconStream = getClass().getResourceAsStream("/com/example/images/confirmation_icon.png");
+        if (iconStream != null) {
+            stage2.getIcons().add(new Image(iconStream));
+        }
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 Stage stage = (Stage) playerNameInput.getScene().getWindow();
                 stage.close();
             }
         });
+
     }
 
     public void facebook() {

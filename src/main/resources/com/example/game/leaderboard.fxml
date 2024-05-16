@@ -16,7 +16,7 @@
         <TableView fx:id="leaderboardTable" layoutX="26" layoutY="370" prefWidth="450" prefHeight="380" styleClass="leaderboardTable">
             <columns>
                 <TableColumn text="Rank" fx:id="rankColumn" minWidth="70" maxWidth="70" styleClass="rank_styles"/>
-                <TableColumn text="Player Name" fx:id="playerNameColumn" minWidth="206" maxWidth="206" styleClass="rank_styles"/>
+                <TableColumn text="Player Name" fx:id="playerNameColumn" minWidth="205" maxWidth="205" styleClass="rank_styles"/>
                 <TableColumn text="Highest Score" fx:id="highestScoreColumn" minWidth="150" maxWidth="150" styleClass="rank_styles"/>
             </columns>
         </TableView>
