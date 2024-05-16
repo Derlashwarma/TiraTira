@@ -63,6 +63,12 @@ public class Main_Menu extends Application {
     public void startGame() {
         String playerName = playerNameInput.getText();
         String newPlayerName = newPlayerNameInput.getText();
+        if(playerName.isEmpty() && !newPlayerName.isEmpty()) {
+            Game.setPlayer(newPlayerName);
+        }
+        else if(!playerName.isEmpty() && playerName.isEmpty()) {
+            Game.setPlayer(playerName);
+        }
 
         if (!playerName.isEmpty() && !newPlayerName.isEmpty()) {
             userMessageLabel.setText("Enter player name or create a new one");

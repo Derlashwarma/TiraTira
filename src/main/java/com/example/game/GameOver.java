@@ -15,7 +15,7 @@ public class GameOver extends Application {
 
     public Label totalScoreText;
     public Label playerNameLabel;
-    private String playerName;
+    private static String playerName;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -25,6 +25,10 @@ public class GameOver extends Application {
         stage.setTitle("Game Over");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public static void putPlayerName(String name) {
+        playerName = name;
     }
 
     public void setPlayerName(String playerName) {

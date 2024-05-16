@@ -26,10 +26,11 @@ public class EnemyT1Strafer extends Enemy{
                 @Override
                 public void run() {
                     if (count < 3) {
-                        EnemyBulletLevel1 bullet = new EnemyBulletLevel1(getLayoutX(), getLayoutY(), projectile);
+                        EnemyBulletLevel1 bullet = new EnemyBulletLevel1(getLayoutX()-5, getLayoutY()+20, projectile);
                         bullet.setPane(anchorPane);
+                        bullet.setVisible(false);
                         Platform.runLater(() -> {
-                            anchorPane.getChildren().add(bullet);
+                            anchorPane.getChildren().addAll(bullet);
                         });
                         Thread enemyBullet = new Thread(bullet);
                         enemyBullet.start();

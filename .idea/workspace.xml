@@ -4,17 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="may 15 russel update">
+    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="may 16 russel update">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/images/playerShip_A.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/images/playerShip_AA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/images/playerShip_B.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/images/playerShip_C.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/images/y_bullet_asset.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/images/y_bullet_asset.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Bullets/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Bullets/Bullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Bullets/EnemyBulletLevel1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Bullets/EnemyBulletLevel1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/EnemyT1Bomber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/EnemyT1Bomber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/EnemyT1Strafer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/EnemyT1Strafer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Entity/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/GameOver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/GameOver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Levels/BattleMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Levels/BattleMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Levels/Level1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Levels/Level1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game/first-level-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/first-level-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="russel-may-15" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -99,10 +104,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "russel-may-15",
+    "git-widget-placeholder": "russel-may-16",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/java/com/example/game",
-    "last_opened_file_path": "E:/Code/OOP2/TiraTiraV3/TiraTira",
+    "last_opened_file_path": "E:/Code/OOP2/TiraTiraV3/TiraTira/src/main/resources/com/example/images",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -122,6 +127,7 @@
       <recent name="C:\Users\Jeecoo\IdeaProjects\TiraTira\src\main\resources\com\example\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Code\OOP2\TiraTiraV3\TiraTira\src\main\resources\com\example\images" />
       <recent name="C:\Users\Jeecoo\IdeaProjects\TiraTira\src\main\resources\com\example\game" />
       <recent name="C:\Users\Jeecoo\IdeaProjects\TiraTira\src\main\resources\com\example\main_menu" />
     </key>
@@ -187,7 +193,8 @@
       <workItem from="1715347169690" duration="18249000" />
       <workItem from="1715698130882" duration="2451000" />
       <workItem from="1715753802544" duration="3082000" />
-      <workItem from="1715834028939" duration="1706000" />
+      <workItem from="1715834028939" duration="3790000" />
+      <workItem from="1715845547233" duration="4578000" />
     </task>
     <task id="LOCAL-00001" summary="main menu and game over">
       <option name="closed" value="true" />
@@ -293,7 +300,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715757491243</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="may 16 russel update">
+      <option name="closed" value="true" />
+      <created>1715835988809</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715835988809</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +330,8 @@
     <MESSAGE value="player and new player input box (database) implemented" />
     <MESSAGE value="Register Players Page 60%" />
     <MESSAGE value="may 15 russel update" />
-    <option name="LAST_COMMIT_MESSAGE" value="may 15 russel update" />
+    <MESSAGE value="may 16 russel update" />
+    <option name="LAST_COMMIT_MESSAGE" value="may 16 russel update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
