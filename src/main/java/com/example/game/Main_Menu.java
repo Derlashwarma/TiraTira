@@ -252,6 +252,29 @@ public class Main_Menu extends Application {
 
     public void showLeaderboard(ActionEvent actionEvent) {
         System.out.println("Showing high scores...");
+        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        currentStage.close();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("leaderboard.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
+
+
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Leaderboard");
+            stage.show();
+
+            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
+            if (iconStream == null) {
+                throw new RuntimeException("Icon resource not found");
+            }
+            Image icon = new Image(iconStream);
+            stage.getIcons().add(icon);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void quitGame() {

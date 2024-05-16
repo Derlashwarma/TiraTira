@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="fix some bugs during log in of playername and new playername">
+    <list default="true" id="0003b694-3dfc-4e23-b036-188fa65adb58" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Leaderboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/game/LeaderboardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/game/PlayerScore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/leaderboard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/CurrentPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/CurrentPlayers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/GameOver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/GameOver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Instructions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Instructions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game/Main_Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game/menu_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game/menu_styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +21,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -86,6 +88,7 @@
     "Application.GameOver.executor": "Run",
     "Application.GameStart.executor": "Run",
     "Application.Instructions.executor": "Run",
+    "Application.Leaderboard.executor": "Run",
     "Application.Main_Menu.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
@@ -94,19 +97,19 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "jeecoocoo",
+    "git-widget-placeholder": "leaderboard",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/java/com/example/game",
-    "last_opened_file_path": "C:/Users/Jeecoo/IdeaProjects/TiraTira/src/main/resources/com/example/images",
+    "last_opened_file_path": "E:/Code/OOP2/TiraTiraV3/TiraTira",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
+    "project.structure.side.proportion": "0.46666667",
     "prot.structure.last.edited": "Libraries",
     "vue.rearranger.settings.migration": "true"
   }
@@ -180,9 +183,9 @@
       <workItem from="1715327123781" duration="8172000" />
       <workItem from="1715339163153" duration="7959000" />
       <workItem from="1715347169690" duration="18249000" />
-      <workItem from="1715655183895" duration="829000" />
-      <workItem from="1715672571140" duration="203000" />
-      <workItem from="1715684255370" duration="21390000" />
+      <workItem from="1715698130882" duration="2451000" />
+      <workItem from="1715753802544" duration="3082000" />
+      <workItem from="1715834028939" duration="1706000" />
     </task>
     <task id="LOCAL-00001" summary="main menu and game over">
       <option name="closed" value="true" />
@@ -280,55 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715616620139</updated>
     </task>
-    <task id="LOCAL-00013" summary="Game Icon created">
+    <task id="LOCAL-00013" summary="may 15 russel update">
       <option name="closed" value="true" />
-      <created>1715689367087</created>
+      <created>1715757491242</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1715689367089</updated>
+      <updated>1715757491243</updated>
     </task>
-    <task id="LOCAL-00014" summary="Registered Player implemented (can CRUD - edit and isDelete user)">
-      <option name="closed" value="true" />
-      <created>1715699613743</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1715699613743</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Registered Player implemented (can CRUD - edit and isDelete user)">
-      <option name="closed" value="true" />
-      <created>1715702709757</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1715702709757</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Registered Player implemented (can CRUD - edit and isDelete user) &#10;&#10;centered the game icon">
-      <option name="closed" value="true" />
-      <created>1715703387991</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1715703387991</updated>
-    </task>
-    <task id="LOCAL-00017" summary="added an icon during delete alert">
-      <option name="closed" value="true" />
-      <created>1715704773930</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1715704773930</updated>
-    </task>
-    <task id="LOCAL-00018" summary="fix some bugs during log in of playername and new playername">
-      <option name="closed" value="true" />
-      <created>1715705414879</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1715705414879</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,12 +312,8 @@
     <MESSAGE value="main menu and game over" />
     <MESSAGE value="player and new player input box (database) implemented" />
     <MESSAGE value="Register Players Page 60%" />
-    <MESSAGE value="Game Icon created" />
-    <MESSAGE value="Registered Player implemented (can CRUD - edit and isDelete user)" />
-    <MESSAGE value="Registered Player implemented (can CRUD - edit and isDelete user) &#10;&#10;centered the game icon" />
-    <MESSAGE value="added an icon during delete alert" />
-    <MESSAGE value="fix some bugs during log in of playername and new playername" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix some bugs during log in of playername and new playername" />
+    <MESSAGE value="may 15 russel update" />
+    <option name="LAST_COMMIT_MESSAGE" value="may 15 russel update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
