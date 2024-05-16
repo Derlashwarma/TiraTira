@@ -41,7 +41,7 @@ public class Game implements Runnable{
     public static int size;
 
 
-    public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2, ImageView playerProd, ImageView enemyProd) {
+    public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2, ImageView playerProd, ImageView enemyProd, String playerName) {
         main_container = pane;
         game_running = true;
         enemies = new ArrayList<>();
@@ -109,8 +109,8 @@ public class Game implements Runnable{
 
     @Override
     public void run() {
-            BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2, playerBullet, enemyBullet);
-            player = new Player(20, Color.GREEN, "RUSS", playerBullet);
+            BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2, enemyBullet);
+            player = new Player(20, Color.GREEN, Main_Menu.getName(), playerBullet);
             player.setAnchorPane(main_container);
             player.setAnchorPane(main_container);
             Thread playerThread = new Thread(player);

@@ -23,17 +23,15 @@ public class BattleMaker implements Runnable {
 
     private int BattleScenario;
 
-    private ImageView projectileP;
     private ImageView projectileE;
     public static boolean isActiveCount;
 
 
-    public BattleMaker(AnchorPane mainContainer, ImageView enemyType1, ImageView enemyType2, ImageView playerProj, ImageView enemyProj) {
+    public BattleMaker(AnchorPane mainContainer, ImageView enemyType1, ImageView enemyType2, ImageView enemyProj) {
         this.mainContainer = mainContainer;
         this.enemyType1 = enemyType1;
         this.enemyType2 = enemyType2;
         isActiveCount = true;
-        this.projectileP = playerProj;
         this.projectileE = enemyProj;
     }
 
@@ -48,12 +46,30 @@ public class BattleMaker implements Runnable {
             } else if (score < 300) {
                 BattleScenario = 3;
             }
+            else if(score < 500) {
+                BattleScenario = 4;
+            }
+            else if(score < 700) {
+                BattleScenario = 5;
+            }
             if (BattleScenario == 1 && isActiveCount) {
-                makeFleet("Bomber", -1, 3, 4000);
+                makeFleet("Bomber", -1, 3, 3000);
 //                    makeFleet("StraferV1", 0 , 5, 1500);
 //                    makeFleet("StraferV1", 500 , 5, 2500);
 //                    makeFleet("StraferV2", 500 , 5, 6000);
             } else if (BattleScenario == 2 && isActiveCount) {
+                makeFleet("StraferV1", 0 , 5, 1500);
+            } else if (BattleScenario == 3 && isActiveCount) {
+                makeFleet("StraferV1", 0 , 2, 1500);
+                makeFleet("StraferV1", 200 , 1, 1500);
+                makeFleet("StraferV1", 400 , 2, 1500);
+            } else if (BattleScenario == 4 && isActiveCount) {
+                makeFleet("Bomber", -1, 3, 3000);
+                makeFleet("StraferV1", 0 , 5, 1500);
+                makeFleet("Bomber", -1, 3, 3000);
+            } else if (BattleScenario == 5 && isActiveCount) {
+                makeFleet("StraferV1", 0 , 5, 1500);
+            } else if (BattleScenario == 6 && isActiveCount) {
                 makeFleet("StraferV1", 0 , 5, 1500);
             }
             System.out.println("Size: " + Game.size);

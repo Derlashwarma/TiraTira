@@ -15,11 +15,9 @@ import java.util.ArrayList;
 public class EnemyBulletLevel1 extends Bullet {
 
     private Player player;
-    private ImageView projectile;
     public EnemyBulletLevel1(double currentX, double currentY, ImageView enemyProj) {
         super(5, 1, 10, 10, currentX, currentY, Color.PURPLE, 1, "Enemy");
         this.player = Game.player;
-        this.projectile = enemyProj;
     }
     @Override
     protected boolean checkCollision() {

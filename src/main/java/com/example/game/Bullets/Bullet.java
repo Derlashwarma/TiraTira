@@ -46,6 +46,13 @@ public abstract class Bullet extends javafx.scene.shape.Rectangle implements Run
         });
         currentY += direction;
     }
+    protected ImageView clone(ImageView to_clone) {
+        ImageView imageView = new ImageView(to_clone.getImage());
+        imageView.setFitHeight(to_clone.getFitHeight());
+        imageView.setFitWidth(to_clone.getFitWidth());
+        imageView.setRotate(180);
+        return imageView;
+    }
     public void setPane(AnchorPane pane){
         this.pane = pane;
     }
