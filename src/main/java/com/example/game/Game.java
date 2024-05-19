@@ -102,7 +102,9 @@ public class Game implements Runnable{
         imageView.setRotate(180);
         return imageView;
     }
-
+    public static int getSize() {
+        return size;
+    }
     public static void setPlayer(String player) {
         name = player;
     }
@@ -150,6 +152,4 @@ public class Game implements Runnable{
                 stage.close();
             });
     }
-
-
 }
