@@ -19,6 +19,7 @@ public class BattleMaker implements Runnable {
     private final ImageView enemyType1;
     private final ImageView enemyType2;
     private int spawned_powerUp;
+    private int threshold;
     public void setScore(int score) {
         this.score = score;
     }
@@ -38,6 +39,7 @@ public class BattleMaker implements Runnable {
         isActiveCount = true;
         this.projectileE = enemyProj;
         spawned_powerUp = 0;
+        threshold = 5;
     }
 
     @Override
@@ -66,22 +68,27 @@ public class BattleMaker implements Runnable {
             else if(score < 700) {
                 BattleScenario = 5;
             }
-            isActiveCount = Game.getSize() == 0;
+            isActiveCount = Game.getSize() < threshold;
             if (BattleScenario == 1 && isActiveCount) {
                 makeFleet("Bomber", -1, 3, 3000);
             } else if (BattleScenario == 2 && isActiveCount) {
+                threshold = 6;
                 makeFleet("StraferV1", 0 , 5, 1500);
             } else if (BattleScenario == 3 && isActiveCount) {
+                threshold = 7;
                 makeFleet("StraferV1", 0 , 2, 1500);
                 makeFleet("StraferV1", 200 , 1, 1500);
                 makeFleet("StraferV1", 400 , 2, 1500);
             } else if (BattleScenario == 4 && isActiveCount) {
+                threshold = 8;
                 makeFleet("Bomber", -1, 3, 3000);
                 makeFleet("StraferV1", 0 , 5, 1500);
                 makeFleet("Bomber", -1, 3, 3000);
             } else if (BattleScenario == 5 && isActiveCount) {
+                threshold = 9;
                 makeFleet("StraferV1", 0 , 5, 1500);
             } else if (BattleScenario == 6 && isActiveCount) {
+                threshold = 15;
                 makeFleet("StraferV1", 0 , 5, 1500);
             }
             System.out.println("Size: " + Game.size);
