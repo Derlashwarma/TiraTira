@@ -31,6 +31,7 @@ public abstract class Bullet extends javafx.scene.shape.Rectangle implements Run
         this.currentY = currentY;
         this.direction = direction;
         this.name = name;
+        setVisible(false);
     }
     public void setBullet(ImageView bulletImage) {
         this.bulletImage = bulletImage;

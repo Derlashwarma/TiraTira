@@ -4,6 +4,9 @@ import com.example.game.Entity.Enemy;
 import com.example.game.Entity.EnemyT1Bomber;
 import com.example.game.Entity.EnemyT1Strafer;
 import com.example.game.Game;
+import com.example.game.PowerUps.PowerUp;
+import com.example.game.PowerUps.PowerUpLevel1;
+import com.example.game.PowerUps.PowerUpLevel2;
 import javafx.application.Platform;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -15,6 +18,7 @@ public class BattleMaker implements Runnable {
     private final AnchorPane mainContainer;
     private final ImageView enemyType1;
     private final ImageView enemyType2;
+    private int spawned_powerUp;
     public void setScore(int score) {
         this.score = score;
     }
@@ -33,6 +37,7 @@ public class BattleMaker implements Runnable {
         this.enemyType2 = enemyType2;
         isActiveCount = true;
         this.projectileE = enemyProj;
+        spawned_powerUp = 0;
     }
 
     @Override
@@ -43,20 +48,27 @@ public class BattleMaker implements Runnable {
             }
             else if(score < 200){
                 BattleScenario = 2;
+                if(spawned_powerUp == 0) {
+                    spawnLevel1PowerUp();
+                    spawned_powerUp = 1;
+                }
+
             } else if (score < 300) {
                 BattleScenario = 3;
             }
             else if(score < 500) {
                 BattleScenario = 4;
+                if(spawned_powerUp == 1) {
+                    spawnLevel2PowerUp();
+                    spawned_powerUp = 2;
+                }
             }
             else if(score < 700) {
                 BattleScenario = 5;
             }
+            isActiveCount = Game.getSize() == 0;
             if (BattleScenario == 1 && isActiveCount) {
                 makeFleet("Bomber", -1, 3, 3000);
-//                    makeFleet("StraferV1", 0 , 5, 1500);
-//                    makeFleet("StraferV1", 500 , 5, 2500);
-//                    makeFleet("StraferV2", 500 , 5, 6000);
             } else if (BattleScenario == 2 && isActiveCount) {
                 makeFleet("StraferV1", 0 , 5, 1500);
             } else if (BattleScenario == 3 && isActiveCount) {
@@ -74,7 +86,7 @@ public class BattleMaker implements Runnable {
             }
             System.out.println("Size: " + Game.size);
             try {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -152,5 +164,19 @@ public class BattleMaker implements Runnable {
         imageView.setFitWidth(toClone.getFitWidth());
         imageView.setRotate(180);
         return imageView;
+    }
+    private void spawnLevel1PowerUp(){
+        PowerUp powerUp = new PowerUpLevel1(230,20);
+        powerUp.setPane(mainContainer);
+        Platform.runLater(()->{mainContainer.getChildren().add(powerUp);});
+        Thread powerThread = new Thread(powerUp);
+        powerThread.start();
+    }
+    private void spawnLevel2PowerUp(){
+        PowerUp powerUp = new PowerUpLevel2(230,20);
+        powerUp.setPane(mainContainer);
+        Platform.runLater(()->{mainContainer.getChildren().add(powerUp);});
+        Thread powerThread = new Thread(powerUp);
+        powerThread.start();
     }
 }

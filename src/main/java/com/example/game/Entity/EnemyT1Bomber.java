@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 
 public class EnemyT1Bomber extends Enemy{
     public EnemyT1Bomber(long speed, double size, double currentX, double currentY, Color color, String name, ImageView projectile) {
-        super(80, 40, 300 ,currentX, currentY, color, name,5);
+        super(80, 40, 100 ,currentX, currentY, color, name,5);
         setVisible(false);
     }
     public int getPoints() {
