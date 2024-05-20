@@ -23,13 +23,13 @@ public abstract class PowerUp  extends javafx.scene.shape.Circle implements Runn
     private AnchorPane pane;
 
     public PowerUp(Color color, int currentX, int currentY) {
-        super(40, color);
+        super(20, color);
         this.currentX = currentX;
         this.currentY = currentY;
         this.direction = 1;
         this.xDirection = 0;
         this.powerUp = null;
-//        setVisible(false);
+        //setVisible(false);
         this.speed = 10;
     }
 
@@ -53,8 +53,8 @@ public abstract class PowerUp  extends javafx.scene.shape.Circle implements Runn
     protected void move(){
         Platform.runLater(()->{
             if(powerUpImage != null) {
-                powerUpImage.setLayoutY(currentY);
-                powerUpImage.setLayoutX(currentX);
+                powerUpImage.setLayoutY(currentY-20);
+                powerUpImage.setLayoutX(currentX-10);
             }
             setLayoutX(currentX);
             setLayoutY(currentY);

@@ -95,7 +95,7 @@ public class Player extends Entity implements Runnable{
 
     private void spawnLevel1PlayerBullet(PlayerBullet[] playerBullet, double currentX, double currentY) {
         ImageView clone = clone(playerProjectile);
-        playerBullet[0] = new PlayerBullet(20,currentX-4,currentY-90, name);
+        playerBullet[0] = new PlayerBullet(690,currentX-4,currentY-90, name);
         playerBullet[0].setAnchorPane(anchorPane);
         playerBullet[0].setBullet(clone);
         Platform.runLater(() -> {

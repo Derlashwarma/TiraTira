@@ -18,6 +18,8 @@ public class BattleMaker implements Runnable {
     private final AnchorPane mainContainer;
     private final ImageView enemyType1;
     private final ImageView enemyType2;
+    private ImageView powerup1;
+    private ImageView powerup2;
     private int spawned_powerUp;
     private int threshold;
     public void setScore(int score) {
@@ -32,12 +34,15 @@ public class BattleMaker implements Runnable {
     public static boolean isActiveCount;
 
 
-    public BattleMaker(AnchorPane mainContainer, ImageView enemyType1, ImageView enemyType2, ImageView enemyProj) {
+    public BattleMaker(AnchorPane mainContainer, ImageView enemyType1, ImageView enemyType2,
+                       ImageView enemyProj, ImageView powerUP1, ImageView powerUP2) {
         this.mainContainer = mainContainer;
         this.enemyType1 = enemyType1;
         this.enemyType2 = enemyType2;
         isActiveCount = true;
         this.projectileE = enemyProj;
+        this.powerup1 = powerUP1;
+        this.powerup2 = powerUP2;
         spawned_powerUp = 0;
         threshold = 5;
     }
@@ -172,17 +177,29 @@ public class BattleMaker implements Runnable {
         imageView.setRotate(180);
         return imageView;
     }
+
+    private ImageView clone2(ImageView toClone) {
+        ImageView imageView = new ImageView(toClone.getImage());
+        imageView.setFitHeight(toClone.getFitHeight());
+        imageView.setFitWidth(toClone.getFitWidth());
+        //imageView.setRotate(180);
+        return imageView;
+    }
     private void spawnLevel1PowerUp(){
         PowerUp powerUp = new PowerUpLevel1(230,20);
         powerUp.setPane(mainContainer);
-        Platform.runLater(()->{mainContainer.getChildren().add(powerUp);});
+        ImageView powerup11 = clone2(powerup1);
+        Platform.runLater(()->{mainContainer.getChildren().addAll(powerUp, powerup11);});
+        powerUp.setPowerUpImage(powerup11);
         Thread powerThread = new Thread(powerUp);
         powerThread.start();
     }
     private void spawnLevel2PowerUp(){
         PowerUp powerUp = new PowerUpLevel2(230,20);
         powerUp.setPane(mainContainer);
-        Platform.runLater(()->{mainContainer.getChildren().add(powerUp);});
+        ImageView powerup12 = clone2(powerup2);
+        Platform.runLater(()->{mainContainer.getChildren().addAll(powerUp, powerup12);});
+        powerUp.setPowerUpImage(powerup12);
         Thread powerThread = new Thread(powerUp);
         powerThread.start();
     }
