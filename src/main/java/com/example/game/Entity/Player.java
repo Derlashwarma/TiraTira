@@ -20,7 +20,7 @@ public class Player extends Entity implements Runnable{
     private static String powerup;
 
     public Player(double size, Color color, String name, ImageView playerProd) {
-        super(size,0, 200, color, name);
+        super(size,0, 100, color, name);
         bullets = new ArrayList<>();
         this.name = name;
         this.playerProjectile = playerProd;

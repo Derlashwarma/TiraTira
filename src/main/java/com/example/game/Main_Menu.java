@@ -115,7 +115,7 @@ public class Main_Menu extends Application {
                             try {
                                 name = newPlayerName;
                                 GameStart gameStart = new GameStart(newPlayerName);
-                                gameStart.start(new Stage());
+                                gameStart.start(currentStage);
                                 System.out.println("Starting the game...");
                                 currentStage = (Stage) playerNameInput.getScene().getWindow();
                                 currentStage.close();

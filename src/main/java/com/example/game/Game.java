@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -39,7 +40,7 @@ public class Game implements Runnable{
     public static Player player;
     private static String name;
     public static int size;
-
+    public static ProgressBar healthBar;
 
     public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2, ImageView playerProd, ImageView enemyProd, String playerName) {
         main_container = pane;
@@ -117,8 +118,7 @@ public class Game implements Runnable{
             player.setAnchorPane(main_container);
             Thread playerThread = new Thread(player);
             playerThread.start();
-
-
+            addProgressBar();
             main_container.setOnMouseMoved(event -> {
                 character.setLayoutX(event.getX()-30);
                 character.setLayoutY(event.getY()-50);
@@ -127,8 +127,10 @@ public class Game implements Runnable{
                 player.setCurrentX(event.getX());
                 player.setCurrentY(event.getY());
             });
+
             Thread bmThread = new Thread(bm);
             bmThread.start();
+            double health = 100;
             while(game_running) {
                 bm.setScore(score);
                 try {
@@ -151,5 +153,20 @@ public class Game implements Runnable{
                 Stage stage = (Stage) character.getScene().getWindow();
                 stage.close();
             });
+    }
+    private void addProgressBar() {
+        Platform.runLater(()->{
+            healthBar = new ProgressBar();
+            healthBar.setProgress(1);
+            healthBar.setPrefHeight(20.0);
+            healthBar.setPrefWidth(215.0);
+            healthBar.setLayoutX(7);
+            healthBar.setLayoutY(10);
+            main_container.getChildren().add(healthBar);
+        });
+    }
+    public static synchronized void reduceProgress(double damage){
+        double currHealth = healthBar.getProgress() - damage;
+        healthBar.setProgress(currHealth);
     }
 }

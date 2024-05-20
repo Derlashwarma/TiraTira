@@ -1,0 +1,78 @@
+Index: src/main/java/com/example/game/Entity/Enemy.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.game.Entity;\r\n\r\nimport com.example.game.Bullets.EnemyBulletLevel1;\r\nimport com.example.game.Bullets.PlayerBullet;\r\nimport com.example.game.Game;\r\nimport javafx.application.Platform;\r\nimport javafx.scene.paint.Color;\r\n\r\npublic class Enemy extends Entity implements Runnable {\r\n    private final double BOTTOM_LIMIT = 760;\r\n\r\n    public Enemy(long speed, double size, double health,double currentX, double currentY, Color color, String name) {\r\n        super(size, speed, health, color, name);\r\n        setCurrentX(currentX);\r\n        setCurrentY(currentY);\r\n        setDirectionX(1);\r\n//        setDirection(1);\r\n    }\r\n\r\n\r\n\r\n    @Override\r\n    public void run() {\r\n        Game.enemies.add(this);\r\n        while (getLayoutY() < BOTTOM_LIMIT && isAlive() && Game.game_running) {\r\n            move();\r\n            shoot();\r\n            try {\r\n                Thread.sleep(getSpeed());\r\n            } catch (InterruptedException e) {\r\n                throw new RuntimeException(e);\r\n            }\r\n        }\r\n        Platform.runLater(() -> {\r\n            anchorPane.getChildren().remove(this);\r\n        });\r\n        Thread.currentThread().interrupt();\r\n        Game.enemies.remove(this);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/game/Entity/Enemy.java b/src/main/java/com/example/game/Entity/Enemy.java
+--- a/src/main/java/com/example/game/Entity/Enemy.java	
++++ b/src/main/java/com/example/game/Entity/Enemy.java	
+@@ -17,8 +17,6 @@
+ //        setDirection(1);
+     }
+ 
+-
+-
+     @Override
+     public void run() {
+         Game.enemies.add(this);
+Index: src/main/java/com/example/game/Entity/EnemyT1Strafer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.game.Entity;\r\n\r\nimport com.example.game.Bullets.EnemyBulletLevel1;\r\nimport javafx.application.Platform;\r\nimport javafx.scene.paint.Color;\r\n\r\nimport java.util.Timer;\r\nimport java.util.TimerTask;\r\n\r\npublic class EnemyT1Strafer extends Enemy{\r\n    public EnemyT1Strafer(double currentX, double currentY, Color color, String name) {\r\n        super(50, 10, 200 ,currentX, currentY, color, name);\r\n    }\r\n    @Override\r\n    public void shoot(){\r\n        if ((getCounter() % 100) == 0) {\r\n            Timer timer = new Timer();\r\n            TimerTask task = new TimerTask() {\r\n                int count = 0;\r\n\r\n                @Override\r\n                public void run() {\r\n                    if (count < 3) {\r\n                        EnemyBulletLevel1 bullet = new EnemyBulletLevel1(getLayoutX(), getLayoutY());\r\n                        bullet.setPane(anchorPane);\r\n                        Platform.runLater(() -> {\r\n                            anchorPane.getChildren().add(bullet);\r\n                        });\r\n                        Thread enemyBullet = new Thread(bullet);\r\n                        enemyBullet.start();\r\n                        count++;\r\n                    } else {\r\n                        timer.cancel();\r\n                    }\r\n                }\r\n            };\r\n            timer.scheduleAtFixedRate(task, 0, 250);\r\n        }\r\n        setCounter(getCounter() + 1);\r\n    }\r\n\r\n\r\n    @Override\r\n    public void move() {\r\n        int width = (int) anchorPane.widthProperty().get();\r\n        double x = this.getRadius();\r\n\r\n        if (getCurrentX() + x > width) {\r\n            setDirectionX(-1);\r\n        }\r\n        if (getCurrentX() - x < 0) {\r\n            setDirectionX(1);\r\n        }\r\n\r\n        setCurrentX(getCurrentX() + getDirectionX());\r\n        setCurrentY(getCurrentY() + 1);\r\n\r\n        Platform.runLater(() -> {\r\n            setLayoutX(getCurrentX());\r\n            setLayoutY(getCurrentY());\r\n        });\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/game/Entity/EnemyT1Strafer.java b/src/main/java/com/example/game/Entity/EnemyT1Strafer.java
+--- a/src/main/java/com/example/game/Entity/EnemyT1Strafer.java	
++++ b/src/main/java/com/example/game/Entity/EnemyT1Strafer.java	
+@@ -40,6 +40,10 @@
+     }
+ 
+ 
++    private static void changeDirection(boolean change){
++
++    }
++
+     @Override
+     public void move() {
+         int width = (int) anchorPane.widthProperty().get();
+Index: src/main/java/com/example/game/Bullets/PlayerBullet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.game.Bullets;\r\n\r\nimport com.example.game.Entity.Enemy;\r\nimport com.example.game.Game;\r\nimport javafx.application.Platform;\r\nimport javafx.scene.Node;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.scene.paint.Color;\r\nimport javafx.scene.paint.Paint;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class PlayerBullet extends Bullet{\r\n    public PlayerBullet(double currentX, double currentY,String name) {\r\n        super(20,1,10,10,currentX,currentY, Color.GREEN,-1,name);\r\n    }\r\n    public void setAnchorPane(AnchorPane pane){\r\n        super.pane = pane;\r\n    }\r\n\r\n    @Override\r\n    protected boolean checkCollision() {\r\n        synchronized (pane) {\r\n            try{\r\n                for (Node node : new ArrayList<>(pane.getChildren())) {\r\n                    if (node instanceof Enemy && getBoundsInParent().intersects(node.getBoundsInParent())) {\r\n                        Enemy enemy = (Enemy) node;\r\n                        if (enemy.isAlive()) {\r\n                            enemy.changeHealth(-damage);\r\n                            if(enemy.getHealth() <= 0) {\r\n                                Platform.runLater(() -> pane.getChildren().remove(enemy));\r\n                                if(node instanceof Enemy) {\r\n                                    Game.addScore(1);\r\n                                    System.out.println(\"SCOORE\" + 1);\r\n                                }\r\n                            }\r\n                        }\r\n                        Platform.runLater(() -> pane.getChildren().remove(this));\r\n                        return true;\r\n                    }\r\n                }\r\n            }\r\n            catch (Exception e){\r\n                Platform.runLater(() ->{\r\n                    pane.getChildren().remove(this);\r\n                    Thread.currentThread().interrupt();\r\n                });\r\n            }\r\n        }\r\n        return false;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/game/Bullets/PlayerBullet.java b/src/main/java/com/example/game/Bullets/PlayerBullet.java
+--- a/src/main/java/com/example/game/Bullets/PlayerBullet.java	
++++ b/src/main/java/com/example/game/Bullets/PlayerBullet.java	
+@@ -1,6 +1,8 @@
+ package com.example.game.Bullets;
+ 
+ import com.example.game.Entity.Enemy;
++import com.example.game.Entity.EnemyT1Bomber;
++import com.example.game.Entity.EnemyT1Strafer;
+ import com.example.game.Game;
+ import javafx.application.Platform;
+ import javafx.scene.Node;
+@@ -29,10 +31,16 @@
+                             enemy.changeHealth(-damage);
+                             if(enemy.getHealth() <= 0) {
+                                 Platform.runLater(() -> pane.getChildren().remove(enemy));
++                                int add = 0;
+                                 if(node instanceof Enemy) {
+-                                    Game.addScore(1);
+-                                    System.out.println("SCOORE" + 1);
++                                    if(node instanceof EnemyT1Bomber){
++                                        add = 5;
++                                    }
++                                    else if(node instanceof EnemyT1Strafer){
++                                        add = 2;
++                                    }
+                                 }
++                                Game.addScore(add);
+                             }
+                         }
+                         Platform.runLater(() -> pane.getChildren().remove(this));
