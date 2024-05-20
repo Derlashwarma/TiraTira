@@ -165,7 +165,7 @@ public class Game implements Runnable{
     private void addProgressBar() {
         Platform.runLater(() -> {
             icon = new ImageView();
-            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/playerShip_C.png");
+            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/playerShip_A.png");
             if (iconStream != null) {
                 Image iconImage = new Image(iconStream);
                 icon.setImage(iconImage);
