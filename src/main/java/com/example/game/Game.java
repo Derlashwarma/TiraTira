@@ -8,6 +8,7 @@ import com.example.game.Entity.Player;
 import com.example.game.Levels.BattleMaker;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,6 +16,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -41,6 +43,7 @@ public class Game implements Runnable{
     private static String name;
     public static int size;
     public static ProgressBar healthBar;
+    private static ImageView icon;
 
     public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2, ImageView playerProd, ImageView enemyProd, String playerName) {
         main_container = pane;
@@ -87,13 +90,17 @@ public class Game implements Runnable{
             }
         });
     }
+
+
     public synchronized static void addEnemy(Runnable enemy){
         enemies.add(enemy);
         size++;
+        Platform.runLater(Game::bringHealthBarToFront);
     }
     public synchronized static void removeEnemy(Runnable enemy){
         enemies.remove(enemy);
         size--;
+        Platform.runLater(Game::bringHealthBarToFront);
     }
 
     public ImageView clone(ImageView to_clone) {
@@ -154,17 +161,51 @@ public class Game implements Runnable{
                 stage.close();
             });
     }
+
     private void addProgressBar() {
-        Platform.runLater(()->{
+        Platform.runLater(() -> {
+            icon = new ImageView();
+            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/playerShip_C.png");
+            if (iconStream != null) {
+                Image iconImage = new Image(iconStream);
+                icon.setImage(iconImage);
+                icon.setFitHeight(55);
+                icon.setFitWidth(40);
+            } else {
+                System.out.println("Icon resource not found");
+            }
+
             healthBar = new ProgressBar();
             healthBar.setProgress(1);
-            healthBar.setPrefHeight(20.0);
-            healthBar.setPrefWidth(215.0);
-            healthBar.setLayoutX(7);
-            healthBar.setLayoutY(10);
-            main_container.getChildren().add(healthBar);
+            healthBar.getStyleClass().add("progress-bar");
+
+
+
+            HBox hbox = new HBox(-230);
+            hbox.setLayoutX(40);
+            hbox.setLayoutY(20);
+            hbox.getChildren().addAll(icon, healthBar);
+            hbox.setAlignment(Pos.CENTER_LEFT);
+
+            main_container.getChildren().add(hbox);
+            icon.toFront();
+
+            Scene scene = main_container.getScene();
+            if (scene != null) {
+                scene.getStylesheets().add(getClass().getResource("/com/example/game/menu_styles.css").toExternalForm());
+            }
         });
     }
+
+    private static void bringHealthBarToFront() {
+        if (healthBar != null && icon != null) {
+            HBox hbox = (HBox) healthBar.getParent();
+            if (hbox != null) {
+                hbox.toFront();
+            }
+        }
+    }
+
     public static synchronized void reduceProgress(double damage){
         double currHealth = healthBar.getProgress() - damage;
         healthBar.setProgress(currHealth);
