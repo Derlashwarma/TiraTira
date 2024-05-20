@@ -24,6 +24,8 @@ import java.io.*;
 import java.security.spec.RSAOtherPrimeInfo;
 import java.util.*;
 
+import static com.example.game.GameStart.sm;
+
 public class Game implements Runnable{
     public static AnchorPane main_container;
     public static boolean game_running;
@@ -149,6 +151,7 @@ public class Game implements Runnable{
             System.out.println("GAME OVER");
             System.out.println("TOTAL SCORE: " + score);
             MySQLConnection.updatePlayerScore(name,score);
+            sm.stopAllSounds();
             Platform.runLater(() -> {
                 Stage stage = (Stage) character.getScene().getWindow();
                 stage.close();
