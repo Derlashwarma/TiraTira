@@ -8,6 +8,8 @@ import javafx.scene.paint.Color;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.example.game.GameStart.sm;
+
 public class EnemyT1Strafer extends Enemy{
 
     private ImageView projectile;
@@ -29,6 +31,7 @@ public class EnemyT1Strafer extends Enemy{
                         ImageView bulletClone = EnemyT1Strafer.this.clone(projectile);
                         bulletClone.setRotate(180);
                         EnemyBulletLevel1 bullet = new EnemyBulletLevel1(getLayoutX()-5, getLayoutY()+20, bulletClone);
+//                        Platform.runLater(()->sm.playSound("Player"));
                         bullet.setPane(anchorPane);
                         bullet.setVisible(false);
                         bullet.setBullet(bulletClone);

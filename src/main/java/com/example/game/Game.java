@@ -114,7 +114,7 @@ public class Game implements Runnable{
 
     @Override
     public void run() {
-            BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2, enemyBullet);
+        BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2, enemyBullet);
             player = new Player(20, Color.GREEN, Main_Menu.getName(), playerBullet);
             player.setAnchorPane(main_container);
             player.setAnchorPane(main_container);
@@ -128,6 +128,10 @@ public class Game implements Runnable{
                 player.setLayoutY(event.getY());
                 player.setCurrentX(event.getX());
                 player.setCurrentY(event.getY());
+            });
+            Platform.runLater(()->{
+                Thread thread = new Thread(new GameSound());
+                thread.start();
             });
 
             Thread bmThread = new Thread(bm);
@@ -171,5 +175,15 @@ public class Game implements Runnable{
     public static synchronized void reduceProgress(double damage){
         double currHealth = healthBar.getProgress() - damage;
         healthBar.setProgress(currHealth);
+    }
+    private class GameSound implements Runnable {
+        @Override
+        public void run() {
+
+            sm.loopSound("Space");
+            while(game_running) {
+            }
+            Thread.currentThread().interrupt();
+        }
     }
 }

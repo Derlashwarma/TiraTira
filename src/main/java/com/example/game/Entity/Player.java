@@ -69,7 +69,6 @@ public class Player extends Entity implements Runnable{
             PlayerBullet[] playerBullet = new PlayerBullet[3];
             double currX = getCurrentX();
             double currY = getCurrentY();
-            sm.playSound("Player");
             if(powerup == null) {
                 spawnLevel1PlayerBullet(playerBullet,currX,currY);
             } else if(powerup.equalsIgnoreCase("playerBulletLevel2")) {
@@ -77,9 +76,8 @@ public class Player extends Entity implements Runnable{
             } else if(powerup.equalsIgnoreCase("playerBulletLevel3")) {
                 spawnLevel3PlayerBullet(playerBullet,currX,currY);
             }
-
-            System.out.println("Hit");
             try {
+                Platform.runLater(()->sm.playSound("Player"));
                 Thread.sleep(300);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

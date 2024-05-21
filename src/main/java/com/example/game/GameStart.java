@@ -24,7 +24,6 @@ public class GameStart extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        sm.loopSound("Space");
 
         InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
         if (iconStream == null) {
