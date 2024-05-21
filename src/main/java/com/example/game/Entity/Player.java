@@ -12,6 +12,8 @@ import javafx.scene.paint.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import static com.example.game.GameStart.sm;
+
 public class Player extends Entity implements Runnable{
     private String name;
     private ImageView playerProjectile;
@@ -67,6 +69,7 @@ public class Player extends Entity implements Runnable{
             PlayerBullet[] playerBullet = new PlayerBullet[3];
             double currX = getCurrentX();
             double currY = getCurrentY();
+            sm.playSound("Player");
             if(powerup == null) {
                 spawnLevel1PlayerBullet(playerBullet,currX,currY);
             } else if(powerup.equalsIgnoreCase("playerBulletLevel2")) {
@@ -74,6 +77,8 @@ public class Player extends Entity implements Runnable{
             } else if(powerup.equalsIgnoreCase("playerBulletLevel3")) {
                 spawnLevel3PlayerBullet(playerBullet,currX,currY);
             }
+
+            System.out.println("Hit");
             try {
                 Thread.sleep(300);
             } catch (InterruptedException e) {
