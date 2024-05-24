@@ -12,6 +12,8 @@ import javafx.scene.paint.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import static com.example.game.GameStart.sm;
+
 public class Player extends Entity implements Runnable{
     private String name;
     private ImageView playerProjectile;
@@ -75,6 +77,7 @@ public class Player extends Entity implements Runnable{
                 spawnLevel3PlayerBullet(playerBullet,currX,currY);
             }
             try {
+                Platform.runLater(()->sm.playSound("Player"));
                 Thread.sleep(300);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
