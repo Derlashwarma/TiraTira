@@ -269,3 +269,24 @@ table-view .column-header-background,
     -fx-text-fill: #F7E803;
     -fx-font-size: 30px;
 }
+
+.progress-bar {
+    /*-fx-accent: green; !* Change the color of the progress bar *!*/
+    -fx-control-inner-background: black;
+    -fx-background-insets: 0;
+    -fx-padding: 2;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-background-radius: 10;
+    -fx-pref-height: 25;
+    -fx-pref-width: 215;
+}
+
+.progress-bar .track {
+    -fx-background-color: black;
+}
+
+.progress-bar .bar {
+    -fx-background-color: linear-gradient(to bottom, #00ffff, #0828a8);
+}
