@@ -29,9 +29,13 @@ public class Level1 implements Initializable {
     ImageView playerProd;
     @FXML
     ImageView enemyProd;
+    @FXML
+    ImageView powerUP1;
+    @FXML
+    ImageView powerUP2;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Game game = new Game(main_container, character, background, background2, playerProd, enemyProd, Main_Menu.getName());
+        Game game = new Game(main_container, character, background, background2, playerProd, enemyProd, Main_Menu.getName(), powerUP1, powerUP2);
         Thread gameThread = new Thread(game);
         gameThread.start();
     }

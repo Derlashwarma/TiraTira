@@ -40,6 +40,8 @@ public class Game implements Runnable{
     private ImageView enemy_type_2;
     private ImageView playerBullet;
     private ImageView enemyBullet;
+    private ImageView powerUP1;
+    private ImageView powerUP2;
     public static int score;
     public static Player player;
     private static String name;
@@ -47,7 +49,9 @@ public class Game implements Runnable{
     public static ProgressBar healthBar;
     private static ImageView icon;
 
-    public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2, ImageView playerProd, ImageView enemyProd, String playerName) {
+    public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2,
+                ImageView playerProd, ImageView enemyProd, String playerName,
+                ImageView powerup1, ImageView powerup2) {
         main_container = pane;
         game_running = true;
         enemies = new ArrayList<>();
@@ -56,6 +60,8 @@ public class Game implements Runnable{
         this.enemy_type_2 = background2;
         this.playerBullet = playerProd;
         this.enemyBullet = enemyProd;
+        this.powerUP1 = powerup1;
+        this.powerUP2 = powerup2;
         size = 0;
         Game.name = playerName;
     }
@@ -121,7 +127,8 @@ public class Game implements Runnable{
 
     @Override
     public void run() {
-        BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2, enemyBullet);
+            BattleMaker bm = new BattleMaker(main_container, enemy_type_1, enemy_type_2,
+                                             enemyBullet, powerUP1, powerUP2);
             player = new Player(20, Color.GREEN, Main_Menu.getName(), playerBullet);
             player.setAnchorPane(main_container);
             player.setAnchorPane(main_container);

@@ -8,5 +8,6 @@ public class PowerUpLevel1 extends PowerUp{
     public PowerUpLevel1(int currentX, int currentY) {
         super(Color.GREEN, currentX, currentY);
         setPowerUp("playerBulletLevel2");
+        setVisible(false);
     }
 }

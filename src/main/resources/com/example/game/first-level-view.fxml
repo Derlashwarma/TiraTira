@@ -30,5 +30,13 @@
             <Image url="@../images/y_bullet_asset.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="powerUP1" fitHeight="72.0" fitWidth="88.0" layoutX="-94.0" layoutY="154.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/powerUp1.gif" />
+         </image></ImageView>
+      <ImageView fx:id="powerUP2" fitHeight="100.0" fitWidth="88.0" layoutX="-94.0" layoutY="226.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/powerUp2_2.gif" />
+         </image></ImageView>
    </children>
 </AnchorPane>
