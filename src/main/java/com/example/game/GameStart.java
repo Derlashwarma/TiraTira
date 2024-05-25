@@ -1,6 +1,7 @@
 package com.example.game;
 
 import com.example.game.Levels.Level1;
+import com.example.game.Sound.SoundManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class GameStart extends Application {
+    public static SoundManager sm = SoundManager.getInstance();
 
     private static String playerName;
 
@@ -20,6 +22,7 @@ public class GameStart extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Space Horizon!");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
 
         InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");

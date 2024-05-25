@@ -14,6 +14,8 @@ import javafx.scene.layout.Background;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.example.game.GameStart.sm;
+
 public class Level1 implements Initializable {
     @FXML
     public AnchorPane main_container;

@@ -8,12 +8,15 @@ import com.example.game.Entity.Player;
 import com.example.game.Levels.BattleMaker;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -22,6 +25,8 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.security.spec.RSAOtherPrimeInfo;
 import java.util.*;
+
+import static com.example.game.GameStart.sm;
 
 public class Game implements Runnable{
     public static AnchorPane main_container;
@@ -41,7 +46,8 @@ public class Game implements Runnable{
     public static Player player;
     private static String name;
     public static int size;
-
+    public static ProgressBar healthBar;
+    private static ImageView icon;
 
     public Game(AnchorPane pane, ImageView character, ImageView background, ImageView background2,
                 ImageView playerProd, ImageView enemyProd, String playerName,
@@ -92,13 +98,17 @@ public class Game implements Runnable{
             }
         });
     }
+
+
     public synchronized static void addEnemy(Runnable enemy){
         enemies.add(enemy);
         size++;
+        Platform.runLater(Game::bringHealthBarToFront);
     }
     public synchronized static void removeEnemy(Runnable enemy){
         enemies.remove(enemy);
         size--;
+        Platform.runLater(Game::bringHealthBarToFront);
     }
 
     public ImageView clone(ImageView to_clone) {
@@ -124,8 +134,7 @@ public class Game implements Runnable{
             player.setAnchorPane(main_container);
             Thread playerThread = new Thread(player);
             playerThread.start();
-
-
+            addProgressBar();
             main_container.setOnMouseMoved(event -> {
                 character.setLayoutX(event.getX()-30);
                 character.setLayoutY(event.getY()-50);
@@ -134,8 +143,14 @@ public class Game implements Runnable{
                 player.setCurrentX(event.getX());
                 player.setCurrentY(event.getY());
             });
+            Platform.runLater(()->{
+                Thread thread = new Thread(new GameSound());
+                thread.start();
+            });
+
             Thread bmThread = new Thread(bm);
             bmThread.start();
+            double health = 100;
             while(game_running) {
                 bm.setScore(score);
                 try {
@@ -154,9 +169,69 @@ public class Game implements Runnable{
             System.out.println("GAME OVER");
             System.out.println("TOTAL SCORE: " + score);
             MySQLConnection.updatePlayerScore(name,score);
+            sm.stopAllSounds();
             Platform.runLater(() -> {
                 Stage stage = (Stage) character.getScene().getWindow();
                 stage.close();
             });
+    }
+
+    private void addProgressBar() {
+        Platform.runLater(() -> {
+            icon = new ImageView();
+            InputStream iconStream = getClass().getResourceAsStream("/com/example/images/playerShip_A.png");
+            if (iconStream != null) {
+                Image iconImage = new Image(iconStream);
+                icon.setImage(iconImage);
+                icon.setFitHeight(55);
+                icon.setFitWidth(40);
+            } else {
+                System.out.println("Icon resource not found");
+            }
+
+            healthBar = new ProgressBar();
+            healthBar.setProgress(1);
+            healthBar.getStyleClass().add("progress-bar");
+
+
+
+            HBox hbox = new HBox(-230);
+            hbox.setLayoutX(40);
+            hbox.setLayoutY(20);
+            hbox.getChildren().addAll(icon, healthBar);
+            hbox.setAlignment(Pos.CENTER_LEFT);
+
+            main_container.getChildren().add(hbox);
+            icon.toFront();
+
+            Scene scene = main_container.getScene();
+            if (scene != null) {
+                scene.getStylesheets().add(getClass().getResource("/com/example/game/menu_styles.css").toExternalForm());
+            }
+        });
+    }
+
+    private static void bringHealthBarToFront() {
+        if (healthBar != null && icon != null) {
+            HBox hbox = (HBox) healthBar.getParent();
+            if (hbox != null) {
+                hbox.toFront();
+            }
+        }
+    }
+
+    public static synchronized void reduceProgress(double damage){
+        double currHealth = healthBar.getProgress() - damage;
+        healthBar.setProgress(currHealth);
+    }
+    private class GameSound implements Runnable {
+        @Override
+        public void run() {
+
+            sm.loopSound("Space");
+            while(game_running) {
+            }
+            Thread.currentThread().interrupt();
+        }
     }
 }
