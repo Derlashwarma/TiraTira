@@ -56,25 +56,8 @@ public class GameOver extends Application {
 
     public void tryAgain(ActionEvent actionEvent) throws IOException {
         Stage currentStage = (Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow();
-        currentStage.close();
-        Game.score = 0;
-        FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource("main_menu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Main_Menu mainMenuController = fxmlLoader.getController();
-        mainMenuController.setPlayerName(playerName);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
-
-        InputStream iconStream = getClass().getResourceAsStream("/com/example/images/game_icon2.png");
-        if (iconStream == null) {
-            throw new RuntimeException("Icon resource not found");
-        }
-        Image icon = new Image(iconStream);
-        currentStage.getIcons().add(icon);
-        currentStage.centerOnScreen();
-
-        Platform.runLater(()->{
-            mainMenuController.startNewGame();
-        });
+        GameStart newGame = new GameStart(playerName);
+        newGame.start(currentStage);
     }
 
 

@@ -68,7 +68,6 @@ public abstract class Bullet extends javafx.scene.shape.Rectangle implements Run
                 break;
             }
         }
-
         Platform.runLater(() ->{
             pane.getChildren().remove(this);
             pane.getChildren().remove(bulletImage);
