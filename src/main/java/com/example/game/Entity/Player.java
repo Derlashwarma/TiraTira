@@ -47,7 +47,7 @@ public class Player extends Entity implements Runnable{
             setHealth(-(getHealth() * 0.05));
             System.out.println(getHealth());
             if(getHealth() <= 0){
-                Game.endGame();
+                Game.end();
             }
         }
     }

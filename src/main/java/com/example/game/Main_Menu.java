@@ -82,9 +82,11 @@ public class Main_Menu extends Application {
         String newPlayerName = newPlayerNameInput.getText();
         if(playerName.isEmpty() && !newPlayerName.isEmpty()) {
             Game.setPlayer(newPlayerName);
+            name = newPlayerName;
         }
-        else if(!playerName.isEmpty() && playerName.isEmpty()) {
+        else{
             Game.setPlayer(playerName);
+            name = playerName;
         }
 
         if (!playerName.isEmpty() && !newPlayerName.isEmpty()) {

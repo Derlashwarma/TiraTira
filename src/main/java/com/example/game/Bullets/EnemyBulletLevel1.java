@@ -26,14 +26,13 @@ public class EnemyBulletLevel1 extends Bullet {
         synchronized (pane) {
             if (getBoundsInParent().intersects(player.getBoundsInParent())) {
                 if (player.isAlive()) {
-                    player.changeHealth(-damage);
-                    System.out.println("AGAY... Remaining Health: " + player.getHealth());
                     synchronized (Game.healthBar) {
+                        player.changeHealth(-damage);
                         Game.reduceProgress(damage/100);
                     }
+                    System.out.println("AGAY... Remaining Health: " + player.getHealth());
                     if(player.getHealth() <= 0) {
-                        Platform.runLater(() -> pane.getChildren().remove(player));
-                        Game.endGame();
+                        Platform.runLater(() -> Game.end());
                     }
                 }
                 Platform.runLater(() -> pane.getChildren().remove(this));

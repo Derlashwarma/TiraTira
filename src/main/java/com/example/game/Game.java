@@ -69,8 +69,10 @@ public class Game implements Runnable{
         score += sc;
     }
 
-    public static void endGame(){
+    public static void end() {
         game_running = false;
+    }
+    public static void endGame(){
         Platform.runLater(() -> {
             Stage currentStage = (Stage) main_container.getScene().getWindow();
             currentStage.close();
@@ -168,11 +170,13 @@ public class Game implements Runnable{
             }
             System.out.println("GAME OVER");
             System.out.println("TOTAL SCORE: " + score);
-            MySQLConnection.updatePlayerScore(name,score);
             sm.stopAllSounds();
             Platform.runLater(() -> {
+                MySQLConnection.updatePlayerScore(name,score);
                 Stage stage = (Stage) character.getScene().getWindow();
+                main_container.getChildren().clear();
                 stage.close();
+                endGame();
             });
     }
 
@@ -222,7 +226,7 @@ public class Game implements Runnable{
 
     public static synchronized void reduceProgress(double damage){
         double currHealth = healthBar.getProgress() - damage;
-        healthBar.setProgress(currHealth);
+        Platform.runLater(()->healthBar.setProgress(currHealth));
         if(healthBar.getProgress() <= .3) {
             healthBar.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
         }

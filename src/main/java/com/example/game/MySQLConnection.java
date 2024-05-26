@@ -25,7 +25,7 @@ public class MySQLConnection {
             String createTable = "CREATE TABLE IF NOT EXISTS player (" +
                                 "id INT AUTO_INCREMENT PRIMARY KEY," +
                                 "username VARCHAR(255)," +
-                                "scores INT," +
+                                "scores INT DEFAULT 0," +
                                 "isDeleted BOOLEAN DEFAULT FALSE" +
                                 ");";
 
@@ -37,8 +37,7 @@ public class MySQLConnection {
     }
     public static void updatePlayerScore(String username, int score) {
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(
-                     "UPDATE player SET scores =? WHERE username =? AND scores <?")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE player SET scores =? WHERE username =? AND scores <?")) {
             preparedStatement.setInt(1, score); // Target score
             preparedStatement.setString(2, username); // Username to match
             preparedStatement.setInt(3, score); // Current score to compare against
