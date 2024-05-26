@@ -81,25 +81,13 @@ public class GameOver extends Application {
     public void exit(ActionEvent actionEvent) {
         Stage currentStage = (Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow();
         currentStage.close();
-
-        FXMLLoader fxmlLoader = new FXMLLoader(Main_Menu.class.getResource("main_menu.fxml"));
         try {
-            Scene scene = new Scene(fxmlLoader.load());
-            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("menu_styles.css")).toExternalForm());
-            Stage mainMenuStage = new Stage();
-            mainMenuStage.setScene(scene);
-            InputStream iconStream = Game.class.getResourceAsStream("/com/example/images/game_icon2.png");
-            if (iconStream == null) {
-                throw new RuntimeException("Icon resource not found");
-            }
-            Image icon = new Image(iconStream);
-            mainMenuStage.getIcons().add(icon);
-            mainMenuStage.setTitle("Space Horizon!");
-            mainMenuStage.show();
-            mainMenuStage.centerOnScreen();
-            mainMenuStage.show();
+            Main_Menu mainMenu = new Main_Menu();
+            mainMenu.start(currentStage);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 

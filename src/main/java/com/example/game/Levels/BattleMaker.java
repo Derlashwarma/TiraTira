@@ -28,7 +28,7 @@ public class BattleMaker implements Runnable {
 
     private int score;
 
-    private int BattleScenario;
+    public static int BattleScenario;
 
     private ImageView projectileE;
     public static boolean isActiveCount;
@@ -45,6 +45,7 @@ public class BattleMaker implements Runnable {
         this.powerup2 = powerUP2;
         spawned_powerUp = 0;
         threshold = 5;
+        BattleScenario = 1;
     }
 
     @Override

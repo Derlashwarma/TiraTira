@@ -1,6 +1,7 @@
 package com.example.game.Entity;
 
 import com.example.game.Bullets.EnemyBulletLevel1;
+import com.example.game.Levels.BattleMaker;
 import javafx.application.Platform;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -24,10 +25,15 @@ public class EnemyT1Strafer extends Enemy{
             Timer timer = new Timer();
             TimerTask task = new TimerTask() {
                 int count = 0;
-
+                int limit = 3;
                 @Override
                 public void run() {
-                    if (count < 3) {
+                    synchronized ((Object)BattleMaker.BattleScenario) {
+                        if(BattleMaker.BattleScenario == 4) {
+                            limit = 5;
+                        }
+                    }
+                    if (count < limit) {
                         ImageView bulletClone = EnemyT1Strafer.this.clone(projectile);
                         bulletClone.setRotate(180);
                         EnemyBulletLevel1 bullet = new EnemyBulletLevel1(getLayoutX()-5, getLayoutY()+20, bulletClone);
