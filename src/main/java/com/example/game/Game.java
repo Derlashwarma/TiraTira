@@ -15,8 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -64,6 +63,7 @@ public class Game implements Runnable{
         this.powerUP2 = powerup2;
         size = 0;
         Game.name = playerName;
+        Game.score = 0;
     }
     public static void addScore(int sc){
         score += sc;
@@ -223,6 +223,12 @@ public class Game implements Runnable{
     public static synchronized void reduceProgress(double damage){
         double currHealth = healthBar.getProgress() - damage;
         healthBar.setProgress(currHealth);
+        if(healthBar.getProgress() <= .3) {
+            healthBar.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
+        }
+        else if(healthBar.getProgress() <= .7) {
+            healthBar.setBackground(new Background(new BackgroundFill(Color.ORANGE, null, null)));
+        }
     }
     private class GameSound implements Runnable {
         @Override

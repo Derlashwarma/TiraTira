@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -31,6 +32,7 @@ public class Main_Menu extends Application {
     public TextField playerNameInput;
     public TextField newPlayerNameInput;
     public Label userMessageLabel;
+    public Button start_button;
     private Stage currentStage;
     private static String name;
 
@@ -111,14 +113,9 @@ public class Main_Menu extends Application {
                         int rowsInserted = insertStatement.executeUpdate();
                         if (rowsInserted > 0) {
                             System.out.println("Player " + newPlayerName + " added to the database.");
-
                             try {
-                                name = newPlayerName;
-                                GameStart gameStart = new GameStart(newPlayerName);
-                                gameStart.start(currentStage);
-                                System.out.println("Starting the game...");
-                                currentStage = (Stage) playerNameInput.getScene().getWindow();
-                                currentStage.close();
+                                start_button.setText("Loading... Please Wait");
+                                startNewGame();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -141,15 +138,13 @@ public class Main_Menu extends Application {
 
                 if (count > 0) {
                     currentStage = (Stage) playerNameInput.getScene().getWindow();
-                    currentStage.close();
-
                     try {
                         name = playerName;
                         GameStart gameStart = new GameStart(playerName);
-                        gameStart.start(new Stage());
-                        System.out.println("Starting the game...");
                         currentStage = (Stage) playerNameInput.getScene().getWindow();
-                        currentStage.close();
+                        gameStart.start(currentStage);
+//                        System.out.println("Starting the game...");
+//                        currentStage.close();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -183,11 +178,10 @@ public class Main_Menu extends Application {
     public void startNewGame() {
         try {
             GameStart gameStart = new GameStart(playerNameInput.getText());
-            gameStart.start(new Stage());
             currentStage = (Stage) playerNameInput.getScene().getWindow();
-            currentStage.close();
+            gameStart.start(currentStage);
         } catch (Exception e) {
-            e.printStackTrace();
+            e.getCause();
         }
     }
 

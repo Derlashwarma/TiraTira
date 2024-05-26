@@ -9,7 +9,7 @@
 <?import javafx.scene.image.Image?>
 <AnchorPane fx:id="main_container" prefHeight="800.0" prefWidth="500.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.Main_Menu">
     <children>
-        <Button layoutX="150" layoutY="570" onAction="#startGame" styleClass="button-color" text="START GAME"/>
+        <Button fx:id="start_button" layoutX="150" layoutY="570" onAction="#startGame" styleClass="button-color" text="START GAME"/>
         <Button layoutX="150" layoutY="640" onAction="#quitGame" styleClass="button-color" text="QUIT GAME"/>
 
         <Button layoutX="420" layoutY="500" onAction="#howToPlay" styleClass="imageButton">

@@ -29,7 +29,7 @@ public abstract class PowerUp  extends javafx.scene.shape.Circle implements Runn
         this.direction = 1;
         this.xDirection = 0;
         this.powerUp = null;
-        //setVisible(false);
+        setVisible(false);
         this.speed = 10;
     }
 
